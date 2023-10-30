@@ -61,7 +61,8 @@ function App(): JSX.Element {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-
+  console.log('9898');
+  const aa = 0;
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();
