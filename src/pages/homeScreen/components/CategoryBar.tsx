@@ -33,10 +33,13 @@ const tabs = [
 
 function CategoryBar() {
     console.log('9898123分类bar刷新');
-    const { newsListContainerRef, categoryBarRef } = useContext(HomePageContext);
+    const { newsListContainerRef, categoryBarRef, scrollY, allTypeListRef } = useContext(HomePageContext);
     const [activeTabIndex, setActiveTabIndex] = useState(0);
     const changeActiveTab = useCallback((index: number, from: 'categoryBar' | 'listContainer' = 'categoryBar') => {
         if (index === activeTabIndex) return;
+        if (scrollY.value < 90) {
+            allTypeListRef?.current?.scrollToOffset?.({ offset: 90, animated: true });
+        }
         setActiveTabIndex(index);
         categoryBarRef?.current?.scrollToIndex?.({
             index,

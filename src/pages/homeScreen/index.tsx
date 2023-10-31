@@ -17,6 +17,8 @@ function HomeScreen() {
     const newsListContainerRef = useRef();
     // 分类栏容器ref
     const categoryBarRef = useRef();
+    // 首页‘全部’类型列表ref
+    const allTypeListRef = useRef();
     useEffect(() => {
         setTimeout(() => {
             SplashScreen.hide();
@@ -27,6 +29,7 @@ function HomeScreen() {
         newsListContainerRef, // 最外层所有list列表容器ref
         categoryBarRef, // 分类栏容器ref
         scrollY, // 各个分类list列表滑动距离
+        allTypeListRef, // 首页‘全部’类型列表ref
     };
     return (
         <HomePageContext.Provider value={providerValue}>

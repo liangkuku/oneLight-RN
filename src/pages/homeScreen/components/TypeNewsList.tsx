@@ -29,8 +29,7 @@ type TypeNewsListProps = {
 }
 
 function TypeNewsList({ isAll }: TypeNewsListProps) {
-    const { scrollY, initTopbarHeight } = useContext(HomePageContext);
-    // const flatListRef = useAnimatedRef<FlatList<NewsItem>>();
+    const { scrollY, initTopbarHeight, allTypeListRef } = useContext(HomePageContext);
     // 滑动事件
     const scrollHandler = useAnimatedScrollHandler((event) => {
         if (isAll) {
@@ -64,7 +63,11 @@ function TypeNewsList({ isAll }: TypeNewsListProps) {
     return (
         <View style={styles.page}>
             <AnimatedFlashList
-                // ref={ref => flatListRef.current = ref}
+                ref={ref => {
+                    if (isAll) {
+                        allTypeListRef.current = ref;
+                    }
+                }}
                 contentInsetAdjustmentBehavior='never'
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{
@@ -79,7 +82,7 @@ function TypeNewsList({ isAll }: TypeNewsListProps) {
                 ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
                 ListHeaderComponent={<HomeHeaderActivity isAll={isAll} />}
                 ListFooterComponent={<LoadMore isLoadingMore={loadingStatus.isLoadingMore} />}
-                refreshControl={<RefreshControl refreshing={loadingStatus.isRefreshing} onRefresh={initRefresh} progressViewOffset={initTopbarHeight}></RefreshControl>}
+                refreshControl={<RefreshControl refreshing={loadingStatus.isRefreshing} onRefresh={initRefresh} progressViewOffset={isAll ? initTopbarHeight : initTopbarHeight - 90}></RefreshControl>}
                 onEndReached={loadMoreData}
                 onEndReachedThreshold={0.8}
             />
