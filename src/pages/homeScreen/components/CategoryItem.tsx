@@ -7,7 +7,8 @@ import { HomePageContext } from "../utils/context";
 
 type CategoryItemInfo = {
     title: string,
-    img: any
+    img: any,
+    id: string
 }
 type CategoryItemProps = {
     categoryInfo: CategoryItemInfo,

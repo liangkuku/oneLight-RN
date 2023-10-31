@@ -9,7 +9,7 @@ import { HomePageContext } from "../utils/context";
 
 function AnimatedHeader() {
     console.log('9898头部刷新');
-    const { scrollY, initTopbarHeight, categoryBarRef } = useContext(HomePageContext);
+    const { scrollY, initTopbarHeight } = useContext(HomePageContext);
     // 映射头部组件高度动画样式
     const containerAnimatedStyle = useAnimatedStyle(() => {
         // height
@@ -33,7 +33,7 @@ function AnimatedHeader() {
             <InfoBar />
             <View style={styles.barContainer}>
                 <SearchBar />
-                <CategoryBar ref={ref => { categoryBarRef.current = ref; }} />
+                <CategoryBar />
             </View>
             <Animated.View style={[styles.blurContainer, blurAnimatedStyle]}>
                 <BlurView style={{ flex: 1 }} blurType='xlight' blurAmount={50} />

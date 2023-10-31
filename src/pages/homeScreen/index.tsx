@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Dimensions, Platform, StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import AnimatedHeader from './components/AnimatedHeader';
 import { useSharedValue } from 'react-native-reanimated';
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     page: {
         ...Platform.select({
             ios: {
-                height: Dimensions.get('window').height
+                height: WINDOW_HEIGHT
             },
             android: {
                 flex: 1

@@ -24,7 +24,11 @@ const apifunc = async () => {
 
 const AnimatedFlashList = Animated.createAnimatedComponent(FlashList<NewsItem>);
 
-function TypeNewsList() {
+type TypeNewsListProps = {
+    isAll: boolean
+}
+
+function TypeNewsList({ isAll }: TypeNewsListProps) {
     const { scrollY, initTopbarHeight } = useContext(HomePageContext);
     // const flatListRef = useAnimatedRef<FlatList<NewsItem>>();
     // 滑动事件
@@ -55,13 +59,6 @@ function TypeNewsList() {
     const loadMoreData = () => {
         getNewsData('loadmore');
     };
-    // 滑动停止
-    const scrollEnd = () => {
-        console.log('9898滑动停止onMomentumScrollEnd');
-    };
-    const onScrollEndDrag = () => {
-        console.log('9898滑动停止onScrollEndDrag');
-    };
     return (
         <View style={styles.page}>
             <AnimatedFlashList
@@ -78,13 +75,11 @@ function TypeNewsList() {
                 ListEmptyComponent={<EmptyComponent isShow={!loadingStatus.isLoadingMore && !loadingStatus.isRefreshing} />}
                 renderItem={({ item }) => <News news={item} />}
                 ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-                ListHeaderComponent={<HomeHeaderActivity />}
+                ListHeaderComponent={<HomeHeaderActivity isAll={isAll} />}
                 ListFooterComponent={<LoadMore isLoadingMore={loadingStatus.isLoadingMore} />}
                 refreshControl={<RefreshControl refreshing={loadingStatus.isRefreshing} onRefresh={initRefresh} progressViewOffset={initTopbarHeight}></RefreshControl>}
                 onEndReached={loadMoreData}
                 onEndReachedThreshold={0.8}
-                onMomentumScrollEnd={scrollEnd}
-                onScrollEndDrag={onScrollEndDrag}
             />
         </View>
     );
@@ -92,7 +87,8 @@ function TypeNewsList() {
 
 const styles = StyleSheet.create({
     page: {
-        width: WINDOW_WIDTH
+        width: WINDOW_WIDTH,
+        height: WINDOW_HEIGHT
     }
 });
 
