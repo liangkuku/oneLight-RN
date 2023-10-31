@@ -33,7 +33,9 @@ function TypeNewsList({ isAll }: TypeNewsListProps) {
     // const flatListRef = useAnimatedRef<FlatList<NewsItem>>();
     // 滑动事件
     const scrollHandler = useAnimatedScrollHandler((event) => {
-        scrollY.value = event.contentOffset.y;
+        if (isAll) {
+            scrollY.value = event.contentOffset.y;
+        }
     });
     const [loadingStatus, setLoadingStatus] = useState({ isRefreshing: false, isLoadingMore: false });
     const [newsData, setNewsData] = useState<NewsItem[]>([]);
