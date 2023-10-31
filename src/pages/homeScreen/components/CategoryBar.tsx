@@ -33,13 +33,20 @@ const tabs = [
 
 function CategoryBar() {
     console.log('9898123分类bar刷新');
-    const { newsListContainerRef, categoryBarRef, scrollY, allTypeListRef } = useContext(HomePageContext);
+    const { newsListContainerRef, categoryBarRef, sharedScrollY, allTypeListScrollY, allTypeListRef } = useContext(HomePageContext);
     const [activeTabIndex, setActiveTabIndex] = useState(0);
     const changeActiveTab = useCallback((index: number, from: 'categoryBar' | 'listContainer' = 'categoryBar') => {
+        console.log('9898zz11', index, activeTabIndex, sharedScrollY.value);
+        // 动画补偿
+        console.log('9898zz33');
         if (index === activeTabIndex) return;
-        if (scrollY.value < 90) {
+        if (sharedScrollY.value < 90 && index !== 0) {
+            sharedScrollY.value = 90;
+        }
+        if (allTypeListScrollY.value < 90 && index === 0 && index !== activeTabIndex) {
             allTypeListRef?.current?.scrollToOffset?.({ offset: 90, animated: true });
         }
+        console.log('9898zz44');
         setActiveTabIndex(index);
         categoryBarRef?.current?.scrollToIndex?.({
             index,
@@ -49,7 +56,7 @@ function CategoryBar() {
         if (from === 'categoryBar') {
             newsListContainerRef?.current?.scrollToIndex?.({ index, animated: true });
         }
-    }, [activeTabIndex, categoryBarRef, newsListContainerRef]);
+    }, [activeTabIndex, allTypeListRef, allTypeListScrollY.value, categoryBarRef, newsListContainerRef, sharedScrollY]);
     useEffect(() => {
         categoryBarRef.current.changeActiveTab = changeActiveTab;
     }, [categoryBarRef, changeActiveTab]);

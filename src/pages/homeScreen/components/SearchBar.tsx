@@ -6,11 +6,11 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import { HomePageContext } from "../utils/context";
 
 function SearchBar() {
-    const { scrollY } = useContext(HomePageContext);
+    const { sharedScrollY } = useContext(HomePageContext);
     // 映射搜索栏左侧占位元素宽度动画样式
     const searchBarSpaceAnimatedStyle = useAnimatedStyle(() => {
         // 占位元素宽度
-        const width = interpolate(scrollY.value, [0, 90], [0, 40], {
+        const width = interpolate(sharedScrollY.value, [0, 90], [0, 40], {
             extrapolateLeft: Extrapolation.CLAMP,
             extrapolateRight: Extrapolation.CLAMP,
         });
@@ -21,7 +21,7 @@ function SearchBar() {
     // 搜索框边距动画
     const gpaAnimatedStyle = useAnimatedStyle(() => {
         // 边距
-        const gapStyle = interpolate(scrollY.value, [0, 90], [10, 0], {
+        const gapStyle = interpolate(sharedScrollY.value, [0, 90], [10, 0], {
             extrapolateLeft: Extrapolation.CLAMP,
             extrapolateRight: Extrapolation.CLAMP,
         });
@@ -32,7 +32,7 @@ function SearchBar() {
     // 搜索框高度动画
     const heightAnimatedStyle = useAnimatedStyle(() => {
         // 边距
-        const height = interpolate(scrollY.value, [0, 90], [50, 40], {
+        const height = interpolate(sharedScrollY.value, [0, 90], [50, 40], {
             extrapolateLeft: Extrapolation.CLAMP,
             extrapolateRight: Extrapolation.CLAMP,
         });

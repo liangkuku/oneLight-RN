@@ -9,11 +9,11 @@ import { HomePageContext } from "../utils/context";
 
 function AnimatedHeader() {
     console.log('9898头部刷新');
-    const { scrollY, initTopbarHeight } = useContext(HomePageContext);
+    const { sharedScrollY, initTopbarHeight } = useContext(HomePageContext);
     // 映射头部组件高度动画样式
     const containerAnimatedStyle = useAnimatedStyle(() => {
         // height
-        const height = interpolate(scrollY.value, [0, 90], [initTopbarHeight, initTopbarHeight - 90], {
+        const height = interpolate(sharedScrollY.value, [0, 90], [initTopbarHeight, initTopbarHeight - 90], {
             extrapolateLeft: Extrapolation.CLAMP,
             extrapolateRight: Extrapolation.CLAMP,
         });
@@ -22,7 +22,7 @@ function AnimatedHeader() {
     // 映射头部组件高斯模糊透明度动画样式
     const blurAnimatedStyle = useAnimatedStyle(() => {
         // height
-        const opacity = interpolate(scrollY.value, [0, 90], [0, 1], {
+        const opacity = interpolate(sharedScrollY.value, [0, 90], [0, 1], {
             extrapolateLeft: Extrapolation.CLAMP,
             extrapolateRight: Extrapolation.CLAMP,
         });
@@ -35,9 +35,9 @@ function AnimatedHeader() {
                 <SearchBar />
                 <CategoryBar />
             </View>
-            <Animated.View style={[styles.blurContainer, blurAnimatedStyle]}>
+            {/* <Animated.View style={[styles.blurContainer, blurAnimatedStyle]}>
                 <BlurView style={{ flex: 1 }} blurType='xlight' blurAmount={50} />
-            </Animated.View>
+            </Animated.View> */}
         </Animated.View>
     );
 }

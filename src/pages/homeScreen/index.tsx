@@ -11,14 +11,18 @@ import { getNavigationConsts } from '@/utils/loadAppTools';
 function HomeScreen() {
     console.log(`9898home刷新${Platform.OS}`);
     const initTopbarHeight = getNavigationConsts().statusBarHeight + 170;
-    // 滑动距离
-    const scrollY = useSharedValue(0);
+    // 动画共享滑动距离
+    const sharedScrollY = useSharedValue(0);
+    // ‘全部->all’类型列表滑动距离
+    const allTypeListScrollY = useSharedValue(0);
     // 最外层所有list列表容器ref
     const newsListContainerRef = useRef();
     // 分类栏容器ref
     const categoryBarRef = useRef();
-    // 首页‘全部’类型列表ref
+    // 首页‘全部->all’类型列表ref
     const allTypeListRef = useRef();
+    // 首页‘全部->all’类型列表滚动类型（tap->手动，auto->自动）
+    const scrollTypeRef = useRef('tap');
     useEffect(() => {
         setTimeout(() => {
             SplashScreen.hide();
@@ -28,8 +32,10 @@ function HomeScreen() {
         initTopbarHeight, // 顶部动画组件的高度
         newsListContainerRef, // 最外层所有list列表容器ref
         categoryBarRef, // 分类栏容器ref
-        scrollY, // 各个分类list列表滑动距离
-        allTypeListRef, // 首页‘全部’类型列表ref
+        sharedScrollY, // 各个分类list列表滑动距离
+        allTypeListRef, // 首页‘全部->all’类型列表ref
+        allTypeListScrollY, // ‘全部->all’类型列表滑动距离
+        scrollTypeRef, // 首页‘全部->all’类型列表滚动类型（tap->手动，auto->自动）
     };
     return (
         <HomePageContext.Provider value={providerValue}>

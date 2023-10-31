@@ -29,11 +29,12 @@ type TypeNewsListProps = {
 }
 
 function TypeNewsList({ isAll }: TypeNewsListProps) {
-    const { scrollY, initTopbarHeight, allTypeListRef } = useContext(HomePageContext);
+    const { sharedScrollY, initTopbarHeight, allTypeListRef, allTypeListScrollY } = useContext(HomePageContext);
     // 滑动事件
     const scrollHandler = useAnimatedScrollHandler((event) => {
         if (isAll) {
-            scrollY.value = event.contentOffset.y;
+            sharedScrollY.value = event.contentOffset.y;
+            allTypeListScrollY.value = event.contentOffset.y;
         }
     });
     const [loadingStatus, setLoadingStatus] = useState({ isRefreshing: false, isLoadingMore: false });
@@ -93,7 +94,8 @@ function TypeNewsList({ isAll }: TypeNewsListProps) {
 const styles = StyleSheet.create({
     page: {
         width: WINDOW_WIDTH,
-        height: WINDOW_HEIGHT
+        height: WINDOW_HEIGHT,
+        backgroundColor: 'pink'
     }
 });
 
