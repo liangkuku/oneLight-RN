@@ -29,14 +29,19 @@ type TypeNewsListProps = {
 }
 
 function TypeNewsList({ isAll }: TypeNewsListProps) {
-    const { sharedScrollY, initTopbarHeight, allTypeListRef, allTypeListScrollY } = useContext(HomePageContext);
-    // 滑动事件
+    const { sharedScrollY, initTopbarHeight, allTypeListRef, allTypeListScrollY, scrollTypeRef } = useContext(HomePageContext);
     const scrollHandler = useAnimatedScrollHandler((event) => {
         if (isAll) {
-            sharedScrollY.value = event.contentOffset.y;
+            if (scrollTypeRef.value === 'handle') {
+                sharedScrollY.value = event.contentOffset.y;
+            }
             allTypeListScrollY.value = event.contentOffset.y;
         }
     });
+    // 滑动停止事件
+    const endScroll = () => {
+        scrollTypeRef.value = 'handle';
+    };
     const [loadingStatus, setLoadingStatus] = useState({ isRefreshing: false, isLoadingMore: false });
     const [newsData, setNewsData] = useState<NewsItem[]>([]);
     // 接口查询list数据源
@@ -86,6 +91,7 @@ function TypeNewsList({ isAll }: TypeNewsListProps) {
                 refreshControl={<RefreshControl refreshing={loadingStatus.isRefreshing} onRefresh={initRefresh} progressViewOffset={isAll ? initTopbarHeight : initTopbarHeight - 90}></RefreshControl>}
                 onEndReached={loadMoreData}
                 onEndReachedThreshold={0.8}
+                onMomentumScrollEnd={endScroll}
             />
         </View>
     );
@@ -94,8 +100,7 @@ function TypeNewsList({ isAll }: TypeNewsListProps) {
 const styles = StyleSheet.create({
     page: {
         width: WINDOW_WIDTH,
-        height: WINDOW_HEIGHT,
-        backgroundColor: 'pink'
+        height: WINDOW_HEIGHT
     }
 });
 

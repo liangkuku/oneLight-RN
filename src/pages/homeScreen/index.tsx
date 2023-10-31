@@ -21,8 +21,8 @@ function HomeScreen() {
     const categoryBarRef = useRef();
     // 首页‘全部->all’类型列表ref
     const allTypeListRef = useRef();
-    // 首页‘全部->all’类型列表滚动类型（tap->手动，auto->自动）
-    const scrollTypeRef = useRef('tap');
+    // 首页‘全部->all’类型列表滚动类型（handle->手动，auto->自动）
+    const scrollTypeRef = useSharedValue('handle');
     useEffect(() => {
         setTimeout(() => {
             SplashScreen.hide();
@@ -35,7 +35,7 @@ function HomeScreen() {
         sharedScrollY, // 各个分类list列表滑动距离
         allTypeListRef, // 首页‘全部->all’类型列表ref
         allTypeListScrollY, // ‘全部->all’类型列表滑动距离
-        scrollTypeRef, // 首页‘全部->all’类型列表滚动类型（tap->手动，auto->自动）
+        scrollTypeRef, // 首页‘全部->all’类型列表滚动类型（handle->手动，auto->自动）
     };
     return (
         <HomePageContext.Provider value={providerValue}>

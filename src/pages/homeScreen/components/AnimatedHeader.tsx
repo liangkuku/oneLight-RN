@@ -35,9 +35,9 @@ function AnimatedHeader() {
                 <SearchBar />
                 <CategoryBar />
             </View>
-            {/* <Animated.View style={[styles.blurContainer, blurAnimatedStyle]}>
+            <Animated.View style={[styles.blurContainer, blurAnimatedStyle]}>
                 <BlurView style={{ flex: 1 }} blurType='xlight' blurAmount={50} />
-            </Animated.View> */}
+            </Animated.View>
         </Animated.View>
     );
 }
