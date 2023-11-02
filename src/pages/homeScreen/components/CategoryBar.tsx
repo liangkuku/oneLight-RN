@@ -2,7 +2,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import CategoryItem from "./CategoryItem";
 import { HomePageContext } from "../utils/context";
 import { FlatList } from "react-native";
-import { Easing, ReduceMotion, withTiming } from "react-native-reanimated";
+// import { Easing, ReduceMotion, withTiming } from "react-native-reanimated";
 
 const tabs = [
     {
@@ -34,32 +34,20 @@ const tabs = [
 
 function CategoryBar() {
     console.log('9898123分类bar刷新');
-    const { newsListContainerRef, categoryBarRef, sharedScrollY, allTypeListScrollY, allTypeListRef, scrollTypeRef } = useContext(HomePageContext);
+    const { newsListContainerRef, categoryBarRef, sharedScrollY, allTypeListRef } = useContext(HomePageContext);
     const [activeTabIndex, setActiveTabIndex] = useState(0);
-    const changeActiveTab = useCallback((index: number, from: 'categoryBar' | 'listContainer' = 'categoryBar') => {
-        // 动画补偿
-        if (index === activeTabIndex) return;
-        if (sharedScrollY.value < 90 && index !== 0) {
-            sharedScrollY.value = withTiming(90, {
-                duration: 250,
-                easing: Easing.inOut(Easing.quad),
-                reduceMotion: ReduceMotion.System,
-            });
-        }
-        if (allTypeListScrollY.value < 90 && index === 0 && index !== activeTabIndex) {
-            scrollTypeRef.value = 'auto';
+    const changeActiveTab = useCallback((index: number) => {
+        if (index !== 0 && sharedScrollY.value < 90) {
             allTypeListRef?.current?.scrollToOffset?.({ offset: 90, animated: true });
         }
+        newsListContainerRef?.current?.setActiveIndex?.(index);
         setActiveTabIndex(index);
         categoryBarRef?.current?.scrollToIndex?.({
             index,
             animated: true,
             viewPosition: 0.5
         });
-        if (from === 'categoryBar') {
-            newsListContainerRef?.current?.scrollToIndex?.({ index, animated: true });
-        }
-    }, [activeTabIndex, allTypeListRef, allTypeListScrollY.value, categoryBarRef, newsListContainerRef, scrollTypeRef, sharedScrollY]);
+    }, [allTypeListRef, categoryBarRef, newsListContainerRef, sharedScrollY]);
     useEffect(() => {
         categoryBarRef.current.changeActiveTab = changeActiveTab;
     }, [categoryBarRef, changeActiveTab]);

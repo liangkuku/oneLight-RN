@@ -1,54 +1,59 @@
 import TypeNewsList from "./TypeNewsList";
-import { NativeScrollEvent, NativeSyntheticEvent } from "react-native";
-import { useContext } from "react";
+import { forwardRef, useContext, useImperativeHandle, useState } from "react";
+import { TabView, SceneMap } from 'react-native-tab-view';
 import { HomePageContext } from "../utils/context";
-import { FlashList } from "@shopify/flash-list";
 
 const tabs = [
     {
-        label: '全部',
-        id: '0'
+        title: '全部',
+        key: 'all'
     },
     {
-        label: '美食',
-        id: '1'
+        title: '美食',
+        key: 'food'
     },
     {
-        label: '快递',
-        id: '2'
+        title: '快递',
+        key: 'express'
     },
     {
-        label: 'Replace',
-        id: '3'
+        title: 'Replace',
+        key: 'replace'
     },
     {
-        label: '兼职',
-        id: '4'
+        title: '兼职',
+        key: 'job'
     },
 ];
 
-function NewsListContainer() {
-    const { newsListContainerRef, categoryBarRef } = useContext(HomePageContext);
-    const endScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-        const offsetX = event.nativeEvent.contentOffset.x;
-        const tmp = (offsetX / WINDOW_WIDTH + 0.5);
-        const currentPage = Math.trunc(tmp);
-        categoryBarRef?.current?.changeActiveTab?.(currentPage, 'listContainer');
+const renderScene = SceneMap({
+    all: TypeNewsList,
+    food: TypeNewsList,
+    express: TypeNewsList,
+    replace: TypeNewsList,
+    job: TypeNewsList,
+});
+
+const NewsListContainer = forwardRef((props, ref) => {
+    const { categoryBarRef } = useContext(HomePageContext);
+    const [activeIndex, setActiveIndex] = useState(0);
+    useImperativeHandle(ref, () => ({
+        setActiveIndex
+    }));
+    const handleScroll = (index: number) => {
+        categoryBarRef?.current?.changeActiveTab?.(index);
     };
     return (
-        <FlashList
-            ref={ref => { newsListContainerRef.current = ref; }}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            pagingEnabled={true}
-            removeClippedSubviews={true}
-            data={tabs}
-            keyExtractor={(item) => item.id}
-            renderItem={({ index }) => <TypeNewsList isAll={index === 0} />}
-            onMomentumScrollEnd={endScroll}
-            estimatedItemSize={WINDOW_WIDTH}
+        <TabView
+            navigationState={{ index: activeIndex, routes: tabs }}
+            renderScene={renderScene}
+            onIndexChange={handleScroll}
+            initialLayout={{ width: WINDOW_WIDTH }}
+            renderTabBar={() => null}
         />
     );
-}
+});
+
+NewsListContainer.displayName = 'NewsListContainer';
 
 export default NewsListContainer;
