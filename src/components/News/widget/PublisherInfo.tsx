@@ -9,7 +9,7 @@ type NewsProps = {
 function PublisherInfo({ news }: NewsProps) {
     return (
         <View style={styles.container}>
-            <FastImage source={{ uri: news.avatar }} style={styles.avatar} />
+            <FastImage source={{ uri: news.avatar }} style={styles.avatar} resizeMode="contain" />
             <Text style={styles.publisherName}>{news.publisherName}</Text>
         </View>
     );

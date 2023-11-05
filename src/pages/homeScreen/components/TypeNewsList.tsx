@@ -18,7 +18,7 @@ const apifunc = async () => {
                 id: index + '-' + (new Date()).getTime()
             }));
             res(data);
-        }, 800);
+        }, 200);
     });
 };
 
@@ -30,6 +30,8 @@ type TypeNewsListProps = {
         title: string
     }
 }
+
+const renderItem = ({ item }: { item: NewsItem }) => <News news={item} />;
 
 function TypeNewsList({ route }: TypeNewsListProps) {
     const isAll = route.key === 'all';
@@ -81,7 +83,7 @@ function TypeNewsList({ route }: TypeNewsListProps) {
                 onScroll={scrollHandler}
                 data={newsData}
                 ListEmptyComponent={<EmptyComponent isShow={!loadingStatus.isLoadingMore && !loadingStatus.isRefreshing} />}
-                renderItem={({ item }) => <News news={item} />}
+                renderItem={renderItem}
                 ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
                 ListHeaderComponent={<HomeHeaderActivity isAll={isAll} />}
                 ListFooterComponent={<LoadMore isLoadingMore={loadingStatus.isLoadingMore} />}

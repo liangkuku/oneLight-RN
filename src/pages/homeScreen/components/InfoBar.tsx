@@ -70,7 +70,7 @@ function InfoBar() {
                 </Animated.View>
                 <View style={[styles.settings, styles.avatarSetting]}>
                     <TouchableOpacity onPress={() => { console.log('9898我是个人信息'); }}>
-                        <Animated.Image style={avatarAnimatedStyle} source={{ uri: 'https://tuchuangs.com/imgs/2023/09/18/44d99b5d075ce313.jpg' }} />
+                        <Animated.Image style={avatarAnimatedStyle} source={{ uri: 'https://tuchuangs.com/imgs/2023/09/18/44d99b5d075ce313.jpg' }} resizeMethod='resize' />
                     </TouchableOpacity>
                 </View>
                 {/* 搜索框热区 */}

@@ -94,7 +94,7 @@ function CategoryItem({ categoryInfo, changeActiveTab, selfIndex, activeTabIndex
                     categoryContainerAnimatedStyle
                 ]}
             >
-                <FastImage source={categoryInfo.img} style={styles.tabIcon} />
+                <FastImage source={categoryInfo.img} style={styles.tabIcon} resizeMode="contain" />
                 <Animated.Text
                     style={[
                         styles.tabTitle,

@@ -14,7 +14,7 @@ function SingleMedia({ medias }: MediasProps) {
     return (
         <View style={styles.singleContainer}>
             <BlurView style={styles.blur} blurType='xlight' blurAmount={50} />
-            <FastImage source={{ uri: media }} style={[styles.img, styles.singleImg]} />
+            <FastImage source={{ uri: media }} style={[styles.img, styles.singleImg]} resizeMode="contain" />
         </View>
     );
 }
@@ -25,7 +25,7 @@ function DoubleMedia({ medias }: MediasProps) {
         medias.map((item, index) => (
             <View style={styles.doubleContainer} key={index}>
                 <BlurView style={styles.blur} blurType='xlight' blurAmount={50} />
-                <FastImage source={{ uri: item }} style={[styles.img, styles.doubleImg]} />
+                <FastImage source={{ uri: item }} style={[styles.img, styles.doubleImg]} resizeMode="contain" />
             </View>
         ))
     );
@@ -37,7 +37,7 @@ function ThreeMedia({ medias }: MediasProps) {
         medias.map((item, index) => (
             index < 3 &&
             <View style={styles.threeContainer} key={index}>
-                <FastImage source={{ uri: item }} style={[styles.img, styles.threeleImg]} />
+                <FastImage source={{ uri: item }} style={[styles.img, styles.threeleImg]} resizeMode="contain" />
                 {
                     index === 2 &&
                     <View style={styles.imgCount}>
@@ -54,9 +54,6 @@ function ThreeMedia({ medias }: MediasProps) {
 function Medias({ medias }: MediasProps) {
     return (
         <View style={[styles.container, medias.length > 1 && styles.moreContainer]}>
-            {/* {
-                medias.map((item, index) => <FastImage key={index} source={{ uri: item }} style={styles.img} />)
-            } */}
             {
                 medias.length === 1 && <SingleMedia medias={medias} />
             }
@@ -73,7 +70,6 @@ function Medias({ medias }: MediasProps) {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        // backgroundColor: 'violet'
     },
     moreContainer: {
         justifyContent: 'space-between'

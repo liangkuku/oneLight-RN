@@ -2,7 +2,6 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import CategoryItem from "./CategoryItem";
 import { HomePageContext } from "../utils/context";
 import { FlatList } from "react-native";
-// import { Easing, ReduceMotion, withTiming } from "react-native-reanimated";
 
 const tabs = [
     {

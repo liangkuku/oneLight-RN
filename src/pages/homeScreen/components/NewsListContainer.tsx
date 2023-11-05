@@ -45,6 +45,7 @@ const NewsListContainer = forwardRef((props, ref) => {
     };
     return (
         <TabView
+            lazy={true}
             navigationState={{ index: activeIndex, routes: tabs }}
             renderScene={renderScene}
             onIndexChange={handleScroll}
