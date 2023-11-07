@@ -26,11 +26,13 @@ export const setAppRouter = async (isInitApp?: boolean) => {
     const bottomRoot: LayoutRoot = {
         root: {
             bottomTabs: {
+                id: 'BOTTOM_TABS_LAYOUT',
                 children: [
                     {
                         stack: {
                             children: [{
                                 component: {
+                                    id: 'HomeScreen',
                                     name: 'HomeScreen',
                                     options: {
                                         topBar: {
@@ -52,6 +54,7 @@ export const setAppRouter = async (isInitApp?: boolean) => {
                         stack: {
                             children: [{
                                 component: {
+                                    id: 'MarketScreen',
                                     name: 'MarketScreen',
                                     options: {
                                         topBar: {
@@ -73,6 +76,29 @@ export const setAppRouter = async (isInitApp?: boolean) => {
                         stack: {
                             children: [{
                                 component: {
+                                    id: 'AddNewsScreen',
+                                    name: 'AddNewsScreen',
+                                    options: {
+                                        topBar: {
+                                            visible: false
+                                        }
+                                    }
+                                },
+                            }],
+                            options: {
+                                bottomTab: {
+                                    text: '发布',
+                                    icon: Assets.bottomBarIcons.add,
+                                    selectedIcon: Assets.bottomBarIcons.addSelect
+                                }
+                            }
+                        }
+                    },
+                    {
+                        stack: {
+                            children: [{
+                                component: {
+                                    id: 'CircleScreen',
                                     name: 'CircleScreen',
                                     options: {
                                         topBar: {
@@ -94,6 +120,7 @@ export const setAppRouter = async (isInitApp?: boolean) => {
                         stack: {
                             children: [{
                                 component: {
+                                    id: 'MineScreen',
                                     name: 'MineScreen',
                                     options: {
                                         topBar: {

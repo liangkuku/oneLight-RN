@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: commonStyles.white,
         borderRadius: 10,
-        marginHorizontal: commonStyles.pageBorderGap,
         padding: commonStyles.pageBorderGap
     },
     avatar: {

@@ -107,6 +107,8 @@ export const loadSysStyle = () => {
         marketSelect: require('@/static/bottomBarIcons/marketSelect.png'),
         circle: require('@/static/bottomBarIcons/circle.png'),
         circleSelect: require('@/static/bottomBarIcons/circleSelect.png'),
+        add: require('@/static/bottomBarIcons/add.png'),
+        addSelect: require('@/static/bottomBarIcons/addSelect.png')
     });
 };
 

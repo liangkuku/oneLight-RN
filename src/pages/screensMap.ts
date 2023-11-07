@@ -6,8 +6,18 @@ import MineScreen from './mineScreen';
 import MarketScreen from './marketScreen';
 import ErrorScreen from './errorScreen';
 import CircleScreen from './circleScreen';
+import AddNewsScreen from './addNewsScreen';
+import TestScreen from './testScreen';
 
 export default [
+    {
+        path: 'TestScreen',
+        component: TestScreen
+    },
+    {
+        path: 'AddNewsScreen',
+        component: AddNewsScreen
+    },
     {
         path: 'ErrorScreen',
         component: ErrorScreen

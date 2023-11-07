@@ -15,7 +15,6 @@ function Tag({ tagValue }: TagProps) {
     const { text, dotColor } = formatTagValue(tagValue);
     return (
         <View style={styles.tagContainer}>
-            {/* <FastImage style={{ flex: 1 }} source={require('../static/tag.png')} /> */}
             <View style={[styles.dot, { backgroundColor: dotColor }]} />
             <Text style={styles.text}>{text}</Text>
         </View>

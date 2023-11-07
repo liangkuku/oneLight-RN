@@ -9,6 +9,7 @@ import LoadMore from "@/components/LoadMore";
 import newsDataMock from '@/mock/newsData';
 import HomeHeaderActivity from "./HomeHeaderActivity";
 import { FlashList } from "@shopify/flash-list";
+import { commonStyles } from "@/common/styles";
 
 const apifunc = async () => {
     return new Promise((res) => {
@@ -97,7 +98,8 @@ function TypeNewsList({ route }: TypeNewsListProps) {
 
 const styles = StyleSheet.create({
     page: {
-        flex: 1
+        flex: 1,
+        paddingHorizontal: commonStyles.pageBorderGap
     }
 });
 
