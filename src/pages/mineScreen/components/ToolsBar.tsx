@@ -33,7 +33,7 @@ function ToolsBar() {
                 Tabs.map((item, index) => (
                     <View style={styles.item} key={index}>
                         <View style={styles.label}>
-                            <Icon name={item.icon} size={25} color="black" style={styles.labelicon} />
+                            <Icon name={item.icon} size={23} color="black" style={styles.labelicon} />
                             <Text style={styles.labeltext}>{item.title}</Text>
                         </View>
                         <Icon name="chevron-forward-outline" size={20} color={commonStyles.grey_placeholder} />
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         marginRight: 10
     },
     labeltext: {
-        fontSize: 18,
+        fontSize: 17,
         fontWeight: '500'
     }
 });
