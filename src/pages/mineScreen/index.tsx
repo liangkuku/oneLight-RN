@@ -3,7 +3,7 @@ import BlurBox from '@/components/BlurBox';
 import { CONSTS_VALUE } from '@/interfaces/commonEnum';
 import Storage from '@/storage';
 import { getNavigationConsts } from '@/utils/loadAppTools';
-import { ImageBackground, Platform, ScrollView, StyleSheet } from 'react-native';
+import { Platform, ScrollView, StyleSheet } from 'react-native';
 import { Text, View } from 'react-native';
 import TopBar from './components/TopBar';
 import UserInfo from './components/UserInfo';
@@ -11,8 +11,14 @@ import { Navigation } from 'react-native-navigation';
 import BusinessInfoBar from './components/BusinessInfoBar';
 import OrdersBar from './components/OrdersBar';
 import ToolsBar from './components/ToolsBar';
+import PayInfoBar from './components/PayInfoBar';
+import LinearGradient from 'react-native-linear-gradient';
 
-function MineScreen({ componentId }) {
+type MineScreenProps = {
+    componentId: string
+}
+
+function MineScreen({ componentId }: MineScreenProps) {
     const tt = () => {
         Storage.set(CONSTS_VALUE.LOGIN_STATUS, false);
     };
@@ -25,31 +31,31 @@ function MineScreen({ componentId }) {
     };
     return (
         <View style={styles.page}>
+            <LinearGradient
+                style={styles.topbg}
+                colors={['rgba(160, 252, 192,0.2)', 'rgba(160, 252, 192,0.1)', 'rgba(160, 252, 192,0)']}
+                start={{ x: 1, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                locations={[0.1, 0.5, 1]}
+            />
             <ScrollView
                 contentInsetAdjustmentBehavior='never'
+                showsVerticalScrollIndicator={false}
                 bounces={false}
                 contentContainerStyle={{
                     paddingBottom: getNavigationConsts().bottomTabsHeight,
                     paddingTop: getNavigationConsts().statusBarHeight,
                     paddingHorizontal: commonStyles.pageBorderGap
                 }}
-                stickyHeaderIndices={[2, 6]}
             >
                 <TopBar />
                 <UserInfo />
+                <PayInfoBar />
                 <BusinessInfoBar />
                 <OrdersBar />
                 <ToolsBar />
                 <Text onPress={tt}>退出登录</Text>
                 <Text onPress={goPage}>跳转跳转跳转跳转跳转</Text>
-                <View style={styles.aa} />
-                <View style={styles.bb} />
-                <View style={styles.aa} />
-                <View style={styles.bb} />
-                <View style={styles.aa} />
-                <View style={styles.bb} />
-                <View style={styles.aa} />
-                <View style={styles.bb} />
             </ScrollView>
             <BlurBox />
         </View>
@@ -67,13 +73,16 @@ const styles = StyleSheet.create({
             }
         })
     },
-    aa: {
-        height: 150,
-        backgroundColor: 'pink'
-    },
-    bb: {
-        height: 150,
-        backgroundColor: 'green'
+    topbg: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: 250,
+        borderTopRightRadius: 50,
+        borderTopLeftRadius: 500,
+        borderBottomLeftRadius: 460,
+        borderBottomRightRadius: 600
     }
 });
 

@@ -55,7 +55,6 @@ function CategoryBar() {
             ref={ref => { categoryBarRef.current = ref; }}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            pagingEnabled={true}
             removeClippedSubviews={true}
             data={tabs}
             keyExtractor={item => item.id}

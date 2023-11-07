@@ -32,8 +32,9 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         backgroundColor: 'black',
-        borderRadius: 20,
-        paddingVertical: 15
+        borderRadius: commonStyles.pageBorderGap,
+        paddingVertical: 15,
+        marginTop: commonStyles.pageBorderGap
     },
     item: {
         flex: 1,
@@ -54,5 +55,6 @@ const styles = StyleSheet.create({
         color: commonStyles.grey_placeholder,
         fontWeight: 'bold',
     }
-})
+});
+
 export default BusinessInfoBar;
