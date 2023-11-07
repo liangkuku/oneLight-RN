@@ -3,11 +3,14 @@ import BlurBox from '@/components/BlurBox';
 import { CONSTS_VALUE } from '@/interfaces/commonEnum';
 import Storage from '@/storage';
 import { getNavigationConsts } from '@/utils/loadAppTools';
-import { Platform, ScrollView, StyleSheet } from 'react-native';
+import { ImageBackground, Platform, ScrollView, StyleSheet } from 'react-native';
 import { Text, View } from 'react-native';
 import TopBar from './components/TopBar';
 import UserInfo from './components/UserInfo';
 import { Navigation } from 'react-native-navigation';
+import BusinessInfoBar from './components/BusinessInfoBar';
+import OrdersBar from './components/OrdersBar';
+import ToolsBar from './components/ToolsBar';
 
 function MineScreen({ componentId }) {
     const tt = () => {
@@ -27,13 +30,26 @@ function MineScreen({ componentId }) {
                 bounces={false}
                 contentContainerStyle={{
                     paddingBottom: getNavigationConsts().bottomTabsHeight,
-                    paddingTop: getNavigationConsts().statusBarHeight
+                    paddingTop: getNavigationConsts().statusBarHeight,
+                    paddingHorizontal: commonStyles.pageBorderGap
                 }}
+                stickyHeaderIndices={[2, 6]}
             >
                 <TopBar />
                 <UserInfo />
+                <BusinessInfoBar />
+                <OrdersBar />
+                <ToolsBar />
                 <Text onPress={tt}>退出登录</Text>
                 <Text onPress={goPage}>跳转跳转跳转跳转跳转</Text>
+                <View style={styles.aa} />
+                <View style={styles.bb} />
+                <View style={styles.aa} />
+                <View style={styles.bb} />
+                <View style={styles.aa} />
+                <View style={styles.bb} />
+                <View style={styles.aa} />
+                <View style={styles.bb} />
             </ScrollView>
             <BlurBox />
         </View>
@@ -42,7 +58,6 @@ function MineScreen({ componentId }) {
 
 const styles = StyleSheet.create({
     page: {
-        paddingHorizontal: commonStyles.pageBorderGap,
         ...Platform.select({
             ios: {
                 height: WINDOW_HEIGHT
@@ -53,22 +68,12 @@ const styles = StyleSheet.create({
         })
     },
     aa: {
-        height: 100,
-        borderBlockColor: 'black',
-        borderWidth: StyleSheet.hairlineWidth,
+        height: 150,
         backgroundColor: 'pink'
     },
     bb: {
-        height: 100,
-        borderBlockColor: 'black',
-        borderWidth: StyleSheet.hairlineWidth,
+        height: 150,
         backgroundColor: 'green'
-    },
-    cc: {
-        height: 100,
-        borderBlockColor: 'black',
-        borderWidth: StyleSheet.hairlineWidth,
-        backgroundColor: 'blue'
     }
 });
 

@@ -18,24 +18,27 @@ function UserInfo() {
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingVertical: commonStyles.pageBorderGap
     },
     avatarStyle: {
         width: 100,
         height: 100,
-        borderRadius: 50
+        borderRadius: 50,
     },
     userInfo: {
         flexDirection: 'row',
-        height: 50,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: commonStyles.pageBorderGap
     },
     userName: {
         fontSize: 22,
         fontWeight: 'bold',
-        marginRight: 5
+        marginRight: 5,
+        color: commonStyles.black
     },
     description: {
+        marginTop: commonStyles.pageBorderGap,
         color: commonStyles.grey_placeholder
     }
 });
