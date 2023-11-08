@@ -1,18 +1,19 @@
-import { commonStyles } from '@/common/styles';
 import BlurBox from '@/components/BlurBox';
 import { CONSTS_VALUE } from '@/interfaces/commonEnum';
 import Storage from '@/storage';
 import { getNavigationConsts } from '@/utils/loadAppTools';
-import { Platform, ScrollView, StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Text, View } from 'react-native';
-import TopBar from './components/TopBar';
-import UserInfo from './components/UserInfo';
 import { Navigation } from 'react-native-navigation';
 import BusinessInfoBar from './components/BusinessInfoBar';
 import OrdersBar from './components/OrdersBar';
 import ToolsBar from './components/ToolsBar';
 import PayInfoBar from './components/PayInfoBar';
 import LinearGradient from 'react-native-linear-gradient';
+import Animated, { useAnimatedScrollHandler, useSharedValue } from "react-native-reanimated";
+import AnimatedHeader from './components/AnimatedHeader';
+import { MinePageContext } from './utils/context';
+import UserInfo from './components/UserInfo';
 
 type MineScreenProps = {
     componentId: string
@@ -29,36 +30,52 @@ function MineScreen({ componentId }: MineScreenProps) {
             }
         });
     };
+    // 动画共享滑动距离
+    const sharedScrollY = useSharedValue(0);
+    const scrollHandler = useAnimatedScrollHandler((event) => {
+        sharedScrollY.value = event.contentOffset.y;
+    });
+    const providerValue = {
+        sharedScrollY, // 动画共享滑动距离
+    };
     return (
-        <View style={styles.page}>
-            <LinearGradient
-                style={styles.topbg}
-                colors={['rgba(160, 252, 192,0.2)', 'rgba(160, 252, 192,0.1)', 'rgba(160, 252, 192,0)']}
-                start={{ x: 1, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                locations={[0.1, 0.5, 1]}
-            />
-            <ScrollView
-                contentInsetAdjustmentBehavior='never'
-                showsVerticalScrollIndicator={false}
-                bounces={false}
-                contentContainerStyle={{
-                    paddingBottom: getNavigationConsts().bottomTabsHeight,
-                    paddingTop: getNavigationConsts().statusBarHeight,
-                    paddingHorizontal: commonStyles.pageBorderGap
-                }}
-            >
-                <TopBar />
-                <UserInfo />
-                <PayInfoBar />
-                <BusinessInfoBar />
-                <OrdersBar />
-                <ToolsBar />
-                <Text onPress={tt}>退出登录</Text>
-                <Text onPress={goPage}>跳转跳转跳转跳转跳转</Text>
-            </ScrollView>
-            <BlurBox />
-        </View>
+        <MinePageContext.Provider value={providerValue}>
+            <View style={styles.page}>
+                <LinearGradient
+                    style={styles.topbg}
+                    colors={['rgba(160, 252, 192,0.2)', 'rgba(160, 252, 192,0.1)', 'rgba(160, 252, 192,0)']}
+                    start={{ x: 1, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    locations={[0.1, 0.5, 1]}
+                />
+                <Animated.ScrollView
+                    contentInsetAdjustmentBehavior='never'
+                    showsVerticalScrollIndicator={false}
+                    bounces={false}
+                    contentContainerStyle={{
+                        paddingBottom: getNavigationConsts().bottomTabsHeight
+                    }}
+                    stickyHeaderIndices={[0]}
+                    onScroll={scrollHandler}
+                >
+                    <AnimatedHeader />
+                    <UserInfo />
+                    <PayInfoBar />
+                    <BusinessInfoBar />
+                    <OrdersBar />
+                    <ToolsBar />
+                    <Text onPress={tt}>退出登录</Text>
+                    <Text onPress={goPage}>跳转跳转跳转跳转跳转</Text>
+                    <View style={styles.aa} />
+                    <View style={styles.bb} />
+                    <View style={styles.aa} />
+                    <View style={styles.bb} />
+                    <View style={styles.aa} />
+                    <View style={styles.bb} />
+                </Animated.ScrollView>
+                <BlurBox />
+            </View>
+        </MinePageContext.Provider>
     );
 }
 
@@ -83,6 +100,14 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 500,
         borderBottomLeftRadius: 460,
         borderBottomRightRadius: 600
+    },
+    aa: {
+        height: 100,
+        backgroundColor: 'red'
+    },
+    bb: {
+        height: 100,
+        backgroundColor: 'black'
     }
 });
 

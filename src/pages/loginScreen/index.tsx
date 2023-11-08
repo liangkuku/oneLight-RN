@@ -30,8 +30,8 @@ function LoginScreen() {
     return (
         <Animated.View
             style={styles.container}
-            entering={FadeIn.duration(1000)}
-            exiting={FadeOut.duration(1000)}>
+            entering={FadeIn.duration(500)}
+            exiting={FadeOut.duration(500)}>
             <FastImage
                 style={[styles.viewMargin, styles.logo]}
                 source={Assets.icons.logo} />
@@ -53,7 +53,7 @@ function LoginScreen() {
                 onChangeText={setAccount} />
             {
                 isShowPassCode ?
-                    <Animated.View entering={FadeIn.duration(500)} exiting={FadeOut.duration(500)}>
+                    <Animated.View entering={FadeIn.duration(300)} exiting={FadeOut.duration(300)}>
                         <TextField
                             value={passCode}
                             style={styles.textInput}
@@ -66,7 +66,7 @@ function LoginScreen() {
                     </Animated.View> :
                     null
             }
-            <Animated.View layout={Layout.duration(500)} style={styles.btnContainer}>
+            <Animated.View layout={Layout.duration(300)} style={styles.btnContainer}>
                 <Text style={[styles.or, styles.viewMargin]}>或</Text>
                 <View style={[styles.loginMethods, styles.viewMargin]}>
                     <FastImage
