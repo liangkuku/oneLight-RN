@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
         padding: commonStyles.pageBorderGap,
         borderRadius: commonStyles.pageBorderGap,
         backgroundColor: commonStyles.white,
-        marginTop: commonStyles.pageBorderGap
+        marginTop: commonStyles.pageBorderGap,
+        marginHorizontal: commonStyles.pageBorderGap
     },
     title: {
         fontSize: 20,

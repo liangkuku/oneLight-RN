@@ -23,6 +23,7 @@ function PayInfoBar() {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
+        paddingHorizontal: commonStyles.pageBorderGap
     },
     item: {
         flex: 1,

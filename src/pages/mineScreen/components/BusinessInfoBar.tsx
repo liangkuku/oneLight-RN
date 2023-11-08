@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         borderRadius: commonStyles.pageBorderGap,
         paddingVertical: 15,
-        marginTop: commonStyles.pageBorderGap
+        marginTop: commonStyles.pageBorderGap,
+        marginHorizontal: commonStyles.pageBorderGap
     },
     item: {
         flex: 1,

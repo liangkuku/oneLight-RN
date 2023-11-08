@@ -19,7 +19,7 @@ function UserInfo() {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        paddingVertical: commonStyles.pageBorderGap
+        padding: commonStyles.pageBorderGap
     },
     avatarStyle: {
         width: 100,

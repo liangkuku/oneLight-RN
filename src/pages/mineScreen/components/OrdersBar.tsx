@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: commonStyles.white,
         borderRadius: commonStyles.pageBorderGap,
+        marginHorizontal: commonStyles.pageBorderGap,
         ...getCommonShadowStyle({ shadowWidth: 5 })
     },
     item: {
