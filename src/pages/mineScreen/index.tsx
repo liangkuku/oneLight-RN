@@ -20,6 +20,7 @@ type MineScreenProps = {
 }
 
 function MineScreen({ componentId }: MineScreenProps) {
+    console.log('9898pagemine刷新了');
     const tt = () => {
         Storage.set(CONSTS_VALUE.LOGIN_STATUS, false);
     };

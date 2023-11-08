@@ -4,6 +4,7 @@ import FastImage from "react-native-fast-image";
 import Icon from 'react-native-vector-icons/Ionicons';
 
 function UserInfo() {
+    console.log('9898pagemine-UserInfo刷新了');
     return (
         <View style={styles.container}>
             <FastImage style={styles.avatarStyle} source={{ uri: 'https://tuchuangs.com/imgs/2023/09/18/44d99b5d075ce313.jpg' }} resizeMode='contain' />

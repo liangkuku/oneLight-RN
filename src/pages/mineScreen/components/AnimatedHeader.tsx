@@ -1,12 +1,12 @@
-import { StyleSheet, View } from "react-native"
-import TopBar from "./TopBar"
-import { BlurView } from "@react-native-community/blur"
-import { useContext } from "react"
-import { MinePageContext } from "../utils/context"
-import Animated, { Extrapolation, interpolate, useAnimatedStyle } from "react-native-reanimated"
-import { commonStyles } from "@/common/styles"
+import { StyleSheet, View } from "react-native";
+import TopBar from "./TopBar";
+import { BlurView } from "@react-native-community/blur";
+import { memo, useContext } from "react";
+import { MinePageContext } from "../utils/context";
+import Animated, { Extrapolation, interpolate, useAnimatedStyle } from "react-native-reanimated";
 
 function AnimatedHeader() {
+    console.log('9898pagemine-AnimatedHeader刷新了');
     const { sharedScrollY } = useContext(MinePageContext);
     // 映射头部组件高斯模糊透明度动画样式
     const blurAnimatedStyle = useAnimatedStyle(() => {
@@ -24,7 +24,7 @@ function AnimatedHeader() {
             </Animated.View>
             <TopBar />
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AnimatedHeader
+export default memo(AnimatedHeader);

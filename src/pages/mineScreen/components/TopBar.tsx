@@ -7,33 +7,34 @@ import { MinePageContext } from "../utils/context";
 import Animated, { Layout, useAnimatedReaction, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
 
 function TopBar() {
+    console.log('9898pagemine-topbar');
     const { sharedScrollY } = useContext(MinePageContext);
-    const sharedLyout = useSharedValue('flex-end')
+    const sharedLayout = useSharedValue('flex-end');
     // 头部布局更改动画
     useAnimatedReaction(() => {
-        return sharedScrollY.value
+        return sharedScrollY.value;
     }, (cur, pre) => {
-        console.log('9898cur', cur)
-        console.log('9898pre', pre)
+        console.log('9898cur', cur);
+        console.log('9898pre', pre);
         if (pre < 50 && cur >= 50) {
-            sharedLyout.value = 'space-between'
+            sharedLayout.value = 'space-between';
         }
         if (pre >= 50 && cur < 50) {
-            sharedLyout.value = 'flex-end'
+            sharedLayout.value = 'flex-end';
         }
-    })
+    });
     // 映射头部组件高斯模糊透明度动画样式
     const layoutAnimatedStyle = useAnimatedStyle(() => {
-        return { justifyContent: sharedLyout.value };
+        return { justifyContent: sharedLayout.value };
     });
     const aa = () => {
-        console.log('9898我是设置按钮')
-    }
+        console.log('9898我是设置按钮');
+    };
     const bb = () => {
-        console.log('9898我是信息按钮')
-    }
+        console.log('9898我是信息按钮');
+    };
     return (
-        <Animated.View layout={Layout.duration(2000)} style={[styles.container, { justifyContent: sharedLyout.value }, { paddingTop: getNavigationConsts().statusBarHeight }]}>
+        <Animated.View layout={Layout.duration(2000)} style={[styles.container, { justifyContent: sharedLayout }, { paddingTop: getNavigationConsts().statusBarHeight }]}>
             <Icon name='bell' size={23} solid={true} color={commonStyles.black} onPress={bb} />
             <Icon name='cog' size={23} color={commonStyles.black} onPress={aa} />
         </Animated.View>
