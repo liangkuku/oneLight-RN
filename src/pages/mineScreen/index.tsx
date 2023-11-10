@@ -42,6 +42,7 @@ function MineScreen({ componentId }: MineScreenProps) {
         sharedScrollY, // 动画共享滑动距离
         userInfoBarHeight, // 用户信息栏高度
     };
+    const { bottomTabsHeight } = getNavigationConsts();
     return (
         <MinePageContext.Provider value={providerValue}>
             <View style={styles.page}>
@@ -57,7 +58,7 @@ function MineScreen({ componentId }: MineScreenProps) {
                     showsVerticalScrollIndicator={false}
                     bounces={false}
                     contentContainerStyle={{
-                        paddingBottom: getNavigationConsts().bottomTabsHeight
+                        paddingBottom: bottomTabsHeight
                     }}
                     stickyHeaderIndices={[0]}
                     onScroll={scrollHandler}

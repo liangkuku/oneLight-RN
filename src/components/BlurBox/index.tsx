@@ -16,8 +16,9 @@ const styles = StyleSheet.create({
 function BlurBox() {
     const isIOS = Platform.OS === 'ios';
     if (isIOS) return null;
+    const { bottomTabsHeight } = getNavigationConsts();
     return (
-        <View style={[styles.blurContainer, { height: getNavigationConsts().bottomTabsHeight }]}>
+        <View style={[styles.blurContainer, { height: bottomTabsHeight }]}>
             <BlurView style={{ flex: 1 }} blurType='xlight' blurAmount={50} />
         </View>
     );

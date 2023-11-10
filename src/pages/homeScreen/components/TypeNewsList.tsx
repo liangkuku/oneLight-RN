@@ -66,6 +66,7 @@ function TypeNewsList({ route }: TypeNewsListProps) {
     const loadMoreData = () => {
         getNewsData('loadmore');
     };
+    const { bottomTabsHeight } = getNavigationConsts();
     return (
         <View style={styles.page}>
             <AnimatedFlashList
@@ -77,7 +78,7 @@ function TypeNewsList({ route }: TypeNewsListProps) {
                 contentInsetAdjustmentBehavior='never'
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{
-                    paddingBottom: getNavigationConsts().bottomTabsHeight
+                    paddingBottom: bottomTabsHeight
                 }}
                 estimatedItemSize={110}
                 keyExtractor={(item) => item.id}

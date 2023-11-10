@@ -59,8 +59,9 @@ function InfoBar() {
             width,
         };
     });
+    const { statusBarHeight } = getNavigationConsts();
     return (
-        <View style={{ paddingTop: getNavigationConsts().statusBarHeight, zIndex: 2 }}>
+        <View style={{ paddingTop: statusBarHeight, zIndex: 2 }}>
             <Animated.View style={styles.container} onLayout={setHotAreaWidth} >
                 <View style={styles.settings}>
                     <Icon name="location-arrow" onPress={() => { console.log('9898我是定位位置'); }} size={20} color={commonStyles.black} />

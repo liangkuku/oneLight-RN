@@ -51,9 +51,10 @@ function TopBar() {
     const bb = () => {
         console.log('9898我是信息按钮');
     };
+    const { statusBarHeight } = getNavigationConsts();
     return (
         <Animated.View
-            style={[styles.container, { paddingTop: getNavigationConsts().statusBarHeight }]}
+            style={[styles.container, { paddingTop: statusBarHeight }]}
             onLayout={getIconLayout}
         >
             <AnimatedIcon ref={animatedBellIconRef} name='bell' size={23} solid={true} color={commonStyles.black} onPress={bb} />
