@@ -4,6 +4,7 @@ interface IconProps {
     color?: string,
     solid?: boolean,
     style?: any,
+    ref?: any,
     onPress?: () => void
 }
 declare module 'react-native-vector-icons/FontAwesome5' {

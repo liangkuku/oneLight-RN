@@ -2,18 +2,30 @@ import { commonStyles } from "@/common/styles";
 import { View, Text, StyleSheet } from "react-native";
 import FastImage from "react-native-fast-image";
 import Icon from 'react-native-vector-icons/Ionicons';
+import Animated, { measure, runOnUI, useAnimatedRef } from "react-native-reanimated";
+import { memo, useContext } from "react";
+import { MinePageContext } from "../utils/context";
 
-function UserInfo() {
+function UserInfoBar() {
     console.log('9898pagemine-UserInfo刷新了');
+    const { userInfoBarHeight } = useContext(MinePageContext);
+    // 获取UserInfoBar布局信息
+    const animatedUserInfoBarRef = useAnimatedRef();
+    const getUserInfoBarLayout = () => {
+        runOnUI(() => {
+            const userInfoBarMeasurement = measure(animatedUserInfoBarRef);
+            userInfoBarHeight.value = userInfoBarMeasurement?.height || 50;
+        })();
+    };
     return (
-        <View style={styles.container}>
+        <Animated.View style={styles.container} onLayout={getUserInfoBarLayout} ref={animatedUserInfoBarRef}>
             <FastImage style={styles.avatarStyle} source={{ uri: 'https://tuchuangs.com/imgs/2023/09/18/44d99b5d075ce313.jpg' }} resizeMode='contain' />
             <View style={styles.userInfo}>
                 <Text style={styles.userName}>CYXI</Text>
                 <Icon name='female' size={20} color={'pink'} />
             </View>
             <Text style={styles.description}>@runner达人</Text>
-        </View>
+        </Animated.View>
     );
 }
 
@@ -44,4 +56,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default UserInfo;
+export default memo(UserInfoBar);

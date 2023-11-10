@@ -13,7 +13,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Animated, { useAnimatedScrollHandler, useSharedValue } from "react-native-reanimated";
 import AnimatedHeader from './components/AnimatedHeader';
 import { MinePageContext } from './utils/context';
-import UserInfo from './components/UserInfo';
+import UserInfoBar from './components/UserInfoBar';
 
 type MineScreenProps = {
     componentId: string
@@ -36,8 +36,11 @@ function MineScreen({ componentId }: MineScreenProps) {
     const scrollHandler = useAnimatedScrollHandler((event) => {
         sharedScrollY.value = event.contentOffset.y;
     });
+    // 用户信息栏高度
+    const userInfoBarHeight = useSharedValue(0);
     const providerValue = {
         sharedScrollY, // 动画共享滑动距离
+        userInfoBarHeight, // 用户信息栏高度
     };
     return (
         <MinePageContext.Provider value={providerValue}>
@@ -60,7 +63,7 @@ function MineScreen({ componentId }: MineScreenProps) {
                     onScroll={scrollHandler}
                 >
                     <AnimatedHeader />
-                    <UserInfo />
+                    <UserInfoBar />
                     <PayInfoBar />
                     <BusinessInfoBar />
                     <OrdersBar />
