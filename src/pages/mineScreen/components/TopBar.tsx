@@ -3,14 +3,14 @@ import { getNavigationConsts } from "@/utils/loadAppTools";
 import { useContext } from "react";
 import { StyleSheet, Text } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { MinePageContext } from "../utils/context";
+import { MineScreenContext } from "../utils/context";
 import Animated, { measure, runOnUI, useAnimatedReaction, useAnimatedRef, useSharedValue, withTiming } from "react-native-reanimated";
 import FastImage from "react-native-fast-image";
 
 const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 
 function TopBar() {
-    const { sharedScrollY, userInfoBarHeight } = useContext(MinePageContext);
+    const { sharedScrollY, userInfoBarHeight } = useContext(MineScreenContext);
     const endSpaceBoxWidth = useSharedValue(0);
     const sharedWidth = useSharedValue(20);
     const sharedScale = useSharedValue(0);

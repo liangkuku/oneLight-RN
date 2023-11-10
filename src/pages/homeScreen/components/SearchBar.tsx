@@ -3,10 +3,10 @@ import { useContext } from "react";
 import { Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import Animated, { Extrapolation, interpolate, useAnimatedStyle } from "react-native-reanimated";
 import Icon from 'react-native-vector-icons/AntDesign';
-import { HomePageContext } from "../utils/context";
+import { HomeScreenContext } from "../utils/context";
 
 function SearchBar() {
-    const { sharedScrollY } = useContext(HomePageContext);
+    const { sharedScrollY } = useContext(HomeScreenContext);
     // 映射搜索栏左侧占位元素宽度动画样式
     const searchBarSpaceAnimatedStyle = useAnimatedStyle(() => {
         // 占位元素宽度

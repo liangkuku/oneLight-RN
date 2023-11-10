@@ -4,10 +4,10 @@ import { useContext } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, LayoutChangeEvent } from "react-native";
 import Animated, { Extrapolation, interpolate, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import { HomePageContext } from "../utils/context";
+import { HomeScreenContext } from "../utils/context";
 
 function InfoBar() {
-    const { sharedScrollY } = useContext(HomePageContext);
+    const { sharedScrollY } = useContext(HomeScreenContext);
     // 热区宽度
     const hotAreaWidth = useSharedValue(0);
     const setHotAreaWidth = (e: LayoutChangeEvent) => {

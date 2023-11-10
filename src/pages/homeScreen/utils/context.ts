@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const HomePageContext = createContext<any>({});
+const HomeScreenContext = createContext<any>({});
 
-export { HomePageContext };
+export { HomeScreenContext };

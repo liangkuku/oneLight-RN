@@ -2,12 +2,12 @@ import { StyleSheet } from "react-native";
 import TopBar from "./TopBar";
 import { BlurView } from "@react-native-community/blur";
 import { memo, useContext } from "react";
-import { MinePageContext } from "../utils/context";
+import { MineScreenContext } from "../utils/context";
 import Animated, { Extrapolation, interpolate, measure, runOnUI, useAnimatedRef, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
 
 function AnimatedHeader() {
     console.log('9898pagemine-AnimatedHeader刷新了');
-    const { sharedScrollY } = useContext(MinePageContext);
+    const { sharedScrollY } = useContext(MineScreenContext);
     // hearder的ref
     const animatedHeaderRef = useAnimatedRef();
     const animatedHeaderHeight = useSharedValue(0);

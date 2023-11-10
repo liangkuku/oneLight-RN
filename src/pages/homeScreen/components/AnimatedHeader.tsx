@@ -5,11 +5,11 @@ import SearchBar from "./SearchBar";
 import Animated, { Extrapolation, interpolate, useAnimatedStyle } from "react-native-reanimated";
 import { StyleSheet, View } from "react-native";
 import { useContext } from "react";
-import { HomePageContext } from "../utils/context";
+import { HomeScreenContext } from "../utils/context";
 
 function AnimatedHeader() {
     console.log('9898头部刷新');
-    const { sharedScrollY, initTopbarHeight } = useContext(HomePageContext);
+    const { sharedScrollY, initTopbarHeight } = useContext(HomeScreenContext);
     // 映射头部组件高度动画样式
     const containerAnimatedStyle = useAnimatedStyle(() => {
         // height

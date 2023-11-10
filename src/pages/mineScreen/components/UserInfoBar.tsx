@@ -4,11 +4,11 @@ import FastImage from "react-native-fast-image";
 import Icon from 'react-native-vector-icons/Ionicons';
 import Animated, { measure, runOnUI, useAnimatedRef } from "react-native-reanimated";
 import { memo, useContext } from "react";
-import { MinePageContext } from "../utils/context";
+import { MineScreenContext } from "../utils/context";
 
 function UserInfoBar() {
     console.log('9898pagemine-UserInfo刷新了');
-    const { userInfoBarHeight } = useContext(MinePageContext);
+    const { userInfoBarHeight } = useContext(MineScreenContext);
     // 获取UserInfoBar布局信息
     const animatedUserInfoBarRef = useAnimatedRef();
     const getUserInfoBarLayout = () => {

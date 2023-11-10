@@ -12,7 +12,7 @@ import PayInfoBar from './components/PayInfoBar';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, { useAnimatedScrollHandler, useSharedValue } from "react-native-reanimated";
 import AnimatedHeader from './components/AnimatedHeader';
-import { MinePageContext } from './utils/context';
+import { MineScreenContext } from './utils/context';
 import UserInfoBar from './components/UserInfoBar';
 
 type MineScreenProps = {
@@ -44,7 +44,7 @@ function MineScreen({ componentId }: MineScreenProps) {
     };
     const { bottomTabsHeight } = getNavigationConsts();
     return (
-        <MinePageContext.Provider value={providerValue}>
+        <MineScreenContext.Provider value={providerValue}>
             <View style={styles.page}>
                 <LinearGradient
                     style={styles.topbg}
@@ -80,7 +80,7 @@ function MineScreen({ componentId }: MineScreenProps) {
                 </Animated.ScrollView>
                 <BlurBox />
             </View>
-        </MinePageContext.Provider>
+        </MineScreenContext.Provider>
     );
 }
 

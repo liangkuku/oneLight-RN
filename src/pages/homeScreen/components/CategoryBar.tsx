@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import CategoryItem from "./CategoryItem";
-import { HomePageContext } from "../utils/context";
+import { HomeScreenContext } from "../utils/context";
 import { FlatList } from "react-native";
 
 const tabs = [
@@ -33,7 +33,7 @@ const tabs = [
 
 function CategoryBar() {
     console.log('9898123分类bar刷新');
-    const { newsListContainerRef, categoryBarRef, sharedScrollY, allTypeListRef } = useContext(HomePageContext);
+    const { newsListContainerRef, categoryBarRef, sharedScrollY, allTypeListRef } = useContext(HomeScreenContext);
     const [activeTabIndex, setActiveTabIndex] = useState(0);
     const changeActiveTab = useCallback((index: number) => {
         if (index !== 0 && sharedScrollY.value < 90) {

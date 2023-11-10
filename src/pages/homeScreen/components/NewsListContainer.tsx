@@ -1,7 +1,7 @@
 import TypeNewsList from "./TypeNewsList";
 import { forwardRef, useContext, useImperativeHandle, useState } from "react";
 import { TabView, SceneMap } from 'react-native-tab-view';
-import { HomePageContext } from "../utils/context";
+import { HomeScreenContext } from "../utils/context";
 
 const tabs = [
     {
@@ -35,7 +35,7 @@ const renderScene = SceneMap({
 });
 
 const NewsListContainer = forwardRef((props, ref) => {
-    const { categoryBarRef } = useContext(HomePageContext);
+    const { categoryBarRef } = useContext(HomeScreenContext);
     const [activeIndex, setActiveIndex] = useState(0);
     useImperativeHandle(ref, () => ({
         setActiveIndex

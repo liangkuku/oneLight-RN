@@ -5,7 +5,7 @@ import AnimatedHeader from './components/AnimatedHeader';
 import { useSharedValue } from 'react-native-reanimated';
 import BlurBox from '@/components/BlurBox';
 import NewsListContainer from './components/NewsListContainer';
-import { HomePageContext } from './utils/context';
+import { HomeScreenContext } from './utils/context';
 import { getNavigationConsts } from '@/utils/loadAppTools';
 
 function HomeScreen() {
@@ -32,14 +32,14 @@ function HomeScreen() {
         allTypeListRef, // 首页‘全部->all’类型列表ref
     };
     return (
-        <HomePageContext.Provider value={providerValue}>
+        <HomeScreenContext.Provider value={providerValue}>
             <View style={styles.page} >
                 <NewsListContainer ref={newsListContainerRef} />
                 {/* 涉及blur组件需要放在下方 */}
                 <AnimatedHeader />
                 <BlurBox />
             </View>
-        </HomePageContext.Provider>
+        </HomeScreenContext.Provider>
     );
 }
 

@@ -3,7 +3,7 @@ import { memo, useContext } from "react";
 import { Platform, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import FastImage from "react-native-fast-image";
 import Animated, { Extrapolation, interpolate, interpolateColor, useAnimatedStyle } from "react-native-reanimated";
-import { HomePageContext } from "../utils/context";
+import { HomeScreenContext } from "../utils/context";
 
 type CategoryItemInfo = {
     title: string,
@@ -19,7 +19,7 @@ type CategoryItemProps = {
 }
 
 function CategoryItem({ categoryInfo, changeActiveTab, selfIndex, activeTabIndex }: CategoryItemProps) {
-    const { sharedScrollY } = useContext(HomePageContext);
+    const { sharedScrollY } = useContext(HomeScreenContext);
     // 分类栏item的容器动画（边距、阴影）
     const categoryContainerAnimatedStyle = useAnimatedStyle(() => {
         // 背景颜色

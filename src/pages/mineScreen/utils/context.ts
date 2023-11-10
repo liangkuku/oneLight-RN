@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const MinePageContext = createContext<any>({});
+const MineScreenContext = createContext<any>({});
 
-export { MinePageContext };
+export { MineScreenContext };

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { View, RefreshControl, StyleSheet } from "react-native";
-import { HomePageContext } from "../utils/context";
+import { HomeScreenContext } from "../utils/context";
 import Animated, { useAnimatedScrollHandler } from "react-native-reanimated";
 import { getNavigationConsts } from "@/utils/loadAppTools";
 import EmptyComponent from "@/components/EmptyComponent";
@@ -36,7 +36,7 @@ const renderItem = ({ item }: { item: NewsItem }) => <News news={item} />;
 
 function TypeNewsList({ route }: TypeNewsListProps) {
     const isAll = route.key === 'all';
-    const { sharedScrollY, initTopbarHeight, allTypeListRef } = useContext(HomePageContext);
+    const { sharedScrollY, initTopbarHeight, allTypeListRef } = useContext(HomeScreenContext);
     const scrollHandler = useAnimatedScrollHandler((event) => {
         if (isAll) {
             sharedScrollY.value = event.contentOffset.y;

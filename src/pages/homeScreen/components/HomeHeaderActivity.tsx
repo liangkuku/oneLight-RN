@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { HomePageContext } from "../utils/context";
+import { HomeScreenContext } from "../utils/context";
 import { View } from "react-native";
 
 type HomeHeaderActivityProps = {
@@ -7,7 +7,7 @@ type HomeHeaderActivityProps = {
 }
 
 function HomeHeaderActivity({ isAll }: HomeHeaderActivityProps) {
-    const { initTopbarHeight } = useContext(HomePageContext);
+    const { initTopbarHeight } = useContext(HomeScreenContext);
     return (
         <View style={{ height: isAll ? initTopbarHeight : initTopbarHeight - 90 }} />
     );
