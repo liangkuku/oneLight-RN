@@ -9,7 +9,7 @@ type CommonShadowParams = {
 }
 
 const commonStyles = {
-    pageBgColor: '#F6F6F6',
+    pageBgColor: '#F6F8F9',
     white: '#FFFFFF',
     black: '#000000',
     black_333: '#333333',

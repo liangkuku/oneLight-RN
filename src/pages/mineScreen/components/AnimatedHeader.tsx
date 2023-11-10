@@ -3,29 +3,32 @@ import TopBar from "./TopBar";
 import { BlurView } from "@react-native-community/blur";
 import { memo, useContext } from "react";
 import { MinePageContext } from "../utils/context";
-import Animated, { useAnimatedReaction, useAnimatedRef, useSharedValue } from "react-native-reanimated";
-import { commonStyles } from "@/common/styles";
+import Animated, { Extrapolation, interpolate, measure, runOnUI, useAnimatedRef, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
 
 function AnimatedHeader() {
     console.log('9898pagemine-AnimatedHeader刷新了');
     const { sharedScrollY } = useContext(MinePageContext);
-    const sharedOpacity = useSharedValue(0);
     // hearder的ref
     const animatedHeaderRef = useAnimatedRef();
-    // 头部布局更改动画
-    useAnimatedReaction(() => {
-        return sharedScrollY.value;
-    }, (cur, pre) => {
-        if (pre < commonStyles.pageBorderGap && cur >= commonStyles.pageBorderGap) {
-            sharedOpacity.value = 1;
-        }
-        if (pre >= commonStyles.pageBorderGap && cur < commonStyles.pageBorderGap) {
-            sharedOpacity.value = 0;
-        }
+    const animatedHeaderHeight = useSharedValue(0);
+    const getHeaderLayout = () => {
+        runOnUI(() => {
+            const headerMeasurement = measure(animatedHeaderRef);
+            animatedHeaderHeight.value = headerMeasurement?.height || 50;
+        })();
+    };
+    // 映射头部组件高斯模糊透明度动画样式
+    const blurAnimatedStyle = useAnimatedStyle(() => {
+        // topbar背景透明度动画
+        const opacity = interpolate(sharedScrollY.value, [0, animatedHeaderHeight.value], [0, 1], {
+            extrapolateLeft: Extrapolation.CLAMP,
+            extrapolateRight: Extrapolation.CLAMP,
+        });
+        return { opacity };
     });
     return (
-        <Animated.View ref={animatedHeaderRef}>
-            <Animated.View style={[styles.blurContainer, { opacity: sharedOpacity }]}>
+        <Animated.View ref={animatedHeaderRef} onLayout={getHeaderLayout}>
+            <Animated.View style={[styles.blurContainer, blurAnimatedStyle]}>
                 <BlurView style={{ flex: 1 }} blurType='xlight' blurAmount={50} />
             </Animated.View>
             <TopBar />
