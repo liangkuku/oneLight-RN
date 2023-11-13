@@ -1,26 +1,22 @@
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { AddNewsScreenContext } from "../utils/context";
 import Swiper from "react-native-swiper";
 
 function NewsTypeName() {
-    const { Tabs } = useContext(AddNewsScreenContext);
-    const testRef = useRef<any>();
-    const tt = () => {
-        testRef?.current?.scrollBy?.(1);
-    };
+    const { Tabs, newsTypeNameRef } = useContext(AddNewsScreenContext);
     return (
         <View style={styles.container}>
             <View style={styles.label}>
-                <Text style={styles.desc} onPress={tt}>想要发布的是：</Text>
+                <Text style={styles.desc}>想要发布的是：</Text>
             </View>
             <Swiper
-                ref={testRef}
+                ref={ref => { newsTypeNameRef.current = ref; }}
                 style={styles.swiper}
                 height={100}
                 horizontal={false}
-                autoplay={false}
                 showsPagination={false}
+                scrollEnabled={false}
             >
                 {
                     Tabs.map((tab) => (
