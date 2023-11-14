@@ -1,7 +1,7 @@
 import { commonStyles } from "@/common/styles";
 import BlurBox from "@/components/BlurBox";
 import { getNavigationConsts } from "@/utils/loadAppTools";
-import { StyleSheet, Text, View, Platform } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import NewsTypeController from "./components/NewsTypeController";
 
@@ -25,7 +25,6 @@ function AddNewsScreen() {
                 end={{ x: 0.8, y: 0.8 }}
                 locations={[0.3, 0.6, 1]}
             />
-            <Text style={styles.title}>选择发布信息类型</Text>
             <NewsTypeController />
             <BlurBox />
         </View>
@@ -49,13 +48,6 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0
-    },
-    title: {
-        color: commonStyles.black,
-        fontSize: 30,
-        fontWeight: '900',
-        paddingTop: 20,
-        paddingBottom: 10
     },
 });
 
