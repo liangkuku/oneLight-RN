@@ -1,7 +1,6 @@
 import { formatTagValue } from "@/common/commonTools";
 import { commonStyles, getCommonShadowStyle } from "@/common/styles";
 import { Platform, StyleSheet, Text, View } from "react-native";
-import FastImage from "react-native-fast-image";
 
 type TagsProps = {
     tags: number[]
@@ -63,7 +62,8 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#6e6e6e',
-        fontStyle: 'italic'
+        fontStyle: 'italic',
+        fontFamily: 'System'
     }
 });
 

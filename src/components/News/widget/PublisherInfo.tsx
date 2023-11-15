@@ -9,7 +9,7 @@ type NewsProps = {
 function PublisherInfo({ news }: NewsProps) {
     return (
         <View style={styles.container}>
-            <FastImage source={{ uri: news.avatar }} style={styles.avatar} resizeMode="contain" />
+            <FastImage source={{ uri: news.avatar }} style={styles.avatar} resizeMode="cover" />
             <Text style={styles.publisherName}>{news.publisherName}</Text>
         </View>
     );
@@ -27,9 +27,10 @@ const styles = StyleSheet.create({
     },
     publisherName: {
         fontSize: 16,
-        fontWeight: 'bold',
+        fontWeight: '500',
         marginLeft: 10,
-        color: commonStyles.black_333
+        color: commonStyles.black,
+        fontFamily: 'System'
     },
 });
 

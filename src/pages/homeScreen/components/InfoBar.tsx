@@ -5,6 +5,9 @@ import { View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Lay
 import Animated, { Extrapolation, interpolate, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { HomeScreenContext } from "../utils/context";
+import FastImage, { FastImageProps } from "react-native-fast-image";
+
+const AnimatedFastImage = Animated.createAnimatedComponent<FastImageProps>(FastImage as any);
 
 function InfoBar() {
     const { sharedScrollY } = useContext(HomeScreenContext);
@@ -71,7 +74,7 @@ function InfoBar() {
                 </Animated.View>
                 <View style={[styles.settings, styles.avatarSetting]}>
                     <TouchableOpacity onPress={() => { console.log('9898我是个人信息'); }}>
-                        <Animated.Image style={avatarAnimatedStyle} source={{ uri: 'https://tuchuangs.com/imgs/2023/09/18/44d99b5d075ce313.jpg' }} resizeMethod='resize' />
+                        <AnimatedFastImage style={avatarAnimatedStyle} source={{ uri: 'https://tuchuangs.com/imgs/2023/09/18/44d99b5d075ce313.jpg' }} resizeMode='cover' />
                     </TouchableOpacity>
                 </View>
                 {/* 搜索框热区 */}

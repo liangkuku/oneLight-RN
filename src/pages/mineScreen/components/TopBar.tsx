@@ -1,35 +1,23 @@
 import { commonStyles } from "@/common/styles";
 import { getNavigationConsts } from "@/utils/loadAppTools";
 import { useContext } from "react";
-import { StyleSheet, Text } from "react-native";
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import { StyleSheet, Text, TouchableWithoutFeedback } from "react-native";
 import { MineScreenContext } from "../utils/context";
-import Animated, { measure, runOnUI, useAnimatedReaction, useAnimatedRef, useSharedValue, withTiming } from "react-native-reanimated";
+import Animated, { useAnimatedReaction, useSharedValue, withTiming } from "react-native-reanimated";
 import FastImage from "react-native-fast-image";
-
-const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 
 function TopBar() {
     const { sharedScrollY, userInfoBarHeight } = useContext(MineScreenContext);
-    const endSpaceBoxWidth = useSharedValue(0);
     const sharedWidth = useSharedValue(20);
     const sharedScale = useSharedValue(0);
-    // 图标ref
-    const animatedBellIconRef = useAnimatedRef();
-    const animatedCogIconRef = useAnimatedRef();
-    const getIconLayout = () => {
-        runOnUI(() => {
-            const bellMeasurement = measure(animatedBellIconRef);
-            const cogMeasurement = measure(animatedCogIconRef);
-            endSpaceBoxWidth.value = WINDOW_WIDTH - 2 * commonStyles.pageBorderGap - (bellMeasurement?.width || 23) - (cogMeasurement?.width || 23);
-        })();
-    };
+    const iconWidth = 20;
+    const endSpaceBoxWidth = WINDOW_WIDTH - 2 * (commonStyles.pageBorderGap + iconWidth);
     // 头部布局更改动画
     useAnimatedReaction(() => {
         return sharedScrollY.value;
     }, (cur, pre) => {
         if (pre < userInfoBarHeight.value && cur >= userInfoBarHeight.value) {
-            sharedWidth.value = withTiming(endSpaceBoxWidth.value, {
+            sharedWidth.value = withTiming(endSpaceBoxWidth, {
                 duration: 300
             });
             sharedScale.value = withTiming(1, {
@@ -53,16 +41,17 @@ function TopBar() {
     };
     const { statusBarHeight } = getNavigationConsts();
     return (
-        <Animated.View
-            style={[styles.container, { paddingTop: statusBarHeight }]}
-            onLayout={getIconLayout}
-        >
-            <AnimatedIcon ref={animatedBellIconRef} name='bell' size={23} solid={true} color={commonStyles.black} onPress={bb} />
+        <Animated.View style={[styles.container, { paddingTop: statusBarHeight }]}>
+            <TouchableWithoutFeedback onPress={bb}>
+                <FastImage style={[{ width: iconWidth }, styles.icon]} source={require('@/common/static/message.png')} resizeMode='cover' />
+            </TouchableWithoutFeedback>
             <Animated.View style={[styles.spaceBox, { width: sharedWidth, transform: [{ scale: sharedScale }] }]} >
-                <FastImage style={styles.avatarStyle} source={{ uri: 'https://tuchuangs.com/imgs/2023/09/18/44d99b5d075ce313.jpg' }} resizeMode='contain' />
+                <FastImage style={styles.avatarStyle} source={{ uri: 'https://tuchuangs.com/imgs/2023/09/18/44d99b5d075ce313.jpg' }} resizeMode='cover' />
                 <Text style={styles.userName} numberOfLines={1} ellipsizeMode='middle'>CYXI</Text>
             </Animated.View>
-            <AnimatedIcon ref={animatedCogIconRef} name='cog' size={23} color={commonStyles.black} onPress={aa} />
+            <TouchableWithoutFeedback onPress={aa}>
+                <FastImage style={[{ width: iconWidth }, styles.icon]} source={require('@/common/static/setting.png')} resizeMode='cover' />
+            </TouchableWithoutFeedback>
         </Animated.View>
     );
 }
@@ -73,6 +62,9 @@ const styles = StyleSheet.create({
         padding: commonStyles.pageBorderGap,
         justifyContent: 'flex-end',
         alignItems: 'center'
+    },
+    icon: {
+        aspectRatio: 1
     },
     spaceBox: {
         flexDirection: 'row',
@@ -87,7 +79,7 @@ const styles = StyleSheet.create({
     },
     userName: {
         fontSize: 18,
-        fontWeight: 'bold',
+        fontWeight: '500',
         maxWidth: 100,
         color: commonStyles.black
     }

@@ -2,7 +2,7 @@ import { commonStyles } from "@/common/styles";
 import { BlurView } from "@react-native-community/blur";
 import { StyleSheet, Text, View } from "react-native";
 import FastImage from "react-native-fast-image";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import Icon from "react-native-vector-icons/Ionicons";
 
 type MediasProps = {
     medias: string[]
@@ -14,7 +14,7 @@ function SingleMedia({ medias }: MediasProps) {
     return (
         <View style={styles.singleContainer}>
             <BlurView style={styles.blur} blurType='xlight' blurAmount={50} />
-            <FastImage source={{ uri: media }} style={[styles.img, styles.singleImg]} resizeMode="contain" />
+            <FastImage source={{ uri: media }} style={[styles.img, styles.singleImg]} resizeMode='cover' />
         </View>
     );
 }
@@ -25,7 +25,7 @@ function DoubleMedia({ medias }: MediasProps) {
         medias.map((item, index) => (
             <View style={styles.doubleContainer} key={index}>
                 <BlurView style={styles.blur} blurType='xlight' blurAmount={50} />
-                <FastImage source={{ uri: item }} style={[styles.img, styles.doubleImg]} resizeMode="contain" />
+                <FastImage source={{ uri: item }} style={[styles.img, styles.doubleImg]} resizeMode='cover' />
             </View>
         ))
     );
@@ -37,11 +37,11 @@ function ThreeMedia({ medias }: MediasProps) {
         medias.map((item, index) => (
             index < 3 &&
             <View style={styles.threeContainer} key={index}>
-                <FastImage source={{ uri: item }} style={[styles.img, styles.threeleImg]} resizeMode="contain" />
+                <FastImage source={{ uri: item }} style={[styles.img, styles.threeleImg]} resizeMode='cover' />
                 {
                     index === 2 &&
                     <View style={styles.imgCount}>
-                        <Icon name="image" size={15} color={commonStyles.white} />
+                        <Icon name="images-outline" size={15} color={commonStyles.white} />
                         <Text style={styles.imgCountText}>{medias.length}</Text>
                     </View>
                 }

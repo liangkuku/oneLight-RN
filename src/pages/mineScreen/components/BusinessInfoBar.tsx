@@ -13,16 +13,16 @@ function BusinessInfoBar() {
             locations={[0.2, 0.7, 1]}
         >
             <View style={styles.item}>
-                <Text style={styles.num}>13K</Text>
-                <Text style={styles.desc}>积分</Text>
+                <Text style={styles.num}>8</Text>
+                <Text style={styles.desc}>优惠券</Text>
             </View>
             <View style={[styles.item, styles.itemBorder]}>
-                <Text style={styles.num}>23</Text>
-                <Text style={styles.desc}>关注</Text>
+                <Text style={styles.num}>258</Text>
+                <Text style={styles.desc}>积分</Text>
             </View>
             <View style={styles.item}>
-                <Text style={styles.num}>268</Text>
-                <Text style={styles.desc}>获赞</Text>
+                <Text style={styles.num}>56</Text>
+                <Text style={styles.desc}>余额</Text>
             </View>
         </LinearGradient>
     );
@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         backgroundColor: 'black',
-        borderRadius: commonStyles.pageBorderGap,
-        paddingVertical: 15,
+        borderRadius: 20,
+        paddingVertical: 20,
         marginTop: commonStyles.pageBorderGap,
         marginHorizontal: commonStyles.pageBorderGap
     },
@@ -44,17 +44,18 @@ const styles = StyleSheet.create({
     itemBorder: {
         borderLeftWidth: 2,
         borderRightWidth: 2,
-        borderColor: '#646464'
+        borderColor: '#2D2D2D'
     },
     num: {
         color: commonStyles.white,
-        fontSize: 21,
-        fontWeight: 'bold',
+        fontSize: 20,
+        fontWeight: '500',
         marginBottom: 5
     },
     desc: {
-        color: commonStyles.grey_placeholder,
-        fontWeight: 'bold',
+        fontSize: 12,
+        color: '#D4D4D4',
+        fontWeight: '400',
     }
 });
 

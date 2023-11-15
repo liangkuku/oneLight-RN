@@ -8,7 +8,6 @@ import { Navigation } from 'react-native-navigation';
 import BusinessInfoBar from './components/BusinessInfoBar';
 import OrdersBar from './components/OrdersBar';
 import ToolsBar from './components/ToolsBar';
-import PayInfoBar from './components/PayInfoBar';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, { useAnimatedScrollHandler, useSharedValue } from "react-native-reanimated";
 import AnimatedHeader from './components/AnimatedHeader';
@@ -65,7 +64,6 @@ function MineScreen({ componentId }: MineScreenProps) {
                 >
                     <AnimatedHeader />
                     <UserInfoBar />
-                    <PayInfoBar />
                     <BusinessInfoBar />
                     <OrdersBar />
                     <ToolsBar />

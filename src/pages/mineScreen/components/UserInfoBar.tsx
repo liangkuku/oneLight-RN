@@ -19,12 +19,25 @@ function UserInfoBar() {
     };
     return (
         <Animated.View style={styles.container} onLayout={getUserInfoBarLayout} ref={animatedUserInfoBarRef}>
-            <FastImage style={styles.avatarStyle} source={{ uri: 'https://tuchuangs.com/imgs/2023/09/18/44d99b5d075ce313.jpg' }} resizeMode='contain' />
-            <View style={styles.userInfo}>
-                <Text style={styles.userName}>CYXI</Text>
-                <Icon name='female' size={20} color={'pink'} />
+            <Text style={styles.userName}>CYXI</Text>
+            <View style={styles.userDesc}>
+                <View style={styles.descItem}>
+                    <Text style={styles.label}>关注</Text>
+                    <Text style={styles.descInfo}>123</Text>
+                </View>
+                <View style={[styles.descItem, styles.border]}>
+                    <Text style={styles.label}>点赞</Text>
+                    <Text style={styles.descInfo}>456</Text>
+                </View>
+                <View style={styles.descItem}>
+                    <Text style={styles.label}>徽章</Text>
+                    <Text style={styles.descInfo}>789</Text>
+                </View>
             </View>
-            <Text style={styles.description}>@runner达人</Text>
+            <View style={styles.avatarContainer}>
+                <FastImage style={styles.avatar} source={{ uri: 'https://tuchuangs.com/imgs/2023/09/18/44d99b5d075ce313.jpg' }} resizeMode='cover' />
+                <Icon name='female' size={20} color='#FF5370' solid={true} style={styles.editIcon} />
+            </View>
         </Animated.View>
     );
 }
@@ -34,25 +47,51 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: commonStyles.pageBorderGap
     },
-    avatarStyle: {
-        width: 100,
-        height: 100,
-        borderRadius: 50,
-    },
     userInfo: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: commonStyles.pageBorderGap
     },
     userName: {
         fontSize: 22,
-        fontWeight: 'bold',
+        fontWeight: '500',
         marginRight: 5,
         color: commonStyles.black
     },
-    description: {
-        marginTop: commonStyles.pageBorderGap,
-        color: commonStyles.grey_placeholder
+    userDesc: {
+        flexDirection: 'row',
+        marginTop: 8
+    },
+    descItem: {
+        flexDirection: 'row',
+        paddingHorizontal: 8
+    },
+    border: {
+        borderLeftWidth: StyleSheet.hairlineWidth,
+        borderRightWidth: StyleSheet.hairlineWidth,
+        borderColor: commonStyles.black
+    },
+    label: {
+        fontSize: 12,
+        color: commonStyles.grey_text,
+        marginRight: 2
+    },
+    descInfo: {
+        fontSize: 12,
+        color: commonStyles.black
+    },
+    avatarContainer: {
+        marginTop: 20,
+        position: 'relative'
+    },
+    avatar: {
+        width: 116,
+        height: 116,
+        borderRadius: 58,
+    },
+    editIcon: {
+        position: 'absolute',
+        top: 10,
+        right: 0
     }
 });
 

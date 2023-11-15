@@ -13,7 +13,7 @@ const commonStyles = {
     white: '#FFFFFF',
     black: '#000000',
     black_333: '#333333',
-    grey_text: '#B2B2B2',
+    grey_text: '#8B8B8B',
     grey: '#cecece',
     grey_placeholder: '#a8a8a8',
     topBarFontSize: 18,
