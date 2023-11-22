@@ -6,13 +6,12 @@ import { commonStyles } from "@/common/styles";
 
 function CodeSender() {
     const [status, setStatus] = useState(true);
-    const [second, setSecond] = useState(30);
-    const secondRef = useRef(30);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [second, setSecond] = useState(5);
+    const secondRef = useRef(5);
     const timerRef = useRef<any>(null);
     const reGetCode = () => {
         if (!status) {
-            Toast.show({ text: '操作过于频繁' });
+            Toast.show('操作过于频繁');
         }
     };
     const sendCode = () => {
@@ -24,7 +23,7 @@ function CodeSender() {
     const interval = (fn: () => void, time: number) => {
         if (secondRef.current === 0) {
             setStatus(true);
-            setSecond(30);
+            setSecond(5);
             clearTimeout(timerRef.current);
             return;
         }
