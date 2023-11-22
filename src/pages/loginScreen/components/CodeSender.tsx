@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { getFontSize, getViewSize } from '@/utils/sizeTool';
 import { StyleSheet, ActivityIndicator, TouchableWithoutFeedback, Text, View } from "react-native";
 import { commonStyles } from "@/common/styles";
+import axios from "axios";
 
 function CodeSender() {
     const [status, setStatus] = useState(true);
@@ -14,11 +15,14 @@ function CodeSender() {
             Toast.show('操作过于频繁');
         }
     };
-    const sendCode = () => {
+    const sendCode = async () => {
         setStatus(false);
         interval(() => {
             setSecond(second => second - 1);
         }, 1000);
+        console.log('9898执行了');
+        const res = await axios.get('https://www.onelight.com:3000/login/msgCode').then(res => res.data).catch(e => e);
+        console.log('9898res', res);
     };
     const interval = (fn: () => void, time: number) => {
         if (secondRef.current === 0) {
