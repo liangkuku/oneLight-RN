@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { getFontSize, getViewSize } from '@/utils/sizeTool';
-import { StyleSheet, ActivityIndicator, TouchableWithoutFeedback, Text, View } from "react-native";
+import { StyleSheet, ActivityIndicator, TouchableWithoutFeedback, Text, View, Platform } from "react-native";
 import { commonStyles } from "@/common/styles";
 import axios from "axios";
+
+const host = Platform.OS === 'android' ? '10.0.2.2' : 'localhost';
 
 function CodeSender() {
     const [status, setStatus] = useState(true);
@@ -21,7 +23,7 @@ function CodeSender() {
             setSecond(second => second - 1);
         }, 1000);
         console.log('9898执行了');
-        const res = await axios.get('https://www.onelight.com:3000/login/msgCode').then(res => res.data).catch(e => e);
+        const res = await axios.get(`http://${host}:3000/login/msgCode`).then(res => res.data).catch(e => e);
         console.log('9898res', res);
     };
     const interval = (fn: () => void, time: number) => {
