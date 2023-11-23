@@ -80,7 +80,6 @@ function LoginScreen() {
                     <Text style={styles.loginText}>登录</Text>
                 </TouchableOpacity>
             </Animated.View>
-
         </Animated.View>
     );
 }
