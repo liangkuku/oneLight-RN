@@ -1,4 +1,3 @@
-import { commonStyles } from "@/common/styles";
 import { View, Text, StyleSheet } from "react-native";
 import FastImage from "react-native-fast-image";
 
@@ -28,9 +27,7 @@ const styles = StyleSheet.create({
     publisherName: {
         fontSize: 16,
         fontWeight: '500',
-        marginLeft: 10,
-        color: commonStyles.black,
-        fontFamily: 'System'
+        marginLeft: 10
     },
 });
 

@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { AddNewsScreenContext } from "../utils/context";
 import Swiper from "react-native-swiper";
-import { commonStyles } from "@/common/styles";
 
 function NewsTypeName() {
     const { Tabs, newsTypeNameRef } = useContext(AddNewsScreenContext);
@@ -32,7 +31,6 @@ const styles = StyleSheet.create({
         marginTop: 30
     },
     typeName: {
-        color: commonStyles.black,
         fontSize: 30,
         lineHeight: 40,
         fontWeight: '900'

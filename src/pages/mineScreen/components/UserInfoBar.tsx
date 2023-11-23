@@ -54,8 +54,7 @@ const styles = StyleSheet.create({
     userName: {
         fontSize: 22,
         fontWeight: '500',
-        marginRight: 5,
-        color: commonStyles.black
+        marginRight: 5
     },
     userDesc: {
         flexDirection: 'row',
@@ -76,8 +75,7 @@ const styles = StyleSheet.create({
         marginRight: 2
     },
     descInfo: {
-        fontSize: 12,
-        color: commonStyles.black
+        fontSize: 12
     },
     avatarContainer: {
         marginTop: 20,

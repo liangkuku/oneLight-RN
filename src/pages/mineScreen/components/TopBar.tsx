@@ -80,8 +80,7 @@ const styles = StyleSheet.create({
     userName: {
         fontSize: 18,
         fontWeight: '500',
-        maxWidth: 100,
-        color: commonStyles.black
+        maxWidth: 100
     }
 });
 

@@ -125,7 +125,6 @@ const styles = StyleSheet.create({
     },
     tabTitle: {
         fontWeight: 'bold',
-        fontFamily: 'System',
         lineHeight: 18
     },
 });

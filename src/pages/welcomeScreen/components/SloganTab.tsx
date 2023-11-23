@@ -61,8 +61,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 18,
-        fontWeight: '600',
-        fontFamily: 'System'
+        fontWeight: '600'
     },
     content: {
         fontSize: 15,
@@ -84,8 +83,7 @@ const styles = StyleSheet.create({
     loginText: {
         color: commonStyles.white,
         fontSize: 16,
-        fontWeight: 'bold',
-        fontFamily: 'System'
+        fontWeight: 'bold'
     },
 });
 

@@ -62,8 +62,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#6e6e6e',
-        fontStyle: 'italic',
-        fontFamily: 'System'
+        fontStyle: 'italic'
     }
 });
 

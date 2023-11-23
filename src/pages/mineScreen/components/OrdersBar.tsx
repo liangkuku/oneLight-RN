@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     titleLabel: {
-        color: commonStyles.black,
         fontSize: 15,
         fontWeight: '500',
     },
