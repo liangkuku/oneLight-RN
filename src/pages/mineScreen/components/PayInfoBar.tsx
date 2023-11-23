@@ -1,20 +1,21 @@
 import { commonStyles } from "@/common/styles";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
+import OlText from "@/components/OneLightText";
 
 function PayInfoBar() {
     return (
         <View style={styles.container}>
             <View style={styles.item}>
-                <Text style={styles.num}>119</Text>
-                <Text style={styles.desc}>积分</Text>
+                <OlText style={styles.num}>119</OlText>
+                <OlText style={styles.desc}>积分</OlText>
             </View>
             <View style={styles.item}>
-                <Text style={styles.num}>10</Text>
-                <Text style={styles.desc}>优惠券</Text>
+                <OlText style={styles.num}>10</OlText>
+                <OlText style={styles.desc}>优惠券</OlText>
             </View>
             <View style={styles.item}>
-                <Text style={styles.num}>298</Text>
-                <Text style={styles.desc}>余额</Text>
+                <OlText style={styles.num}>298</OlText>
+                <OlText style={styles.desc}>余额</OlText>
             </View>
         </View>
     );

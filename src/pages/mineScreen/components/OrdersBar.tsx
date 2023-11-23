@@ -1,7 +1,8 @@
 import { commonStyles, getCommonShadowStyle } from "@/common/styles";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import FastImage from "react-native-fast-image";
 import Icon from "react-native-vector-icons/Ionicons";
+import OlText from "@/components/OneLightText";
 
 const Tabs = [
     {
@@ -26,9 +27,9 @@ function OrdersBar() {
     return (
         <View style={styles.container}>
             <View style={styles.titleBar}>
-                <Text style={styles.titleLabel}>我的订单</Text>
+                <OlText style={styles.titleLabel}>我的订单</OlText>
                 <View style={styles.titleBar}>
-                    <Text style={styles.titleInfo}>全部订单</Text>
+                    <OlText style={styles.titleInfo}>全部订单</OlText>
                     <Icon name="chevron-forward-outline" size={12} color={commonStyles.grey_text} />
                 </View>
             </View>
@@ -37,7 +38,7 @@ function OrdersBar() {
                     Tabs.map((item, index) => (
                         <View style={styles.item} key={index}>
                             <FastImage source={item.icon} resizeMode="cover" style={styles.img} />
-                            <Text style={styles.toolDesc}>{item.desc}</Text>
+                            <OlText style={styles.toolDesc}>{item.desc}</OlText>
                         </View>
                     ))
                 }

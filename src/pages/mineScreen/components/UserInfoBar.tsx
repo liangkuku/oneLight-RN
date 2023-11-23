@@ -1,10 +1,11 @@
 import { commonStyles } from "@/common/styles";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import FastImage from "react-native-fast-image";
 import Icon from 'react-native-vector-icons/Ionicons';
 import Animated, { measure, runOnUI, useAnimatedRef } from "react-native-reanimated";
 import { memo, useContext } from "react";
 import { MineScreenContext } from "../utils/context";
+import OlText from "@/components/OneLightText";
 
 function UserInfoBar() {
     console.log('9898pagemine-UserInfo刷新了');
@@ -19,19 +20,19 @@ function UserInfoBar() {
     };
     return (
         <Animated.View style={styles.container} onLayout={getUserInfoBarLayout} ref={animatedUserInfoBarRef}>
-            <Text style={styles.userName}>CYXI</Text>
+            <OlText style={styles.userName}>CYXI</OlText>
             <View style={styles.userDesc}>
                 <View style={styles.descItem}>
-                    <Text style={styles.label}>关注</Text>
-                    <Text style={styles.descInfo}>123</Text>
+                    <OlText style={styles.label}>关注</OlText>
+                    <OlText style={styles.descInfo}>123</OlText>
                 </View>
                 <View style={[styles.descItem, styles.border]}>
-                    <Text style={styles.label}>点赞</Text>
-                    <Text style={styles.descInfo}>456</Text>
+                    <OlText style={styles.label}>点赞</OlText>
+                    <OlText style={styles.descInfo}>456</OlText>
                 </View>
                 <View style={styles.descItem}>
-                    <Text style={styles.label}>徽章</Text>
-                    <Text style={styles.descInfo}>789</Text>
+                    <OlText style={styles.label}>徽章</OlText>
+                    <OlText style={styles.descInfo}>789</OlText>
                 </View>
             </View>
             <View style={styles.avatarContainer}>

@@ -1,10 +1,11 @@
 import { commonStyles } from "@/common/styles";
 import { getNavigationConsts } from "@/utils/loadAppTools";
 import { useContext } from "react";
-import { StyleSheet, Text, TouchableWithoutFeedback } from "react-native";
+import { StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { MineScreenContext } from "../utils/context";
 import Animated, { useAnimatedReaction, useSharedValue, withTiming } from "react-native-reanimated";
 import FastImage from "react-native-fast-image";
+import OlText from "@/components/OneLightText";
 
 function TopBar() {
     const { sharedScrollY, userInfoBarHeight } = useContext(MineScreenContext);
@@ -47,7 +48,7 @@ function TopBar() {
             </TouchableWithoutFeedback>
             <Animated.View style={[styles.spaceBox, { width: sharedWidth, transform: [{ scale: sharedScale }] }]} >
                 <FastImage style={styles.avatarStyle} source={{ uri: 'https://tuchuangs.com/imgs/2023/09/18/44d99b5d075ce313.jpg' }} resizeMode='cover' />
-                <Text style={styles.userName} numberOfLines={1} ellipsizeMode='middle'>CYXI</Text>
+                <OlText style={styles.userName} numberOfLines={1} ellipsizeMode='middle'>CYXI</OlText>
             </Animated.View>
             <TouchableWithoutFeedback onPress={aa}>
                 <FastImage style={[{ width: iconWidth }, styles.icon]} source={require('@/common/static/setting.png')} resizeMode='cover' />

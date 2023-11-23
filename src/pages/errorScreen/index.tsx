@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import OlText from "@/components/OneLightText";
 
 function ErrorScreen() {
     useEffect(() => {
@@ -7,7 +8,7 @@ function ErrorScreen() {
     }, []);
     return (
         <View style={styles.container}>
-            <Text>出错啦！</Text>
+            <OlText>出错啦！</OlText>
         </View>
     );
 }

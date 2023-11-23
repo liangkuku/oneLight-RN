@@ -1,7 +1,8 @@
 import { commonStyles, getCommonShadowStyle } from '@/common/styles';
 import { memo } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Navigation } from "react-native-navigation";
+import OlText from "@/components/OneLightText";
 
 function SloganTab() {
     const joinUs = () => {
@@ -29,20 +30,20 @@ function SloganTab() {
     return (
         <View style={styles.container}>
             <View>
-                <Text style={[styles.fontStyle, styles.title]}>Welcome Use OneLight</Text>
-                <Text style={[styles.fontStyle, styles.title]}>这是一个专属年轻人的App</Text>
+                <OlText style={[styles.fontStyle, styles.title]}>Welcome Use OneLight</OlText>
+                <OlText style={[styles.fontStyle, styles.title]}>这是一个专属年轻人的App</OlText>
             </View>
             <View>
-                <Text style={[styles.fontStyle, styles.content]}>在这里，你可以</Text>
-                <Text style={[styles.fontStyle, styles.content]}>分享美食，社交，数码，时尚</Text>
-                <Text style={[styles.fontStyle, styles.content]}>
+                <OlText style={[styles.fontStyle, styles.content]}>在这里，你可以</OlText>
+                <OlText style={[styles.fontStyle, styles.content]}>分享美食，社交，数码，时尚</OlText>
+                <OlText style={[styles.fontStyle, styles.content]}>
                     或者
-                    <Text style={[styles.fontStyle, styles.content, styles.joinUs]} onPress={joinUs}>加入我们</Text>
+                    <OlText style={[styles.fontStyle, styles.content, styles.joinUs]} onPress={joinUs}>加入我们</OlText>
                     的团队
-                </Text>
+                </OlText>
             </View>
             <TouchableOpacity style={styles.loginBtn} onPress={loginHandler}>
-                <Text style={styles.loginText}>注册/登录</Text>
+                <OlText style={styles.loginText}>注册/登录</OlText>
             </TouchableOpacity>
         </View>
     );

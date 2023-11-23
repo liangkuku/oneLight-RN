@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { getFontSize, getViewSize } from '@/utils/sizeTool';
-import { StyleSheet, ActivityIndicator, TouchableWithoutFeedback, Text, View, Platform } from "react-native";
+import { StyleSheet, ActivityIndicator, TouchableWithoutFeedback, View, Platform } from "react-native";
 import { commonStyles } from "@/common/styles";
 import axios from "axios";
+import OlText from "@/components/OneLightText";
 
 const host = Platform.OS === 'android' ? '10.0.2.2' : 'localhost';
 
@@ -46,13 +47,13 @@ function CodeSender() {
         status ?
             <TouchableWithoutFeedback onPress={sendCode}>
                 <View style={styles.container}>
-                    <Text style={styles.strText}>获取验证码</Text>
+                    <OlText style={styles.strText}>获取验证码</OlText>
                     <Icon name="paper-plane" size={getViewSize(18)} />
                 </View>
             </TouchableWithoutFeedback> :
             <TouchableWithoutFeedback onPress={reGetCode}>
                 <View style={styles.container}>
-                    <Text style={[styles.strText, styles.disabledColor]}>重新获取({second}秒)</Text>
+                    <OlText style={[styles.strText, styles.disabledColor]}>重新获取({second}秒)</OlText>
                     <ActivityIndicator />
                 </View>
             </TouchableWithoutFeedback>

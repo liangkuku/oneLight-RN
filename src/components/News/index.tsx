@@ -1,10 +1,11 @@
 import { commonStyles } from "@/common/styles";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Comment from "./widget/Comment";
 import Like from "./widget/Like";
 import PublisherInfo from "./widget/PublisherInfo";
 import Medias from "./widget/Medias";
 import Tags from "./widget/Tags";
+import OlText from "@/components/OneLightText";
 
 type NewsProps = {
     news: NewsItem
@@ -17,11 +18,11 @@ function News({ news }: NewsProps) {
             <PublisherInfo news={news} />
             <View style={styles.mainArea}>
                 {!!news.imgs && news.imgs.length > 0 && <Medias medias={news.imgs} />}
-                <Text style={styles.description} numberOfLines={2}>{news.description}</Text>
+                <OlText style={styles.description} numberOfLines={2}>{news.description}</OlText>
                 {news.tags && news.tags.length > 0 && <Tags tags={news.tags} />}
             </View>
             <View style={styles.controllerBar}>
-                <Text style={styles.publishTime}>{news.publishTime}</Text>
+                <OlText style={styles.publishTime}>{news.publishTime}</OlText>
                 <View style={styles.commentLike}>
                     <Comment />
                     <Like />

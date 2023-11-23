@@ -1,8 +1,9 @@
 import { forwardRef, useContext, useState, useImperativeHandle, memo } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { AddNewsScreenContext } from "../utils/context";
 import Doter from "./Doter";
 import Animated from "react-native-reanimated";
+import OlText from "@/components/OneLightText";
 
 const PageCounter = forwardRef((props, ref) => {
     const { Tabs } = useContext(AddNewsScreenContext);
@@ -13,7 +14,7 @@ const PageCounter = forwardRef((props, ref) => {
     return (
         <View style={styles.container}>
             <Animated.View style={styles.typeEnText}>
-                <Text style={styles.typeEn}>{Tabs[activeIndex]?.type}</Text>
+                <OlText style={styles.typeEn}>{Tabs[activeIndex]?.type}</OlText>
             </Animated.View>
             <View style={styles.doterContainer}>
                 {

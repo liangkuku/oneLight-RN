@@ -1,14 +1,15 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
+import OlText from "@/components/OneLightText";
 
 function TestScreen() {
     return (
         <View>
-            <Text>我是路由测试页</Text>
-            <Text>我是路由测试页</Text>
-            <Text>我是路由测试页</Text>
-            <Text>我是路由测试页</Text>
-            <Text>我是路由测试页</Text>
-            <Text>我是路由测试页</Text>
+            <OlText>我是路由测试页</OlText>
+            <OlText>我是路由测试页</OlText>
+            <OlText>我是路由测试页</OlText>
+            <OlText>我是路由测试页</OlText>
+            <OlText>我是路由测试页</OlText>
+            <OlText>我是路由测试页</OlText>
         </View>
     );
 }

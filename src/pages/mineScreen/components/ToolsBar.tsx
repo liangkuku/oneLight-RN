@@ -1,6 +1,7 @@
 import { commonStyles } from "@/common/styles";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import OlText from "@/components/OneLightText";
 
 const Tabs = [
     {
@@ -28,13 +29,13 @@ const Tabs = [
 function ToolsBar() {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>常用工具</Text>
+            <OlText style={styles.title}>常用工具</OlText>
             {
                 Tabs.map((item, index) => (
                     <View style={styles.item} key={index}>
                         <View style={styles.label}>
                             <Icon name={item.icon} size={23} color="black" style={styles.labelicon} />
-                            <Text style={styles.labeltext}>{item.title}</Text>
+                            <OlText style={styles.labeltext}>{item.title}</OlText>
                         </View>
                         <Icon name="chevron-forward-outline" size={20} color={commonStyles.grey_placeholder} />
                     </View>

@@ -1,9 +1,10 @@
 import { commonStyles, getCommonShadowStyle } from "@/common/styles";
 import { useContext } from "react";
-import { Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import { StyleSheet, TouchableWithoutFeedback } from "react-native";
 import Animated, { Extrapolation, interpolate, useAnimatedStyle } from "react-native-reanimated";
 import Icon from 'react-native-vector-icons/AntDesign';
 import { HomeScreenContext } from "../utils/context";
+import OlText from "@/components/OneLightText";
 
 function SearchBar() {
     const { sharedScrollY } = useContext(HomeScreenContext);
@@ -46,7 +47,7 @@ function SearchBar() {
                 <Animated.View style={searchBarSpaceAnimatedStyle} />
                 <Animated.View style={[styles.searchContainer, heightAnimatedStyle]}>
                     <Icon name="search1" size={25} color={commonStyles.black_333} />
-                    <Text style={styles.searchPlaceholder} >搜索更多~</Text>
+                    <OlText style={styles.searchPlaceholder} >搜索更多~</OlText>
                 </Animated.View>
             </Animated.View>
         </TouchableWithoutFeedback>

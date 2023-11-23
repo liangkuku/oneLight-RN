@@ -1,11 +1,12 @@
 import { commonStyles } from "@/common/styles";
 import { getNavigationConsts } from "@/utils/loadAppTools";
 import { useContext } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, LayoutChangeEvent } from "react-native";
+import { View, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, LayoutChangeEvent } from "react-native";
 import Animated, { Extrapolation, interpolate, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { HomeScreenContext } from "../utils/context";
 import FastImage, { FastImageProps } from "react-native-fast-image";
+import OlText from "@/components/OneLightText";
 
 const AnimatedFastImage = Animated.createAnimatedComponent<FastImageProps>(FastImage as any);
 
@@ -70,7 +71,7 @@ function InfoBar() {
                     <Icon name="location-arrow" onPress={() => { console.log('9898我是定位位置'); }} size={20} color={commonStyles.black} />
                 </View>
                 <Animated.View style={[styles.communityNameContainer, communityNameAnimatedStyle]}>
-                    <Text style={styles.communityName} ellipsizeMode='middle' numberOfLines={1}>清华大学光华学院</Text>
+                    <OlText style={styles.communityName} ellipsizeMode='middle' numberOfLines={1}>清华大学光华学院</OlText>
                 </Animated.View>
                 <View style={[styles.settings, styles.avatarSetting]}>
                     <TouchableOpacity onPress={() => { console.log('9898我是个人信息'); }}>

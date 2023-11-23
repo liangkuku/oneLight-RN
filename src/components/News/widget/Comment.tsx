@@ -1,12 +1,13 @@
 import { commonStyles } from "@/common/styles";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import OlText from "@/components/OneLightText";
 
 function Comment() {
     return (
         <View style={styles.container}>
             <Icon name="comment-processing-outline" size={22} color={commonStyles.black} />
-            <Text style={styles.text}>99+</Text>
+            <OlText style={styles.text}>99+</OlText>
         </View>
     );
 }

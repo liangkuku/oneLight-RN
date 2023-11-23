@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import FastImage from "react-native-fast-image";
+import OlText from "@/components/OneLightText";
 
 type NewsProps = {
     news: NewsItem
@@ -9,7 +10,7 @@ function PublisherInfo({ news }: NewsProps) {
     return (
         <View style={styles.container}>
             <FastImage source={{ uri: news.avatar }} style={styles.avatar} resizeMode="cover" />
-            <Text style={styles.publisherName}>{news.publisherName}</Text>
+            <OlText style={styles.publisherName}>{news.publisherName}</OlText>
         </View>
     );
 }

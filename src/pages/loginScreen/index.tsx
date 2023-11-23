@@ -1,6 +1,6 @@
 import { Assets, TextField } from "react-native-ui-lib";
 import { getFontSize, getViewSize } from '@/utils/sizeTool';
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { useState } from "react";
 import Animated, { FadeIn, FadeOut, Layout } from "react-native-reanimated";
 import CodeSender from "./components/CodeSender";
@@ -9,6 +9,7 @@ import { setAppRouter } from "@/utils/setRouterTools";
 import { CONSTS_VALUE } from "@/interfaces/commonEnum";
 import FastImage from "react-native-fast-image";
 import { commonStyles, getCommonShadowStyle } from "@/common/styles";
+import OlText from "@/components/OneLightText";
 
 function LoginScreen() {
     const [isShowPassCode, setIShowPassCode] = useState(false);
@@ -35,10 +36,10 @@ function LoginScreen() {
             <FastImage
                 style={[styles.viewMargin, styles.logo]}
                 source={Assets.icons.logo} />
-            <Text style={[styles.title, styles.viewMargin]}>
+            <OlText style={[styles.title, styles.viewMargin]}>
                 嗨
-                <Text style={styles.appName}>,  oneLight</Text>
-            </Text>
+                <OlText style={styles.appName}>,  oneLight</OlText>
+            </OlText>
             <TextField
                 value={account}
                 style={styles.textInput}
@@ -67,7 +68,7 @@ function LoginScreen() {
                     null
             }
             <Animated.View layout={Layout.duration(300)} style={styles.btnContainer}>
-                <Text style={[styles.or, styles.viewMargin]}>或</Text>
+                <OlText style={[styles.or, styles.viewMargin]}>或</OlText>
                 <View style={[styles.loginMethods, styles.viewMargin]}>
                     <FastImage
                         style={styles.loginMethod}
@@ -77,7 +78,7 @@ function LoginScreen() {
                         source={Assets.icons.alipay} />
                 </View>
                 <TouchableOpacity onPress={loginHandle} style={styles.loginBtn}>
-                    <Text style={styles.loginText}>登录</Text>
+                    <OlText style={styles.loginText}>登录</OlText>
                 </TouchableOpacity>
             </Animated.View>
         </Animated.View>

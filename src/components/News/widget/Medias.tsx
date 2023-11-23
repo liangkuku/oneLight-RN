@@ -1,8 +1,9 @@
 import { commonStyles } from "@/common/styles";
 import { BlurView } from "@react-native-community/blur";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import Icon from "react-native-vector-icons/Ionicons";
+import OlText from "@/components/OneLightText";
 
 type MediasProps = {
     medias: string[]
@@ -42,7 +43,7 @@ function ThreeMedia({ medias }: MediasProps) {
                     index === 2 &&
                     <View style={styles.imgCount}>
                         <Icon name="images-outline" size={15} color={commonStyles.white} />
-                        <Text style={styles.imgCountText}>{medias.length}</Text>
+                        <OlText style={styles.imgCountText}>{medias.length}</OlText>
                     </View>
                 }
             </View>

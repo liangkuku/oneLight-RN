@@ -1,7 +1,7 @@
 import { commonStyles } from "@/common/styles";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
-
+import OlText from "@/components/OneLightText";
 
 function BusinessInfoBar() {
     return (
@@ -13,16 +13,16 @@ function BusinessInfoBar() {
             locations={[0.2, 0.7, 1]}
         >
             <View style={styles.item}>
-                <Text style={styles.num}>8</Text>
-                <Text style={styles.desc}>优惠券</Text>
+                <OlText style={styles.num}>8</OlText>
+                <OlText style={styles.desc}>优惠券</OlText>
             </View>
             <View style={[styles.item, styles.itemBorder]}>
-                <Text style={styles.num}>258</Text>
-                <Text style={styles.desc}>积分</Text>
+                <OlText style={styles.num}>258</OlText>
+                <OlText style={styles.desc}>积分</OlText>
             </View>
             <View style={styles.item}>
-                <Text style={styles.num}>56</Text>
-                <Text style={styles.desc}>余额</Text>
+                <OlText style={styles.num}>56</OlText>
+                <OlText style={styles.desc}>余额</OlText>
             </View>
         </LinearGradient>
     );

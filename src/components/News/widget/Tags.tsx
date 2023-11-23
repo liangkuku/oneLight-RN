@@ -1,6 +1,7 @@
 import { formatTagValue } from "@/common/commonTools";
 import { commonStyles, getCommonShadowStyle } from "@/common/styles";
-import { Platform, StyleSheet, Text, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
+import OlText from "@/components/OneLightText";
 
 type TagsProps = {
     tags: number[]
@@ -15,7 +16,7 @@ function Tag({ tagValue }: TagProps) {
     return (
         <View style={styles.tagContainer}>
             <View style={[styles.dot, { backgroundColor: dotColor }]} />
-            <Text style={styles.text}>{text}</Text>
+            <OlText style={styles.text}>{text}</OlText>
         </View>
     );
 }

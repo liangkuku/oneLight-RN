@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import OlText from "@/components/OneLightText";
 
 function CircleScreen() {
     useEffect(() => {
@@ -7,7 +8,7 @@ function CircleScreen() {
     }, []);
     return (
         <View style={styles.container}>
-            <Text>圈子</Text>
+            <OlText>圈子</OlText>
         </View>
     );
 }

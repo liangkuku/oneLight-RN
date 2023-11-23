@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { AddNewsScreenContext } from "../utils/context";
 import Swiper from "react-native-swiper";
+import OlText from "@/components/OneLightText";
 
 function NewsTypeName() {
     const { Tabs, newsTypeNameRef } = useContext(AddNewsScreenContext);
@@ -16,7 +17,7 @@ function NewsTypeName() {
                 {
                     Tabs.map((tab) => (
                         <View key={tab.type}>
-                            <Text style={styles.typeName}>{tab.title}</Text>
+                            <OlText style={styles.typeName}>{tab.title}</OlText>
                         </View>
                     ))
                 }

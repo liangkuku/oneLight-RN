@@ -3,7 +3,7 @@ import { CONSTS_VALUE } from '@/interfaces/commonEnum';
 import Storage from '@/storage';
 import { getNavigationConsts } from '@/utils/loadAppTools';
 import { Platform, StyleSheet } from 'react-native';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import BusinessInfoBar from './components/BusinessInfoBar';
 import OrdersBar from './components/OrdersBar';
@@ -13,6 +13,7 @@ import Animated, { useAnimatedScrollHandler, useSharedValue } from "react-native
 import AnimatedHeader from './components/AnimatedHeader';
 import { MineScreenContext } from './utils/context';
 import UserInfoBar from './components/UserInfoBar';
+import OlText from "@/components/OneLightText";
 
 type MineScreenProps = {
     componentId: string
@@ -67,8 +68,8 @@ function MineScreen({ componentId }: MineScreenProps) {
                     <BusinessInfoBar />
                     <OrdersBar />
                     <ToolsBar />
-                    <Text onPress={tt}>退出登录</Text>
-                    <Text onPress={goPage}>跳转跳转跳转跳转跳转</Text>
+                    <OlText onPress={tt}>退出登录</OlText>
+                    <OlText onPress={goPage}>跳转跳转跳转跳转跳转</OlText>
                     <View style={styles.aa} />
                     <View style={styles.bb} />
                     <View style={styles.aa} />
