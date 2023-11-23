@@ -23,7 +23,6 @@ function CodeSender() {
         interval(() => {
             setSecond(second => second - 1);
         }, 1000);
-        console.log('9898执行了');
         const res = await axios.get(`http://${host}:3000/login/msgCode`).then(res => res.data).catch(e => e);
         console.log('9898res', res);
     };
