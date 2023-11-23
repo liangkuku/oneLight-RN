@@ -32,7 +32,6 @@ const tabs = [
 ];
 
 function CategoryBar() {
-    console.log('9898123分类bar刷新');
     const { newsListContainerRef, categoryBarRef, sharedScrollY, allTypeListRef } = useContext(HomeScreenContext);
     const [activeTabIndex, setActiveTabIndex] = useState(0);
     const changeActiveTab = useCallback((index: number) => {

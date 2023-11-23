@@ -9,7 +9,6 @@ import { HomeScreenContext } from './utils/context';
 import { getNavigationConsts } from '@/utils/loadAppTools';
 
 function HomeScreen() {
-    console.log('9898pagehome刷新了');
     const initTopbarHeight = getNavigationConsts().statusBarHeight + 170;
     // 动画共享滑动距离
     const sharedScrollY = useSharedValue(0);

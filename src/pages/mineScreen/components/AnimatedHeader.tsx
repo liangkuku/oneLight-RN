@@ -6,7 +6,6 @@ import { MineScreenContext } from "../utils/context";
 import Animated, { Extrapolation, interpolate, measure, runOnUI, useAnimatedRef, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
 
 function AnimatedHeader() {
-    console.log('9898pagemine-AnimatedHeader刷新了');
     const { sharedScrollY } = useContext(MineScreenContext);
     // hearder的ref
     const animatedHeaderRef = useAnimatedRef();

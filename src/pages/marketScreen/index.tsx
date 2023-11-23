@@ -1,11 +1,7 @@
-import { useEffect } from 'react';
 import { View } from 'react-native';
 import OlText from "@/components/OneLightText";
 
 function MarketScreen() {
-    useEffect(() => {
-        console.log('9898有用--集市组件刷新了');
-    }, []);
     return (
         <View style={{ backgroundColor: 'pink', flex: 1 }}>
             <OlText>我是聊天室</OlText>

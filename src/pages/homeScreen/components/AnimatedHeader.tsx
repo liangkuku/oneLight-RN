@@ -8,7 +8,6 @@ import { useContext } from "react";
 import { HomeScreenContext } from "../utils/context";
 
 function AnimatedHeader() {
-    console.log('9898头部刷新');
     const { sharedScrollY, initTopbarHeight } = useContext(HomeScreenContext);
     // 映射头部组件高度动画样式
     const containerAnimatedStyle = useAnimatedStyle(() => {

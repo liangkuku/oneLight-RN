@@ -12,7 +12,6 @@ type NewsProps = {
 }
 
 function News({ news }: NewsProps) {
-    console.log('9898item刷新', news.publisherName, news.id);
     return (
         <View style={styles.container}>
             <PublisherInfo news={news} />

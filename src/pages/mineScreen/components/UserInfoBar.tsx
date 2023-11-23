@@ -8,7 +8,6 @@ import { MineScreenContext } from "../utils/context";
 import OlText from "@/components/OneLightText";
 
 function UserInfoBar() {
-    console.log('9898pagemine-UserInfo刷新了');
     const { userInfoBarHeight } = useContext(MineScreenContext);
     // 获取UserInfoBar布局信息
     const animatedUserInfoBarRef = useAnimatedRef();
