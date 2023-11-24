@@ -1,12 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { getFontSize, getViewSize } from '@/utils/sizeTool';
-import { StyleSheet, ActivityIndicator, TouchableWithoutFeedback, View, Platform } from "react-native";
+import { StyleSheet, ActivityIndicator, TouchableWithoutFeedback, View } from "react-native";
 import { commonStyles } from "@/common/styles";
-import axios from "axios";
 import OlText from "@/components/OneLightText";
-
-const host = Platform.OS === 'android' ? '10.0.2.2' : 'localhost';
+import { apiGetMsgCode } from "@/services/login";
 
 function CodeSender() {
     const [status, setStatus] = useState(true);
@@ -23,7 +21,7 @@ function CodeSender() {
         interval(() => {
             setSecond(second => second - 1);
         }, 1000);
-        const res = await axios.get(`http://${host}:3000/login/msgCode`).then(res => res.data).catch(e => e);
+        const res = await apiGetMsgCode();
         console.log('9898res', res);
     };
     const interval = (fn: () => void, time: number) => {

@@ -1,18 +1,16 @@
-import {Assets, TextField} from 'react-native-ui-lib';
-import {getFontSize, getViewSize} from '@/utils/sizeTool';
-import {Platform, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {useState} from 'react';
-import Animated, {FadeIn, FadeOut, Layout} from 'react-native-reanimated';
+import { Assets, TextField } from 'react-native-ui-lib';
+import { getFontSize, getViewSize } from '@/utils/sizeTool';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { useState } from 'react';
+import Animated, { FadeIn, FadeOut, Layout } from 'react-native-reanimated';
 import CodeSender from './components/CodeSender';
 import Storage from '@/storage';
-import {setAppRouter} from '@/utils/setRouterTools';
-import {CONSTS_VALUE} from '@/interfaces/commonEnum';
+import { setAppRouter } from '@/utils/setRouterTools';
+import { CONSTS_VALUE } from '@/interfaces/commonEnum';
 import FastImage from 'react-native-fast-image';
-import {commonStyles, getCommonShadowStyle} from '@/common/styles';
+import { commonStyles, getCommonShadowStyle } from '@/common/styles';
 import OlText from '@/components/OneLightText';
-import axios from 'axios';
-
-const host = Platform.OS === 'android' ? '10.0.2.2' : 'localhost';
+import { apiLogin } from '@/services/login';
 
 function LoginScreen() {
   const [isShowPassCode, setIShowPassCode] = useState(false);
@@ -21,11 +19,8 @@ function LoginScreen() {
   const loginHandle = async () => {
     // Storage.set(CONSTS_VALUE.LOGIN_STATUS, true);
     // setAppRouter();
-    const res = await axios
-      .post(`http://${host}:3000/user`, {mobile})
-      .then(res => res.data)
-      .catch(e => e);
-    console.log('9898r注册', res);
+    const res = await apiLogin({ mobile });
+    console.log('9898lgoin', res);
   };
   const validateMobileNum = (val: string) => {
     const reg = /^1[3,4,5,6,7,8,9][0-9]{9}$/;

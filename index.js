@@ -1,18 +1,18 @@
-import { loadSysStyle, navigationEventListen, setDefaultNavigationStyle, initStorageData } from '@/utils/loadAppTools';
+import {
+  loadSysStyle,
+  navigationEventListen,
+  setDefaultNavigationStyle,
+  initStorageData,
+  setGlobalTools
+} from '@/utils/loadAppTools';
 import {screensRegister} from '@/utils/screensRegister';
 import { setAppRouter } from '@/utils/setRouterTools';
-import RootToast from "react-native-root-toast";
 import { Navigation } from 'react-native-navigation';
 
 const appLoader = async () => {
-  Toast = {
-    show: (msg, options = { position: RootToast.positions.CENTER }) => RootToast.show(msg, options),
-    positions: {
-      TOP: 20,
-      CENTER: 0,
-      BOTTOM: -20,
-    }
-  }
+  //设置全局工具方法、变量
+  setGlobalTools()
+  
   //初始化storage数据
   initStorageData()
 

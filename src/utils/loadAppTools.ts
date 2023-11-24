@@ -4,18 +4,34 @@ import Storage from '@/storage';
 import {Dimensions} from 'react-native';
 import {CONSTS_VALUE} from '@/interfaces/commonEnum';
 import {commonStyles} from '@/common/styles';
+import RootToast from "react-native-root-toast";
+
+//设置全局工具方法、变量
+export const setGlobalTools = () => {
+  // 全局视口屏幕尺寸变量
+  const windowWidth = Dimensions.get('window').width;
+  const windowHeight = Dimensions.get('window').height;
+  WINDOW_WIDTH = windowWidth;
+  WINDOW_HEIGHT = windowHeight;
+  
+  // 全局Toast方法
+  Toast = {
+    show: (msg, options = { position: RootToast.positions.CENTER }) => RootToast.show(msg, options),
+    positions: {
+      TOP: 20,
+      CENTER: 0,
+      BOTTOM: -20,
+    }
+  };
+  
+};
 
 //初始化storage数据
 export const initStorageData = () => {
   const loginStatus = Storage.getBoolean(CONSTS_VALUE.LOGIN_STATUS);
-  // 视口屏幕尺寸
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
   if (!loginStatus) {
     Storage.set(CONSTS_VALUE.LOGIN_STATUS, false);
   }
-  WINDOW_WIDTH = windowWidth;
-  WINDOW_HEIGHT = windowHeight;
 };
 
 //设置导航默认样式
