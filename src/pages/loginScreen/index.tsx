@@ -1,25 +1,29 @@
-import { Assets, TextField } from 'react-native-ui-lib';
-import { getFontSize, getViewSize } from '@/utils/sizeTool';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { useState } from 'react';
-import Animated, { FadeIn, FadeOut, Layout } from 'react-native-reanimated';
+import {Assets, TextField} from 'react-native-ui-lib';
+import {getFontSize, getViewSize} from '@/utils/sizeTool';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {useState} from 'react';
+import Animated, {FadeIn, FadeOut, Layout} from 'react-native-reanimated';
 import CodeSender from './components/CodeSender';
 import Storage from '@/storage';
-import { setAppRouter } from '@/utils/setRouterTools';
-import { CONSTS_VALUE } from '@/interfaces/commonEnum';
+import {setAppRouter} from '@/utils/setRouterTools';
+import {CONSTS_VALUE} from '@/interfaces/commonEnum';
 import FastImage from 'react-native-fast-image';
-import { commonStyles, getCommonShadowStyle } from '@/common/styles';
+import {commonStyles, getCommonShadowStyle} from '@/common/styles';
 import OlText from '@/components/OneLightText';
-import { apiLogin } from '@/services/login';
+import {apiLogin} from '@/services/login';
 
 function LoginScreen() {
   const [isShowPassCode, setIShowPassCode] = useState(false);
   const [mobile, setMobile] = useState('');
-  const [passCode, setPassCode] = useState('');
+  const [msgCode, setPassCode] = useState('');
   const loginHandle = async () => {
     // Storage.set(CONSTS_VALUE.LOGIN_STATUS, true);
     // setAppRouter();
-    const res = await apiLogin({ mobile });
+    if (!isShowPassCode || !msgCode) {
+      Toast.show(`请输入${!isShowPassCode ? '手机号码' : '验证码'}`);
+      return;
+    }
+    const res = await apiLogin({mobile, msgCode});
     console.log('9898lgoin', res);
   };
   const validateMobileNum = (val: string) => {
@@ -60,14 +64,14 @@ function LoginScreen() {
           entering={FadeIn.duration(300)}
           exiting={FadeOut.duration(300)}>
           <TextField
-            value={passCode}
+            value={msgCode}
             style={styles.textInput}
             containerStyle={[styles.textContainer, styles.viewMargin]}
             floatingPlaceholderStyle={styles.placeholder}
             placeholder={'密码'}
             floatingPlaceholder
             onChangeText={setPassCode}
-            trailingAccessory={<CodeSender />}
+            trailingAccessory={<CodeSender mobile={mobile} />}
           />
         </Animated.View>
       ) : null}

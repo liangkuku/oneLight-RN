@@ -64,3 +64,11 @@ declare var Toast: ToastTool;
 
 declare var WINDOW_WIDTH: number;
 declare var WINDOW_HEIGHT: number;
+
+interface ResponseType {
+  success: boolean;
+  code: number;
+  data: any;
+  message: string;
+  path?: string;
+}

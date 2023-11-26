@@ -1,11 +1,22 @@
-import https from "@/utils/https";
+import https from '@/utils/https';
+import CryptoAes from 'crypto-js/aes';
 
+const secretKey = 'oneLight';
 /**
  * 获取验证码
-*/
-export const apiGetMsgCode = () => https.get('/login/msgCode');
+ */
+export const apiGetMsgCode = (mobile: string): Promise<ResponseType> => {
+  const secret = CryptoAes.encrypt(mobile, secretKey).toString();
+  return https.get('/login/msgCode', {params: {mobile, secret}});
+};
 
 /**
  * 登录or注册
-*/
-export const apiLogin = (params: { mobile: string }) => https.post('login/signIn', params);
+ */
+export const apiLogin = (params: {
+  mobile: string;
+  msgCode: string;
+}): Promise<ResponseType> => {
+  const secret = CryptoAes.encrypt(params.mobile, secretKey).toString();
+  return https.post('login/signIn', {params: {...params, secret}});
+};
