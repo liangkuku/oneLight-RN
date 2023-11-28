@@ -29,7 +29,7 @@ const login = async (mobile: string, msgCode: string) => {
 const logout = () => {
   console.log('9898退出登录');
   Storage.set(STORAGE_KEYS.LOGIN_STATUS, false);
-  Storage.set(STORAGE_KEYS.IS_LOADEDAPP, false);
+  // Storage.set(STORAGE_KEYS.IS_LOADEDAPP, false);
   https.defaults.headers.common = {};
 };
 

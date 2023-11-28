@@ -1,14 +1,11 @@
 import {StyleSheet, View} from 'react-native';
 import OlText from '@/components/OneLightText';
-import {RootSiblingParent} from 'react-native-root-siblings';
 
 function CircleScreen() {
   return (
-    <RootSiblingParent>
-      <View style={styles.container}>
-        <OlText>圈子</OlText>
-      </View>
-    </RootSiblingParent>
+    <View style={styles.container}>
+      <OlText>圈子</OlText>
+    </View>
   );
 }
 

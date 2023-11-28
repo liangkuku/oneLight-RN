@@ -16,7 +16,6 @@ import {MineScreenContext} from './utils/context';
 import UserInfoBar from './components/UserInfoBar';
 import OlText from '@/components/OneLightText';
 import {logout} from '@/utils/login';
-import {RootSiblingParent} from 'react-native-root-siblings';
 
 type MineScreenProps = {
   componentId: string;
@@ -43,47 +42,45 @@ function MineScreen({componentId}: MineScreenProps) {
   };
   const {bottomTabsHeight} = getNavigationConsts();
   return (
-    <RootSiblingParent>
-      <MineScreenContext.Provider value={providerValue}>
-        <View style={styles.page}>
-          <LinearGradient
-            style={styles.topbg}
-            colors={[
-              'rgba(160, 252, 192,0.2)',
-              'rgba(160, 252, 192,0.1)',
-              'rgba(160, 252, 192,0)',
-            ]}
-            start={{x: 1, y: 0}}
-            end={{x: 1, y: 1}}
-            locations={[0.1, 0.5, 1]}
-          />
-          <Animated.ScrollView
-            contentInsetAdjustmentBehavior='never'
-            showsVerticalScrollIndicator={false}
-            bounces={false}
-            contentContainerStyle={{
-              paddingBottom: bottomTabsHeight,
-            }}
-            stickyHeaderIndices={[0]}
-            onScroll={scrollHandler}>
-            <AnimatedHeader />
-            <UserInfoBar />
-            <BusinessInfoBar />
-            <OrdersBar />
-            <ToolsBar />
-            <OlText onPress={logout}>退出登录</OlText>
-            <OlText onPress={goPage}>跳转跳转跳转跳转跳转</OlText>
-            <View style={styles.aa} />
-            <View style={styles.bb} />
-            <View style={styles.aa} />
-            <View style={styles.bb} />
-            <View style={styles.aa} />
-            <View style={styles.bb} />
-          </Animated.ScrollView>
-          <BlurBox />
-        </View>
-      </MineScreenContext.Provider>
-    </RootSiblingParent>
+    <MineScreenContext.Provider value={providerValue}>
+      <View style={styles.page}>
+        <LinearGradient
+          style={styles.topbg}
+          colors={[
+            'rgba(160, 252, 192,0.2)',
+            'rgba(160, 252, 192,0.1)',
+            'rgba(160, 252, 192,0)',
+          ]}
+          start={{x: 1, y: 0}}
+          end={{x: 1, y: 1}}
+          locations={[0.1, 0.5, 1]}
+        />
+        <Animated.ScrollView
+          contentInsetAdjustmentBehavior='never'
+          showsVerticalScrollIndicator={false}
+          bounces={false}
+          contentContainerStyle={{
+            paddingBottom: bottomTabsHeight,
+          }}
+          stickyHeaderIndices={[0]}
+          onScroll={scrollHandler}>
+          <AnimatedHeader />
+          <UserInfoBar />
+          <BusinessInfoBar />
+          <OrdersBar />
+          <ToolsBar />
+          <OlText onPress={logout}>退出登录</OlText>
+          <OlText onPress={goPage}>跳转跳转跳转跳转跳转</OlText>
+          <View style={styles.aa} />
+          <View style={styles.bb} />
+          <View style={styles.aa} />
+          <View style={styles.bb} />
+          <View style={styles.aa} />
+          <View style={styles.bb} />
+        </Animated.ScrollView>
+        <BlurBox />
+      </View>
+    </MineScreenContext.Provider>
   );
 }
 

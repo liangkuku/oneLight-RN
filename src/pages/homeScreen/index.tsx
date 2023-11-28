@@ -7,7 +7,6 @@ import BlurBox from '@/components/BlurBox';
 import NewsListContainer from './components/NewsListContainer';
 import {HomeScreenContext} from './utils/context';
 import {getNavigationConsts} from '@/utils/loadAppTools';
-import {RootSiblingParent} from 'react-native-root-siblings';
 
 function HomeScreen() {
   const initTopbarHeight = getNavigationConsts().statusBarHeight + 170;
@@ -32,16 +31,14 @@ function HomeScreen() {
     allTypeListRef, // 首页‘全部->all’类型列表ref
   };
   return (
-    <RootSiblingParent>
-      <HomeScreenContext.Provider value={providerValue}>
-        <View style={styles.page}>
-          <NewsListContainer ref={newsListContainerRef} />
-          {/* 涉及blur组件需要放在下方 */}
-          <AnimatedHeader />
-          <BlurBox />
-        </View>
-      </HomeScreenContext.Provider>
-    </RootSiblingParent>
+    <HomeScreenContext.Provider value={providerValue}>
+      <View style={styles.page}>
+        <NewsListContainer ref={newsListContainerRef} />
+        {/* 涉及blur组件需要放在下方 */}
+        <AnimatedHeader />
+        <BlurBox />
+      </View>
+    </HomeScreenContext.Provider>
   );
 }
 

@@ -8,7 +8,6 @@ import FastImage from 'react-native-fast-image';
 import {commonStyles, getCommonShadowStyle} from '@/common/styles';
 import OlText from '@/components/OneLightText';
 import {login} from '@/utils/login';
-import {RootSiblingParent} from 'react-native-root-siblings';
 
 function LoginScreen() {
   const [isShowPassCode, setIShowPassCode] = useState(false);
@@ -30,67 +29,57 @@ function LoginScreen() {
     return reg.test(val);
   };
   return (
-    <RootSiblingParent>
-      <Animated.View
-        style={styles.container}
-        entering={FadeIn.duration(500)}
-        exiting={FadeOut.duration(500)}>
-        <FastImage
-          style={[styles.viewMargin, styles.logo]}
-          source={Assets.icons.logo}
-        />
-        <OlText style={[styles.title, styles.viewMargin]}>
-          嗨<OlText style={styles.appName}>, oneLight</OlText>
-        </OlText>
-        <TextField
-          value={mobile}
-          style={styles.textInput}
-          containerStyle={[styles.textContainer, styles.viewMargin]}
-          floatingPlaceholderStyle={styles.placeholder}
-          maxLength={11}
-          keyboardType='phone-pad'
-          placeholder={'输入手机号（新号码自动注册）'}
-          floatingPlaceholder
-          validate={validateMobileNum}
-          validateOnChange
-          onChangeText={setMobile}
-        />
-        {isShowPassCode ? (
-          <Animated.View
-            entering={FadeIn.duration(300)}
-            exiting={FadeOut.duration(300)}>
-            <TextField
-              value={msgCode}
-              style={styles.textInput}
-              containerStyle={[styles.textContainer, styles.viewMargin]}
-              floatingPlaceholderStyle={styles.placeholder}
-              placeholder={'密码'}
-              floatingPlaceholder
-              onChangeText={setPassCode}
-              trailingAccessory={<CodeSender mobile={mobile} />}
-            />
-          </Animated.View>
-        ) : null}
+    <Animated.View
+      style={styles.container}
+      entering={FadeIn.duration(500)}
+      exiting={FadeOut.duration(500)}>
+      <FastImage
+        style={[styles.viewMargin, styles.logo]}
+        source={Assets.icons.logo}
+      />
+      <OlText style={[styles.title, styles.viewMargin]}>
+        嗨<OlText style={styles.appName}>, oneLight</OlText>
+      </OlText>
+      <TextField
+        value={mobile}
+        style={styles.textInput}
+        containerStyle={[styles.textContainer, styles.viewMargin]}
+        floatingPlaceholderStyle={styles.placeholder}
+        maxLength={11}
+        keyboardType='phone-pad'
+        placeholder={'输入手机号（新号码自动注册）'}
+        floatingPlaceholder
+        validate={validateMobileNum}
+        validateOnChange
+        onChangeText={setMobile}
+      />
+      {isShowPassCode ? (
         <Animated.View
-          layout={Layout.duration(300)}
-          style={styles.btnContainer}>
-          <OlText style={[styles.or, styles.viewMargin]}>或</OlText>
-          <View style={[styles.loginMethods, styles.viewMargin]}>
-            <FastImage
-              style={styles.loginMethod}
-              source={Assets.icons.wechat}
-            />
-            <FastImage
-              style={styles.loginMethod}
-              source={Assets.icons.alipay}
-            />
-          </View>
-          <TouchableOpacity onPress={loginHandle} style={styles.loginBtn}>
-            <OlText style={styles.loginText}>登录</OlText>
-          </TouchableOpacity>
+          entering={FadeIn.duration(300)}
+          exiting={FadeOut.duration(300)}>
+          <TextField
+            value={msgCode}
+            style={styles.textInput}
+            containerStyle={[styles.textContainer, styles.viewMargin]}
+            floatingPlaceholderStyle={styles.placeholder}
+            placeholder={'密码'}
+            floatingPlaceholder
+            onChangeText={setPassCode}
+            trailingAccessory={<CodeSender mobile={mobile} />}
+          />
         </Animated.View>
+      ) : null}
+      <Animated.View layout={Layout.duration(300)} style={styles.btnContainer}>
+        <OlText style={[styles.or, styles.viewMargin]}>或</OlText>
+        <View style={[styles.loginMethods, styles.viewMargin]}>
+          <FastImage style={styles.loginMethod} source={Assets.icons.wechat} />
+          <FastImage style={styles.loginMethod} source={Assets.icons.alipay} />
+        </View>
+        <TouchableOpacity onPress={loginHandle} style={styles.loginBtn}>
+          <OlText style={styles.loginText}>登录</OlText>
+        </TouchableOpacity>
       </Animated.View>
-    </RootSiblingParent>
+    </Animated.View>
   );
 }
 

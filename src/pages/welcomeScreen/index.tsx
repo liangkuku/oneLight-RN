@@ -5,7 +5,6 @@ import {useState, useEffect} from 'react';
 import OpacitySwiper from './components/OpacitySwiper';
 import SloganTab from './components/SloganTab';
 import SplashScreen from 'react-native-splash-screen';
-import {RootSiblingParent} from 'react-native-root-siblings';
 
 const imgUrls = [
   'https://tuchuangs.com/imgs/2023/04/23/945f7dee14fb39f4.jpeg',
@@ -32,21 +31,19 @@ function WelcomeScreen() {
     };
   }, [activeIndex]);
   return (
-    <RootSiblingParent>
-      <View style={styles.page}>
-        <OpacitySwiper activeIndex={activeIndex} imgUrls={imgUrls} />
-        <View style={styles.container}>
-          <BlurView
-            style={styles.blurView}
-            blurType='xlight'
-            blurAmount={15}
-            reducedTransparencyFallbackColor='white'
-          />
-          <PageCounter total={imgUrls.length} activeIndex={activeIndex} />
-          <SloganTab />
-        </View>
+    <View style={styles.page}>
+      <OpacitySwiper activeIndex={activeIndex} imgUrls={imgUrls} />
+      <View style={styles.container}>
+        <BlurView
+          style={styles.blurView}
+          blurType='xlight'
+          blurAmount={15}
+          reducedTransparencyFallbackColor='white'
+        />
+        <PageCounter total={imgUrls.length} activeIndex={activeIndex} />
+        <SloganTab />
       </View>
-    </RootSiblingParent>
+    </View>
   );
 }
 
