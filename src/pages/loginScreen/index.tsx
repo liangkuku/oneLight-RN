@@ -4,27 +4,22 @@ import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {useState} from 'react';
 import Animated, {FadeIn, FadeOut, Layout} from 'react-native-reanimated';
 import CodeSender from './components/CodeSender';
-import Storage from '@/storage';
-import {setAppRouter} from '@/utils/setRouterTools';
-import {CONSTS_VALUE} from '@/interfaces/commonEnum';
 import FastImage from 'react-native-fast-image';
 import {commonStyles, getCommonShadowStyle} from '@/common/styles';
 import OlText from '@/components/OneLightText';
-import {apiLogin} from '@/services/login';
+import {login} from '@/utils/login';
+import {RootSiblingParent} from 'react-native-root-siblings';
 
 function LoginScreen() {
   const [isShowPassCode, setIShowPassCode] = useState(false);
   const [mobile, setMobile] = useState('');
   const [msgCode, setPassCode] = useState('');
   const loginHandle = async () => {
-    // Storage.set(CONSTS_VALUE.LOGIN_STATUS, true);
-    // setAppRouter();
     if (!isShowPassCode || !msgCode) {
       Toast.show(`请输入${!isShowPassCode ? '手机号码' : '验证码'}`);
       return;
     }
-    const res = await apiLogin({mobile, msgCode});
-    console.log('9898lgoin', res);
+    login(mobile, msgCode);
   };
   const validateMobileNum = (val: string) => {
     const reg = /^1[3,4,5,6,7,8,9][0-9]{9}$/;
@@ -35,57 +30,67 @@ function LoginScreen() {
     return reg.test(val);
   };
   return (
-    <Animated.View
-      style={styles.container}
-      entering={FadeIn.duration(500)}
-      exiting={FadeOut.duration(500)}>
-      <FastImage
-        style={[styles.viewMargin, styles.logo]}
-        source={Assets.icons.logo}
-      />
-      <OlText style={[styles.title, styles.viewMargin]}>
-        嗨<OlText style={styles.appName}>, oneLight</OlText>
-      </OlText>
-      <TextField
-        value={mobile}
-        style={styles.textInput}
-        containerStyle={[styles.textContainer, styles.viewMargin]}
-        floatingPlaceholderStyle={styles.placeholder}
-        maxLength={11}
-        keyboardType='phone-pad'
-        placeholder={'输入手机号（新号码自动注册）'}
-        floatingPlaceholder
-        validate={validateMobileNum}
-        validateOnChange
-        onChangeText={setMobile}
-      />
-      {isShowPassCode ? (
+    <RootSiblingParent>
+      <Animated.View
+        style={styles.container}
+        entering={FadeIn.duration(500)}
+        exiting={FadeOut.duration(500)}>
+        <FastImage
+          style={[styles.viewMargin, styles.logo]}
+          source={Assets.icons.logo}
+        />
+        <OlText style={[styles.title, styles.viewMargin]}>
+          嗨<OlText style={styles.appName}>, oneLight</OlText>
+        </OlText>
+        <TextField
+          value={mobile}
+          style={styles.textInput}
+          containerStyle={[styles.textContainer, styles.viewMargin]}
+          floatingPlaceholderStyle={styles.placeholder}
+          maxLength={11}
+          keyboardType='phone-pad'
+          placeholder={'输入手机号（新号码自动注册）'}
+          floatingPlaceholder
+          validate={validateMobileNum}
+          validateOnChange
+          onChangeText={setMobile}
+        />
+        {isShowPassCode ? (
+          <Animated.View
+            entering={FadeIn.duration(300)}
+            exiting={FadeOut.duration(300)}>
+            <TextField
+              value={msgCode}
+              style={styles.textInput}
+              containerStyle={[styles.textContainer, styles.viewMargin]}
+              floatingPlaceholderStyle={styles.placeholder}
+              placeholder={'密码'}
+              floatingPlaceholder
+              onChangeText={setPassCode}
+              trailingAccessory={<CodeSender mobile={mobile} />}
+            />
+          </Animated.View>
+        ) : null}
         <Animated.View
-          entering={FadeIn.duration(300)}
-          exiting={FadeOut.duration(300)}>
-          <TextField
-            value={msgCode}
-            style={styles.textInput}
-            containerStyle={[styles.textContainer, styles.viewMargin]}
-            floatingPlaceholderStyle={styles.placeholder}
-            placeholder={'密码'}
-            floatingPlaceholder
-            onChangeText={setPassCode}
-            trailingAccessory={<CodeSender mobile={mobile} />}
-          />
+          layout={Layout.duration(300)}
+          style={styles.btnContainer}>
+          <OlText style={[styles.or, styles.viewMargin]}>或</OlText>
+          <View style={[styles.loginMethods, styles.viewMargin]}>
+            <FastImage
+              style={styles.loginMethod}
+              source={Assets.icons.wechat}
+            />
+            <FastImage
+              style={styles.loginMethod}
+              source={Assets.icons.alipay}
+            />
+          </View>
+          <TouchableOpacity onPress={loginHandle} style={styles.loginBtn}>
+            <OlText style={styles.loginText}>登录</OlText>
+          </TouchableOpacity>
         </Animated.View>
-      ) : null}
-      <Animated.View layout={Layout.duration(300)} style={styles.btnContainer}>
-        <OlText style={[styles.or, styles.viewMargin]}>或</OlText>
-        <View style={[styles.loginMethods, styles.viewMargin]}>
-          <FastImage style={styles.loginMethod} source={Assets.icons.wechat} />
-          <FastImage style={styles.loginMethod} source={Assets.icons.alipay} />
-        </View>
-        <TouchableOpacity onPress={loginHandle} style={styles.loginBtn}>
-          <OlText style={styles.loginText}>登录</OlText>
-        </TouchableOpacity>
       </Animated.View>
-    </Animated.View>
+    </RootSiblingParent>
   );
 }
 

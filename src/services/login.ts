@@ -13,10 +13,10 @@ export const apiGetMsgCode = (mobile: string): Promise<ResponseType> => {
 /**
  * 登录or注册
  */
-export const apiLogin = (params: {
-  mobile: string;
-  msgCode: string;
-}): Promise<ResponseType> => {
-  const secret = CryptoAes.encrypt(params.mobile, secretKey).toString();
-  return https.post('login/signIn', {params: {...params, secret}});
+export const apiLogin = (
+  mobile: string,
+  msgCode: string,
+): Promise<ResponseType> => {
+  const secret = CryptoAes.encrypt(mobile, secretKey).toString();
+  return https.post('login/signIn', {mobile, msgCode, secret});
 };

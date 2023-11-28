@@ -1,3 +1,4 @@
+// import Storage from '@/storage';
 import axios from 'axios';
 import {Platform} from 'react-native';
 
@@ -9,7 +10,6 @@ const https = axios.create({
   timeout: 5000, // 设置请求超时时间，单位是毫秒
   headers: {
     'Content-Type': 'application/json', // 设置请求头
-    Authorization: `tttokentest`,
   },
 });
 

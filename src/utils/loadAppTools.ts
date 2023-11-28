@@ -2,9 +2,10 @@ import {Navigation} from 'react-native-navigation';
 import {Colors, Typography, Spacings, Assets} from 'react-native-ui-lib';
 import Storage from '@/storage';
 import {Dimensions} from 'react-native';
-import {CONSTS_VALUE} from '@/interfaces/commonEnum';
 import {commonStyles} from '@/common/styles';
-import RootToast from "react-native-root-toast";
+import RootToast from 'react-native-root-toast';
+import {STORAGE_KEYS} from '@/interfaces/commonEnum';
+import https from './https';
 
 //设置全局工具方法、变量
 export const setGlobalTools = () => {
@@ -13,24 +14,37 @@ export const setGlobalTools = () => {
   const windowHeight = Dimensions.get('window').height;
   WINDOW_WIDTH = windowWidth;
   WINDOW_HEIGHT = windowHeight;
-  
+
   // 全局Toast方法
   Toast = {
-    show: (msg, options = { position: RootToast.positions.CENTER }) => RootToast.show(msg, options),
+    show: (msg, options = {position: RootToast.positions.CENTER}) =>
+      RootToast.show(msg, options),
     positions: {
       TOP: 20,
       CENTER: 0,
       BOTTOM: -20,
-    }
+    },
   };
-  
 };
 
 //初始化storage数据
 export const initStorageData = () => {
-  const loginStatus = Storage.getBoolean(CONSTS_VALUE.LOGIN_STATUS);
-  if (!loginStatus) {
-    Storage.set(CONSTS_VALUE.LOGIN_STATUS, false);
+  // 初始化登录状态
+  const loginStatus = Storage.getBoolean(STORAGE_KEYS.LOGIN_STATUS);
+  if (loginStatus) {
+    const Authorization = Storage.getString(STORAGE_KEYS.TOKEN);
+    const uid = Storage.getString(STORAGE_KEYS.UID);
+    https.defaults.headers.common = {Authorization, uid};
+    Storage.set(STORAGE_KEYS.LOGIN_STATUS, true);
+  } else {
+    Storage.set(STORAGE_KEYS.LOGIN_STATUS, false);
+  }
+  // 是否是第一次加载APP
+  const isLoadedApp = Storage.getBoolean(STORAGE_KEYS.IS_LOADEDAPP);
+  if (!isLoadedApp) {
+    Storage.set(STORAGE_KEYS.IS_LOADEDAPP, false);
+  } else {
+    Storage.set(STORAGE_KEYS.IS_LOADEDAPP, true);
   }
 };
 

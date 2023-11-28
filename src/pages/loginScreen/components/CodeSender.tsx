@@ -33,7 +33,6 @@ function CodeSender({mobile}: CodeSenderProps) {
     if (res.success) {
       Toast.show(res.data.message);
     }
-    console.log('9898res', res);
   };
   const interval = (fn: () => void, time: number) => {
     if (secondRef.current === 0) {
