@@ -5,6 +5,7 @@ import {Dimensions} from 'react-native';
 import {commonStyles} from '@/common/styles';
 import {STORAGE_KEYS} from '@/interfaces/commonEnum';
 import https from './https';
+import {ToastStore} from '@/store';
 
 //设置全局工具方法、变量
 export const setGlobalTools = () => {
@@ -13,6 +14,11 @@ export const setGlobalTools = () => {
   const windowHeight = Dimensions.get('window').height;
   WINDOW_WIDTH = windowWidth;
   WINDOW_HEIGHT = windowHeight;
+  // 全局Toast工具
+  Toast = {
+    show: (message: string, duration?: number) =>
+      ToastStore.show(message, duration),
+  };
 };
 
 //初始化storage数据

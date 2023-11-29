@@ -12,7 +12,7 @@ const login = async (mobile: string, msgCode: string) => {
   if (!res.success) return;
   const {Authorization, uid, isRight, message} = res.data;
   if (!isRight) {
-    console.log('9898', message);
+    Toast.show(message);
     return;
   }
   Storage.set(STORAGE_KEYS.TOKEN, Authorization);
@@ -29,7 +29,7 @@ const login = async (mobile: string, msgCode: string) => {
 const logout = () => {
   console.log('9898退出登录');
   Storage.set(STORAGE_KEYS.LOGIN_STATUS, false);
-  // Storage.set(STORAGE_KEYS.IS_LOADEDAPP, false);
+  Storage.set(STORAGE_KEYS.IS_LOADEDAPP, false);
   https.defaults.headers.common = {};
 };
 

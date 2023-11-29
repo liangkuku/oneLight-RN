@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {memo, useEffect, useRef, useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {getFontSize, getViewSize} from '@/utils/sizeTool';
 import {
@@ -14,6 +14,7 @@ import {apiGetMsgCode} from '@/services/login';
 type CodeSenderProps = {
   mobile: string;
 };
+
 function CodeSender({mobile}: CodeSenderProps) {
   const [status, setStatus] = useState(true);
   const [second, setSecond] = useState(5);
@@ -21,7 +22,7 @@ function CodeSender({mobile}: CodeSenderProps) {
   const timerRef = useRef<any>(null);
   const reGetCode = () => {
     if (!status) {
-      console.log('9898操作过于频繁');
+      Toast.show('操作过于频繁');
     }
   };
   const sendCode = async () => {
@@ -31,7 +32,7 @@ function CodeSender({mobile}: CodeSenderProps) {
     }, 1000);
     const res = await apiGetMsgCode(mobile);
     if (res.success) {
-      console.log('9898', res.data.message);
+      Toast.show(res.data.message);
     }
   };
   const interval = (fn: () => void, time: number) => {
@@ -83,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CodeSender;
+export default memo(CodeSender);

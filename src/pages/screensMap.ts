@@ -7,6 +7,7 @@ import ErrorScreen from './errorScreen';
 import CircleScreen from './circleScreen';
 import AddNewsScreen from './addNewsScreen';
 import TestScreen from './testScreen';
+import Toast from '@/components/Toast';
 
 export default [
   {
@@ -49,5 +50,9 @@ export default [
   {
     path: 'CircleScreen',
     component: CircleScreen,
+  },
+  {
+    path: 'Toast',
+    component: Toast,
   },
 ];

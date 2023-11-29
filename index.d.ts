@@ -36,3 +36,8 @@ interface ResponseType {
   message: string;
   path?: string;
 }
+
+type ToastType = {
+  show: (message: string, duration?: number) => void;
+};
+declare var Toast: ToastType;
