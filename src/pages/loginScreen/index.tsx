@@ -15,7 +15,7 @@ function LoginScreen() {
   const [msgCode, setPassCode] = useState('');
   const loginHandle = async () => {
     if (!isShowPassCode || !msgCode) {
-      Toast.show(`请输入${!isShowPassCode ? '手机号码' : '验证码'}`);
+      console.log(`9898请输入${!isShowPassCode ? '手机号码' : '验证码'}`);
       return;
     }
     login(mobile, msgCode);

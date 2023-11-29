@@ -21,7 +21,7 @@ function CodeSender({mobile}: CodeSenderProps) {
   const timerRef = useRef<any>(null);
   const reGetCode = () => {
     if (!status) {
-      Toast.show('操作过于频繁');
+      console.log('9898操作过于频繁');
     }
   };
   const sendCode = async () => {
@@ -31,7 +31,7 @@ function CodeSender({mobile}: CodeSenderProps) {
     }, 1000);
     const res = await apiGetMsgCode(mobile);
     if (res.success) {
-      Toast.show(res.data.message);
+      console.log('9898', res.data.message);
     }
   };
   const interval = (fn: () => void, time: number) => {

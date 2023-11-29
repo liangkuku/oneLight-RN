@@ -5,15 +5,14 @@
 import Screens from '@/pages/screensMap';
 import React from 'react';
 import {Navigation} from 'react-native-navigation';
-import {RootSiblingParent} from 'react-native-root-siblings';
 //注册屏幕组件
 export const screensRegister = () => {
   Screens.forEach(screenInfo => {
     const ScreenComponent = screenInfo.component;
     const WrappedScreen = (props: {componentId: string}) => (
-      <RootSiblingParent>
+      <>
         <ScreenComponent {...props} />
-      </RootSiblingParent>
+      </>
     );
     Navigation.registerComponent(screenInfo.path, () => WrappedScreen);
   });

@@ -3,7 +3,7 @@ import OlText from '@/components/OneLightText';
 
 function TestScreen() {
   const tt = () => {
-    Toast.show('sssaaa');
+    console.log('9898sssaaa');
   };
   return (
     <View>

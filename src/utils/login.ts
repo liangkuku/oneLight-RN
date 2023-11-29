@@ -12,7 +12,7 @@ const login = async (mobile: string, msgCode: string) => {
   if (!res.success) return;
   const {Authorization, uid, isRight, message} = res.data;
   if (!isRight) {
-    Toast.show(message);
+    console.log('9898', message);
     return;
   }
   Storage.set(STORAGE_KEYS.TOKEN, Authorization);

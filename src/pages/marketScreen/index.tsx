@@ -4,8 +4,7 @@ import https from '@/utils/https';
 
 function MarketScreen() {
   const tt = () => {
-    // https.get('/test/a');
-    Toast.show('sfsvsd');
+    https.get('/test/a');
   };
   return (
     <View

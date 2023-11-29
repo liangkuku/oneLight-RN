@@ -3,7 +3,6 @@ import {Colors, Typography, Spacings, Assets} from 'react-native-ui-lib';
 import Storage from '@/storage';
 import {Dimensions} from 'react-native';
 import {commonStyles} from '@/common/styles';
-import RootToast from 'react-native-root-toast';
 import {STORAGE_KEYS} from '@/interfaces/commonEnum';
 import https from './https';
 
@@ -14,17 +13,6 @@ export const setGlobalTools = () => {
   const windowHeight = Dimensions.get('window').height;
   WINDOW_WIDTH = windowWidth;
   WINDOW_HEIGHT = windowHeight;
-
-  // 全局Toast方法
-  Toast = {
-    show: (msg, options = {position: RootToast.positions.CENTER}) =>
-      RootToast.show(msg, options),
-    positions: {
-      TOP: 20,
-      CENTER: 0,
-      BOTTOM: -20,
-    },
-  };
 };
 
 //初始化storage数据
