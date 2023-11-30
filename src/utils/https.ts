@@ -1,15 +1,16 @@
-// import Storage from '@/storage';
+import { apiVersion, appVersion } from '@/common/consts';
 import axios from 'axios';
-import {Platform} from 'react-native';
-enum ClientTypeEnum {
-  ios = 1,
-  android = 2,
-  web = 3,
-}
-const ClientType:number = ClientTypeEnum[Platform.OS as keyof typeof ClientTypeEnum]
+import { Platform } from 'react-native';
+import { getUniqueId } from 'react-native-device-info';
 
-const baseURL =
-  Platform.OS === 'android' ? 'http://10.0.2.2:3000' : 'http://localhost:3000';
+const ClientTypes = {
+  ios: 1,
+  android: 2,
+  web: 3,
+};
+const ClientType: number = ClientTypes[Platform.OS as 'ios' | 'android' | 'web'];
+
+const baseURL = Platform.OS === 'android' ? 'http://10.0.2.2:3000' : 'http://localhost:3000';
 // 创建 Axios 实例
 const https = axios.create({
   baseURL: baseURL, // 设置基础URL，用于所有请求
@@ -17,7 +18,10 @@ const https = axios.create({
   headers: {
     'Content-Type': 'application/json', // 设置请求头
     'User-Agent': 'oneLight-APP', // 设置
-    'ClientType': ClientType
+    ClientType: ClientType ?? '-1', // 客户端系统OS
+    ClientVersion: Platform.Version ?? '', // 客户端系统版本号
+    AppVersion: `${appVersion.major}.${appVersion.minor}.${appVersion.patch}`, // oneLight应用APP版本号
+    ApiVersion: `${apiVersion.major}.${apiVersion.minor}.${apiVersion.patch}`, // oneLight应用API版本号
   },
 });
 
@@ -41,7 +45,7 @@ https.interceptors.response.use(
   },
   error => {
     const errorData = error.response.data ?? {};
-    const {code, data, message, path, success, time} = errorData;
+    const { code, data, message, path, success, time } = errorData;
     // 对响应错误做一些处理
     Toast.show(message);
     return {
@@ -54,5 +58,11 @@ https.interceptors.response.use(
     };
   },
 );
+
+// 设置https请求头，添加设备ID
+(async () => {
+  const deviceId = (await getUniqueId()) ?? '';
+  https.defaults.headers['deviceId'] = deviceId;
+})();
 
 export default https; // 导出 Axios 实例

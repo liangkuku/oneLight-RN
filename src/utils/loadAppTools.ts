@@ -1,11 +1,11 @@
-import {Navigation} from 'react-native-navigation';
-import {Colors, Typography, Spacings, Assets} from 'react-native-ui-lib';
+import { Navigation } from 'react-native-navigation';
+import { Colors, Typography, Spacings, Assets } from 'react-native-ui-lib';
 import Storage from '@/storage';
-import {Dimensions} from 'react-native';
-import {commonStyles} from '@/common/styles';
-import {STORAGE_KEYS} from '@/interfaces/commonEnum';
+import { Dimensions } from 'react-native';
+import { commonStyles } from '@/common/styles';
+import { STORAGE_KEYS } from '@/interfaces/commonEnum';
 import https from './https';
-import {ToastStore} from '@/store';
+import { ToastStore } from '@/store';
 
 //设置全局工具方法、变量
 export const setGlobalTools = () => {
@@ -16,8 +16,7 @@ export const setGlobalTools = () => {
   WINDOW_HEIGHT = windowHeight;
   // 全局Toast工具
   Toast = {
-    show: (message: string, duration?: number) =>
-      ToastStore.show(message, duration),
+    show: (message: string, duration?: number) => ToastStore.show(message, duration),
   };
 };
 
@@ -28,7 +27,7 @@ export const initStorageData = () => {
   if (loginStatus) {
     const Authorization = Storage.getString(STORAGE_KEYS.TOKEN);
     const uid = Storage.getString(STORAGE_KEYS.UID);
-    https.defaults.headers.common = {Authorization, uid};
+    https.defaults.headers.common = { Authorization, uid };
     Storage.set(STORAGE_KEYS.LOGIN_STATUS, true);
   } else {
     Storage.set(STORAGE_KEYS.LOGIN_STATUS, false);
@@ -51,7 +50,7 @@ export const setDefaultNavigationStyle = () => {
       animate: true,
       animateLeftButtons: true,
       animateRightButtons: true,
-      backButton: {popStackOnPress: true},
+      backButton: { popStackOnPress: true },
       noBorder: true,
       scrollEdgeAppearance: {
         active: false,
@@ -105,9 +104,9 @@ export const loadSysStyle = () => {
   });
 
   Typography.loadTypographies({
-    heading: {fontSize: 36, fontWeight: '600'},
-    subheading: {fontSize: 28, fontWeight: '500'},
-    body: {fontSize: 18, fontWeight: '400'},
+    heading: { fontSize: 36, fontWeight: '600' },
+    subheading: { fontSize: 28, fontWeight: '500' },
+    body: { fontSize: 18, fontWeight: '400' },
   });
 
   Spacings.loadSpacings({
@@ -139,13 +138,11 @@ export const loadSysStyle = () => {
 //监听导航Navigation事件
 export const navigationEventListen = () => {
   //监听按钮事件
-  Navigation.events().registerNavigationButtonPressedListener(
-    ({buttonId, componentId}) => {
-      if (buttonId === 'closeModal') {
-        Navigation.dismissModal(componentId);
-      }
-    },
-  );
+  Navigation.events().registerNavigationButtonPressedListener(({ buttonId, componentId }) => {
+    if (buttonId === 'closeModal') {
+      Navigation.dismissModal(componentId);
+    }
+  });
   //监听命令事件
   Navigation.events().registerCommandListener((name, params) => {
     console.log('9898name', name);
@@ -153,7 +150,7 @@ export const navigationEventListen = () => {
   });
 
   Navigation.events().registerComponentDidAppearListener(
-    ({componentId, componentName, passProps}) => {
+    ({ componentId, componentName, passProps }) => {
       console.log('9898有用--componentId', componentId);
       console.log('9898有用--componentName', componentName);
       console.log('9898有用--passProps', passProps);

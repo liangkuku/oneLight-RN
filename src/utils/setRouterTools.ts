@@ -1,8 +1,8 @@
-import {LayoutRoot, Navigation} from 'react-native-navigation';
+import { LayoutRoot, Navigation } from 'react-native-navigation';
 import Storage from '@/storage';
-import {Assets} from 'react-native-ui-lib';
-import {commonStyles} from '@/common/styles';
-import {STORAGE_KEYS} from '@/interfaces/commonEnum';
+import { Assets } from 'react-native-ui-lib';
+import { commonStyles } from '@/common/styles';
+import { STORAGE_KEYS } from '@/interfaces/commonEnum';
 
 const welcomeRoot = {
   root: {
@@ -171,17 +171,14 @@ const bottomRoot: LayoutRoot = {
   },
 };
 
-function getRouters(
-  loginStatus: boolean | undefined,
-  isLoadedApp: boolean | undefined,
-) {
+function getRouters(loginStatus: boolean | undefined, isLoadedApp: boolean | undefined) {
   if (loginStatus || isLoadedApp) return bottomRoot;
   if (!loginStatus && isLoadedApp) return bottomRoot;
   return welcomeRoot;
 }
 
 //设置app路由
-export const setAppRouter = async (isInitApp?: boolean) => {
+export const setAppRouter = (isInitApp?: boolean) => {
   // 登录态
   const loginStatus = Storage.getBoolean(STORAGE_KEYS.LOGIN_STATUS);
   // 是否登录过APP

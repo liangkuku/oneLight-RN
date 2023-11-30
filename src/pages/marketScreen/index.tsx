@@ -1,4 +1,4 @@
-import {TouchableOpacity, View} from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import OlText from '@/components/OneLightText';
 
 function MarketScreen() {
@@ -14,7 +14,7 @@ function MarketScreen() {
         alignItems: 'center',
       }}>
       <TouchableOpacity onPress={tt}>
-        <View style={{width: 100, height: 100, backgroundColor: 'green'}}>
+        <View style={{ width: 100, height: 100, backgroundColor: 'green' }}>
           <OlText>接口测试</OlText>
         </View>
       </TouchableOpacity>

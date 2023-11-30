@@ -7,7 +7,6 @@ import {
 } from '@/utils/loadAppTools';
 import {screensRegister} from '@/utils/screensRegister';
 import { setAppRouter } from '@/utils/setRouterTools';
-import { Navigation } from 'react-native-navigation';
 
 const appLoader = async () => {
   //设置全局工具方法、变量
@@ -22,11 +21,11 @@ const appLoader = async () => {
   //监听导航Navigation事件
   navigationEventListen()
 
-  //注册屏幕组件
-  screensRegister()
-
   //设置导航默认样式
   setDefaultNavigationStyle()
+
+  //注册屏幕组件
+  screensRegister()
 
   //设置app路由
   setAppRouter(true)
@@ -38,26 +37,6 @@ const errorHandler = (error, isFatal) => {
   console.error('9898有用--error', error);
   console.error('9898有用--isFatal', isFatal);
   if (isFatal) {
-    // 在这里执行应用程序崩溃的操作，例如重新启动应用
-    // Navigation.push('s',{component:{name:'ErrorScreen'}})
-    // Navigation.setRoot({
-    //   root: {
-    //     stack: {
-    //       children: [
-    //         {
-    //           component: {
-    //             name: 'ErrorScreen',
-    //             options: {
-    //               topBar: {
-    //                 visible: false
-    //               }
-    //             }
-    //           }
-    //         }
-    //       ]
-    //     }
-    //   }
-    // });
     console.log('9898有用--致命啦崩溃啦')
   } else {
     console.log('9898有用--不致命')
