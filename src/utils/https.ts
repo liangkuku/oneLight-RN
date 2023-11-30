@@ -1,6 +1,12 @@
 // import Storage from '@/storage';
 import axios from 'axios';
 import {Platform} from 'react-native';
+enum ClientTypeEnum {
+  ios = 1,
+  android = 2,
+  web = 3,
+}
+const ClientType:number = ClientTypeEnum[Platform.OS as keyof typeof ClientTypeEnum]
 
 const baseURL =
   Platform.OS === 'android' ? 'http://10.0.2.2:3000' : 'http://localhost:3000';
@@ -10,6 +16,8 @@ const https = axios.create({
   timeout: 5000, // 设置请求超时时间，单位是毫秒
   headers: {
     'Content-Type': 'application/json', // 设置请求头
+    'User-Agent': 'oneLight-APP', // 设置
+    'ClientType': ClientType
   },
 });
 

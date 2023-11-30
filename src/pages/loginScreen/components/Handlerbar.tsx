@@ -2,7 +2,12 @@ import {commonStyles, getCommonShadowStyle} from '@/common/styles';
 import OlText from '@/components/OneLightText';
 import {login} from '@/utils/login';
 import {memo} from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import Animated, {Layout} from 'react-native-reanimated';
 import {Assets} from 'react-native-ui-lib';
@@ -25,8 +30,12 @@ function Handlerbar({isShowPassCode, mobile, msgCode}: HandlerbarProps) {
     <Animated.View layout={Layout.duration(300)} style={styles.btnContainer}>
       <OlText style={[styles.or, styles.viewMargin]}>或</OlText>
       <View style={[styles.loginMethods, styles.viewMargin]}>
-        <FastImage style={styles.loginMethod} source={Assets.icons.wechat} />
-        <FastImage style={styles.loginMethod} source={Assets.icons.alipay} />
+        <TouchableWithoutFeedback onPress={loginHandle}>
+          <FastImage style={styles.loginMethod} source={Assets.icons.wechat} />
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={loginHandle}>
+          <FastImage style={styles.loginMethod} source={Assets.icons.alipay} />
+        </TouchableWithoutFeedback>
       </View>
       <TouchableOpacity onPress={loginHandle} style={styles.loginBtn}>
         <OlText style={styles.loginText}>登录</OlText>

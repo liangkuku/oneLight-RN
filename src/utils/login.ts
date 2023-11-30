@@ -10,8 +10,8 @@ import {setAppRouter} from './setRouterTools';
 const login = async (mobile: string, msgCode: string) => {
   const res = await apiLogin(mobile, msgCode);
   if (!res.success) return;
-  const {Authorization, uid, isRight, message} = res.data;
-  if (!isRight) {
+  const {Authorization, uid, isCodeRight, message} = res.data;
+  if (!isCodeRight) {
     Toast.show(message);
     return;
   }
