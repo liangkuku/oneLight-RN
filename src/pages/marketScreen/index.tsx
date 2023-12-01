@@ -1,9 +1,10 @@
 import { TouchableOpacity, View } from 'react-native';
 import OlText from '@/components/OneLightText';
+import https from '@/utils/https';
 
 function MarketScreen() {
   const tt = () => {
-    Toast.show('自制Toast不牛广东东莞郭德纲');
+    https.get('/test/a')
   };
   return (
     <View

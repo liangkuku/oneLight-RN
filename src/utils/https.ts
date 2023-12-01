@@ -18,10 +18,10 @@ const https = axios.create({
   headers: {
     'Content-Type': 'application/json', // 设置请求头
     'User-Agent': 'oneLight-APP', // 设置
-    ClientType: ClientType ?? '-1', // 客户端系统OS
-    ClientVersion: Platform.Version ?? '', // 客户端系统版本号
-    AppVersion: `${appVersion.major}.${appVersion.minor}.${appVersion.patch}`, // oneLight应用APP版本号
-    ApiVersion: `${apiVersion.major}.${apiVersion.minor}.${apiVersion.patch}`, // oneLight应用API版本号
+    'Ol-Client-Type': ClientType ?? '-1', // 客户端系统OS
+    'Ol-Client-Version': Platform.Version ?? '', // 客户端系统版本号
+    'Ol-App-Version': `${appVersion.major}.${appVersion.minor}.${appVersion.patch}`, // oneLight应用APP版本号
+    'Ol-Api-Version': `${apiVersion.major}.${apiVersion.minor}.${apiVersion.patch}`, // oneLight应用API版本号
   },
 });
 
