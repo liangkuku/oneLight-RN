@@ -151,9 +151,9 @@ export const navigationEventListen = () => {
 
   Navigation.events().registerComponentDidAppearListener(
     ({ componentId, componentName, passProps }) => {
-      console.log('9898有用--componentId', componentId);
-      console.log('9898有用--componentName', componentName);
-      console.log('9898有用--passProps', passProps);
+      console.log('9898--componentId', componentId);
+      console.log('9898--componentName', componentName);
+      console.log('9898--passProps', passProps);
     },
   );
 };

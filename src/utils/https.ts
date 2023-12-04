@@ -1,7 +1,7 @@
 import { apiVersion, appVersion } from '@/common/consts';
 import axios from 'axios';
 import { Platform } from 'react-native';
-import { getUniqueId } from 'react-native-device-info';
+import { getUniqueId, getBrand } from 'react-native-device-info';
 import CryptoAes from 'crypto-js/aes';
 
 const httpsSecretKey = 'oneLight';
@@ -19,9 +19,10 @@ const https = axios.create({
   timeout: 5000, // 设置请求超时时间，单位是毫秒
   headers: {
     'Content-Type': 'application/json', // 设置请求头
-    'Ol-Agent-Type': 'oneLight-APP', // 设置
+    'Ol-Agent-Type': 'oneLight-APP', // 设置应用来源类型
     'Ol-Client-Type': ClientType ?? '-1', // 客户端系统OS
     'Ol-Client-Version': Platform.Version ?? '', // 客户端系统版本号
+    'Ol-Client-Brand': getBrand(),
     'Ol-App-Version': `${appVersion.major}.${appVersion.minor}.${appVersion.patch}`, // oneLight应用APP版本号
     'Ol-Api-Version': `${apiVersion.major}.${apiVersion.minor}.${apiVersion.patch}`, // oneLight应用API版本号
   },

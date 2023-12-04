@@ -3,11 +3,13 @@ import OlText from '@/components/OneLightText';
 import https from '@/utils/https';
 
 function MarketScreen() {
-  const tt1 = () => {
-    https.get('/test/b?vv=23')
+  const tt1 = async () => {
+    const res = await https.get('/test/a?value=2');
+    Toast.show(res.data.message);
   };
-  const tt2 = () => {
-    https.get('/test/c')
+  const tt2 = async () => {
+    const res = await https.get('/test/a?value=3');
+    Toast.show(res.data.message);
   };
   return (
     <View
