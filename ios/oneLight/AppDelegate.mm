@@ -1,5 +1,4 @@
 #import "AppDelegate.h"
-#import <ReactNativeNavigation/ReactNativeNavigation.h>
 #import "RNSplashScreen.h"
 #import <React/RCTBundleURLProvider.h>
 
@@ -7,12 +6,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  // 隐藏状态栏
   application.statusBarHidden = NO;
-  
-  [ReactNativeNavigation bootstrapWithDelegate:self launchOptions:launchOptions];
+  self.moduleName = @"oneLight";
+  // You can add your custom initial props in the dictionary below.
+  // They will be passed down to the ViewController used by React Native.
+  self.initialProps = @{};
+  [super application:application didFinishLaunchingWithOptions:launchOptions];
   [RNSplashScreen show];
-  
   return YES;
 }
 
