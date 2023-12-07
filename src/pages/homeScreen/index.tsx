@@ -1,12 +1,12 @@
-import {useEffect, useRef} from 'react';
-import {Platform, StyleSheet, View} from 'react-native';
+import { useEffect, useRef } from 'react';
+import { Platform, StyleSheet, View } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import AnimatedHeader from './components/AnimatedHeader';
-import {useSharedValue} from 'react-native-reanimated';
+import { useSharedValue } from 'react-native-reanimated';
 import BlurBox from '@/components/BlurBox';
 import NewsListContainer from './components/NewsListContainer';
-import {HomeScreenContext} from './utils/context';
-import {getNavigationConsts} from '@/utils/loadAppTools';
+import { HomeScreenContext } from './utils/context';
+import { getNavigationConsts } from '@/utils/loadAppTools';
 
 function HomeScreen() {
   const initTopbarHeight = getNavigationConsts().statusBarHeight + 170;
