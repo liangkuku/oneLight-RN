@@ -26,10 +26,10 @@ function App() {
 function RootRoutes() {
   return (
     <BottomTabNavigator.Navigator screenOptions={{ headerShown: false }} tabBar={BottomTabBar}>
-      <BottomTabNavigator.Screen name='HomeStack' component={HomeScreen} />
-      <BottomTabNavigator.Screen name='MarketStack' component={MarketScreen} />
-      <BottomTabNavigator.Screen name='CircleStack' component={CircleScreen} />
-      <BottomTabNavigator.Screen name='MineStack' component={MineScreen} />
+      <BottomTabNavigator.Screen name='Home' component={HomeScreen} />
+      <BottomTabNavigator.Screen name='Market' component={MarketScreen} />
+      <BottomTabNavigator.Screen name='Circle' component={CircleScreen} />
+      <BottomTabNavigator.Screen name='Mine' component={MineScreen} />
     </BottomTabNavigator.Navigator>
   );
 }
