@@ -1,18 +1,19 @@
 import { commonStyles } from "@/common/styles";
-import { getNavigationConsts } from "@/utils/loadAppTools";
 import { useContext } from "react";
-import { StyleSheet, TouchableWithoutFeedback } from "react-native";
+import { Dimensions, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { MineScreenContext } from "../utils/context";
 import Animated, { useAnimatedReaction, useSharedValue, withTiming } from "react-native-reanimated";
 import FastImage from "react-native-fast-image";
 import OlText from "@/components/OneLightText";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 function TopBar() {
+    const { top: statusBarHeight } = useSafeAreaInsets();
     const { sharedScrollY, userInfoBarHeight } = useContext(MineScreenContext);
     const sharedWidth = useSharedValue(20);
     const sharedScale = useSharedValue(0);
     const iconWidth = 20;
-    const endSpaceBoxWidth = WINDOW_WIDTH - 2 * (commonStyles.pageBorderGap + iconWidth);
+    const endSpaceBoxWidth = Dimensions.get('window').width - 2 * (commonStyles.pageBorderGap + iconWidth);
     // 头部布局更改动画
     useAnimatedReaction(() => {
         return sharedScrollY.value;
@@ -40,7 +41,6 @@ function TopBar() {
     const bb = () => {
         console.log('9898我是信息按钮');
     };
-    const { statusBarHeight } = getNavigationConsts();
     return (
         <Animated.View style={[styles.container, { paddingTop: statusBarHeight }]}>
             <TouchableWithoutFeedback onPress={bb}>

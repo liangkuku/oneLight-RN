@@ -1,5 +1,5 @@
 import {makeAutoObservable, runInAction} from 'mobx';
-import {Navigation} from 'react-native-navigation';
+// import {Navigation} from 'react-native-navigation';
 
 class ToastStore {
   status = false;
@@ -18,19 +18,20 @@ class ToastStore {
     let toastId: any;
     this.message = message;
     if (!this.status) {
-      toastId = await Navigation.showOverlay({
-        component: {
-          name: 'Toast',
-          options: {
-            layout: {
-              componentBackgroundColor: 'transparent',
-            },
-            overlay: {
-              interceptTouchOutside: false,
-            },
-          },
-        },
-      });
+      // toastId = await Navigation.showOverlay({
+      //   component: {
+      //     name: 'Toast',
+      //     options: {
+      //       layout: {
+      //         componentBackgroundColor: 'transparent',
+      //       },
+      //       overlay: {
+      //         interceptTouchOutside: false,
+      //       },
+      //     },
+      //   },
+      // });
+      toastId = 0;
       runInAction(() => {
         this.currentToastId = toastId;
         this.status = true;
@@ -38,7 +39,7 @@ class ToastStore {
     }
 
     const timer = setTimeout(async () => {
-      Navigation.dismissOverlay(this.currentToastId);
+      // Navigation.dismissOverlay(this.currentToastId);
       runInAction(() => {
         clearTimeout(timer);
         this.currentToastId = '';

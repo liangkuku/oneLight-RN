@@ -2,7 +2,7 @@ import {STORAGE_KEYS} from '@/interfaces/commonEnum';
 import {apiLogin} from '@/services/login';
 import Storage from '@/storage';
 import https from './https';
-import {setAppRouter} from './setRouterTools';
+// import {setAppRouter} from './setRouterTools';
 
 /**
  * 登录方法
@@ -20,7 +20,7 @@ const login = async (mobile: string, msgCode: string) => {
   Storage.set(STORAGE_KEYS.LOGIN_STATUS, true);
   Storage.set(STORAGE_KEYS.IS_LOADEDAPP, true);
   https.defaults.headers.common = {Authorization, uid};
-  setAppRouter();
+  // setAppRouter();
 };
 
 /**

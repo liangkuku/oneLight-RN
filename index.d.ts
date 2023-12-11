@@ -26,9 +26,6 @@ type NewsItem = {
   tags?: number[];
 };
 
-declare var WINDOW_WIDTH: number;
-declare var WINDOW_HEIGHT: number;
-
 interface ResponseType {
   success: boolean;
   code: number;

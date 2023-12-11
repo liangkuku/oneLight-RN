@@ -1,15 +1,16 @@
 import { useEffect, useRef } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import AnimatedHeader from './components/AnimatedHeader';
 import { useSharedValue } from 'react-native-reanimated';
-import BlurBox from '@/components/BlurBox';
 import NewsListContainer from './components/NewsListContainer';
 import { HomeScreenContext } from './utils/context';
-import { getNavigationConsts } from '@/utils/loadAppTools';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { commonStyles } from '@/common/styles';
 
 function HomeScreen() {
-  const initTopbarHeight = getNavigationConsts().statusBarHeight + 170;
+  const { top } = useSafeAreaInsets();
+  const initTopbarHeight = top + 170;
   // 动画共享滑动距离
   const sharedScrollY = useSharedValue(0);
   // 最外层所有list列表容器ref
@@ -36,7 +37,6 @@ function HomeScreen() {
         <NewsListContainer ref={newsListContainerRef} />
         {/* 涉及blur组件需要放在下方 */}
         <AnimatedHeader />
-        <BlurBox />
       </View>
     </HomeScreenContext.Provider>
   );
@@ -44,14 +44,8 @@ function HomeScreen() {
 
 const styles = StyleSheet.create({
   page: {
-    ...Platform.select({
-      ios: {
-        height: WINDOW_HEIGHT,
-      },
-      android: {
-        flex: 1,
-      },
-    }),
+    flex: 1,
+    backgroundColor: commonStyles.pageBgColor
   },
 });
 

@@ -1,6 +1,7 @@
-import { TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import OlText from '@/components/OneLightText';
 import https from '@/utils/https';
+import { commonStyles } from '@/common/styles';
 
 function MarketScreen() {
   const tt1 = async () => {
@@ -12,13 +13,7 @@ function MarketScreen() {
     Toast.show(res.data.message);
   };
   return (
-    <View
-      style={{
-        backgroundColor: 'pink',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
+    <View style={styles.page}>
       <TouchableOpacity onPress={tt1}>
         <View style={{ width: 100, height: 100, backgroundColor: 'green' }}>
           <OlText>接口测试1</OlText>
@@ -32,5 +27,12 @@ function MarketScreen() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    backgroundColor: commonStyles.pageBgColor
+  },
+});
 
 export default MarketScreen;

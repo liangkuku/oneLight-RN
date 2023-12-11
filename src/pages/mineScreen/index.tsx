@@ -1,8 +1,5 @@
-import BlurBox from '@/components/BlurBox';
-import {getNavigationConsts} from '@/utils/loadAppTools';
-import {Platform, StyleSheet} from 'react-native';
+import { StyleSheet} from 'react-native';
 import {View} from 'react-native';
-import {Navigation} from 'react-native-navigation';
 import BusinessInfoBar from './components/BusinessInfoBar';
 import OrdersBar from './components/OrdersBar';
 import ToolsBar from './components/ToolsBar';
@@ -16,18 +13,12 @@ import {MineScreenContext} from './utils/context';
 import UserInfoBar from './components/UserInfoBar';
 import OlText from '@/components/OneLightText';
 import {logout} from '@/utils/login';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import { commonStyles } from '@/common/styles';
 
-type MineScreenProps = {
-  componentId: string;
-};
-
-function MineScreen({componentId}: MineScreenProps) {
+function MineScreen() {
   const goPage = () => {
-    Navigation.push(componentId, {
-      component: {
-        name: 'TestScreen',
-      },
-    });
+    console.log('9898下一页')
   };
   // 动画共享滑动距离
   const sharedScrollY = useSharedValue(0);
@@ -40,7 +31,8 @@ function MineScreen({componentId}: MineScreenProps) {
     sharedScrollY, // 动画共享滑动距离
     userInfoBarHeight, // 用户信息栏高度
   };
-  const {bottomTabsHeight} = getNavigationConsts();
+  // 底部导航栏高度
+  const BottomTabBarHeight = useBottomTabBarHeight();
   return (
     <MineScreenContext.Provider value={providerValue}>
       <View style={styles.page}>
@@ -60,7 +52,7 @@ function MineScreen({componentId}: MineScreenProps) {
           showsVerticalScrollIndicator={false}
           bounces={false}
           contentContainerStyle={{
-            paddingBottom: bottomTabsHeight,
+            paddingBottom: BottomTabBarHeight,
           }}
           stickyHeaderIndices={[0]}
           onScroll={scrollHandler}>
@@ -78,7 +70,6 @@ function MineScreen({componentId}: MineScreenProps) {
           <View style={styles.aa} />
           <View style={styles.bb} />
         </Animated.ScrollView>
-        <BlurBox />
       </View>
     </MineScreenContext.Provider>
   );
@@ -86,14 +77,8 @@ function MineScreen({componentId}: MineScreenProps) {
 
 const styles = StyleSheet.create({
   page: {
-    ...Platform.select({
-      ios: {
-        height: WINDOW_HEIGHT,
-      },
-      android: {
-        flex: 1,
-      },
-    }),
+    flex: 1,
+    backgroundColor: commonStyles.pageBgColor
   },
   topbg: {
     position: 'absolute',

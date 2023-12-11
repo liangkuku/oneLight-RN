@@ -1,4 +1,3 @@
-import { Navigation } from 'react-native-navigation';
 import { Colors, Typography, Spacings, Assets } from 'react-native-ui-lib';
 import Storage from '@/storage';
 import { Dimensions } from 'react-native';
@@ -9,11 +8,6 @@ import { ToastStore } from '@/store';
 
 //设置全局工具方法、变量
 export const setGlobalTools = () => {
-  // 全局视口屏幕尺寸变量
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
-  WINDOW_WIDTH = windowWidth;
-  WINDOW_HEIGHT = windowHeight;
   // 全局Toast工具
   Toast = {
     show: (message: string, duration?: number) => ToastStore.show(message, duration),
@@ -156,9 +150,4 @@ export const navigationEventListen = () => {
       console.log('9898--passProps', passProps);
     },
   );
-};
-
-//获取屏幕信息，例如bottomBarHeight
-export const getNavigationConsts = () => {
-  return Navigation.constantsSync();
 };

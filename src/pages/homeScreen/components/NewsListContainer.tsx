@@ -2,6 +2,7 @@ import TypeNewsList from "./TypeNewsList";
 import { forwardRef, useContext, useImperativeHandle, useState } from "react";
 import { TabView, SceneMap } from 'react-native-tab-view';
 import { HomeScreenContext } from "../utils/context";
+import { Dimensions } from "react-native";
 
 const tabs = [
     {
@@ -26,15 +27,15 @@ const tabs = [
     },
 ];
 
-const renderScene = SceneMap({
-    all: TypeNewsList,
-    food: TypeNewsList,
-    express: TypeNewsList,
-    replace: TypeNewsList,
-    job: TypeNewsList,
-});
 
 const NewsListContainer = forwardRef((props, ref) => {
+    const renderScene = SceneMap({
+        all: TypeNewsList,
+        food: TypeNewsList,
+        express: TypeNewsList,
+        replace: TypeNewsList,
+        job: TypeNewsList,
+    });
     const { categoryBarRef } = useContext(HomeScreenContext);
     const [activeIndex, setActiveIndex] = useState(0);
     useImperativeHandle(ref, () => ({
@@ -49,7 +50,7 @@ const NewsListContainer = forwardRef((props, ref) => {
             navigationState={{ index: activeIndex, routes: tabs }}
             renderScene={renderScene}
             onIndexChange={handleScroll}
-            initialLayout={{ width: WINDOW_WIDTH }}
+            initialLayout={{ width: Dimensions.get('window').width }}
             renderTabBar={() => null}
         />
     );

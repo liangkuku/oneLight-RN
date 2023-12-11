@@ -1,5 +1,4 @@
 import { commonStyles } from '@/common/styles';
-import { getNavigationConsts } from '@/utils/loadAppTools';
 import { useContext } from 'react';
 import {
   View,
@@ -18,6 +17,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { HomeScreenContext } from '../utils/context';
 import FastImage, { FastImageProps } from 'react-native-fast-image';
 import OlText from '@/components/OneLightText';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const AnimatedFastImage = Animated.createAnimatedComponent<FastImageProps>(FastImage as any);
 
@@ -74,9 +74,9 @@ function InfoBar() {
       width,
     };
   });
-  const { statusBarHeight } = getNavigationConsts();
+  const { top } = useSafeAreaInsets();
   return (
-    <View style={{ paddingTop: statusBarHeight, zIndex: 2 }}>
+    <View style={{ paddingTop: top, zIndex: 2 }}>
       <Animated.View style={styles.container} onLayout={setHotAreaWidth}>
         <View style={styles.settings}>
           <Icon

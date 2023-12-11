@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { View, RefreshControl, StyleSheet } from "react-native";
 import { HomeScreenContext } from "../utils/context";
 import Animated, { useAnimatedScrollHandler } from "react-native-reanimated";
-import { getNavigationConsts } from "@/utils/loadAppTools";
 import EmptyComponent from "@/components/EmptyComponent";
 import News from "@/components/News";
 import LoadMore from "@/components/LoadMore";
@@ -10,6 +9,7 @@ import newsDataMock from '@/mock/newsData';
 import HomeHeaderActivity from "./HomeHeaderActivity";
 import { FlashList } from "@shopify/flash-list";
 import { commonStyles } from "@/common/styles";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const apifunc = async () => {
     return new Promise((res) => {
@@ -66,7 +66,8 @@ function TypeNewsList({ route }: TypeNewsListProps) {
     const loadMoreData = () => {
         getNewsData('loadmore');
     };
-    const { bottomTabsHeight } = getNavigationConsts();
+    // 底部导航栏高度
+    const BottomTabBarHeight = useBottomTabBarHeight();
     return (
         <View style={styles.page}>
             <AnimatedFlashList
@@ -75,10 +76,9 @@ function TypeNewsList({ route }: TypeNewsListProps) {
                         allTypeListRef.current = ref;
                     }
                 }}
-                contentInsetAdjustmentBehavior='never'
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{
-                    paddingBottom: bottomTabsHeight
+                    paddingBottom: BottomTabBarHeight
                 }}
                 estimatedItemSize={110}
                 keyExtractor={(item) => item.id}
