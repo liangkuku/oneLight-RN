@@ -3,7 +3,7 @@ import OlText from '@/components/OneLightText';
 import https from '@/utils/https';
 import { commonStyles } from '@/common/styles';
 
-function MarketScreen() {
+function MarketScreen({navigation}) {
   const tt1 = async () => {
     const res = await https.get('/test/a?value=2');
     Toast.show(res.data.message);
@@ -12,6 +12,9 @@ function MarketScreen() {
     const res = await https.get('/test/a?value=3');
     Toast.show(res.data.message);
   };
+  const tt3 = () => {
+    navigation.navigate('Test1');
+  }
   return (
     <View style={styles.page}>
       <TouchableOpacity onPress={tt1}>
@@ -22,6 +25,11 @@ function MarketScreen() {
       <TouchableOpacity onPress={tt2}>
         <View style={{ width: 100, height: 100, backgroundColor: 'yellow' }}>
           <OlText>接口测试2</OlText>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={tt3}>
+        <View style={{ width: 100, height: 100, backgroundColor: 'yellow' }}>
+          <OlText>跳转</OlText>
         </View>
       </TouchableOpacity>
     </View>

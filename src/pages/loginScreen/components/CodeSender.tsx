@@ -1,6 +1,5 @@
 import {memo, useEffect, useRef, useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {getFontSize, getViewSize} from '@/utils/sizeTool';
 import {
   StyleSheet,
   ActivityIndicator,
@@ -55,7 +54,7 @@ function CodeSender({mobile}: CodeSenderProps) {
     <TouchableWithoutFeedback onPress={sendCode}>
       <View style={styles.container}>
         <OlText style={styles.strText}>获取验证码</OlText>
-        <Icon name='paper-plane' size={getViewSize(18)} />
+        <Icon name='paper-plane' size={18} />
       </View>
     </TouchableWithoutFeedback>
   ) : (
@@ -76,8 +75,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   strText: {
-    fontSize: getFontSize(18),
-    marginRight: getViewSize(6),
+    fontSize: 18,
+    marginRight: 6,
   },
   disabledColor: {
     color: commonStyles.grey_placeholder,

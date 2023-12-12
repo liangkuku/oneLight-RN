@@ -4,7 +4,8 @@ import BarItem from './components/BarItem';
 import PublishTool from './components/PublishTool';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
-function BottomTabBar({ state, navigation }: BottomTabBarProps) {
+function BottomTabBar(props: BottomTabBarProps) {
+  const { state, navigation } = props;
   return (
     <View style={styles.container}>
       <View style={styles.blurContainer}>
