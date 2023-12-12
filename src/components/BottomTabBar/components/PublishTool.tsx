@@ -1,14 +1,20 @@
+import { commonStyles } from '@/common/styles';
 import { BlurView } from '@react-native-community/blur';
 import { memo } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 function PublishTool() {
+  const isIos = Platform.OS === 'ios';
   return (
     <View style={styles.container}>
       <View style={styles.tool}>
         <View style={styles.blurContainer}>
-          <BlurView style={styles.blur} blurType='xlight' blurAmount={50} />
+          {isIos ? (
+            <BlurView style={styles.blur} blurType='xlight' blurAmount={50} />
+          ) : (
+            <View style={styles.spaceBoxForOthers} />
+          )}
         </View>
         <FastImage source={require('../static/publish.png')} style={styles.submitBtn} />
       </View>
@@ -37,14 +43,18 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    height: 17,
+    height: 15,
     overflow: 'hidden',
   },
   blur: {
     flex: 1,
   },
+  spaceBoxForOthers: {
+    flex: 1,
+    backgroundColor: commonStyles.white,
+  },
   submitBtn: {
-    width: 50,
+    width: 55,
     aspectRatio: 1,
   },
 });
