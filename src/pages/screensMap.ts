@@ -1,58 +1,66 @@
-import WelcomeScreen from './welcomeScreen';
+import { PATH } from '@/common/consts';
+// import WelcomeScreen from './welcomeScreen';
 import LoginScreen from './loginScreen';
 import HomeScreen from './homeScreen';
 import MineScreen from './mineScreen';
 import MarketScreen from './marketScreen';
-import ErrorScreen from './errorScreen';
 import CircleScreen from './circleScreen';
-import AddNewsScreen from './addNewsScreen';
 import TestScreen from './testScreen';
-import Toast from '@/components/Toast';
+import TestScreen1 from './testScreen1';
 
-export default [
+// const WelcomePaths = [
+//   {
+//     path: PATH.WELCOMESCREEN,
+//     component: WelcomeScreen,
+//     title: '欢迎',
+//   },
+//   {
+//     path: PATH.LOGINSCREEN,
+//     component: LoginScreen,
+//     title: '登录',
+//   },
+// ];
+
+const BusinessPaths: Route[] = [
   {
-    path: 'TestScreen',
+    path: 'Test',
     component: TestScreen,
+    title: '测试1',
   },
   {
-    path: 'AddNewsScreen',
-    component: AddNewsScreen,
+    path: 'Test2',
+    component: TestScreen1,
+    title: '测试2',
+    presentation: 'modal',
   },
   {
-    path: 'ErrorScreen',
-    component: ErrorScreen,
-  },
-  {
-    path: 'LoginScreen',
+    path: PATH.LOGINSCREEN,
     component: LoginScreen,
-  },
-  {
-    path: 'WelcomeScreen',
-    component: WelcomeScreen,
-    options: {
-      topBar: {
-        visible: false,
-      },
-    },
-  },
-  {
-    path: 'HomeScreen',
-    component: HomeScreen,
-  },
-  {
-    path: 'MineScreen',
-    component: MineScreen,
-  },
-  {
-    path: 'MarketScreen',
-    component: MarketScreen,
-  },
-  {
-    path: 'CircleScreen',
-    component: CircleScreen,
-  },
-  {
-    path: 'Toast',
-    component: Toast,
+    title: '登录',
   },
 ];
+
+const RootMainPaths = [
+  {
+    path: PATH.HOMESCREEN,
+    component: HomeScreen,
+    title: '首页',
+  },
+  {
+    path: PATH.MARKETSCREEN,
+    component: MarketScreen,
+    title: '集市',
+  },
+  {
+    path: PATH.CIRCLESCREEN,
+    component: CircleScreen,
+    title: '圈子',
+  },
+  {
+    path: PATH.MINESCREEN,
+    component: MineScreen,
+    title: '我的',
+  },
+];
+
+export { RootMainPaths, BusinessPaths };

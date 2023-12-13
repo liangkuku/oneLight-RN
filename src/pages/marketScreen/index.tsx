@@ -2,8 +2,11 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import OlText from '@/components/OneLightText';
 import https from '@/utils/https';
 import { commonStyles } from '@/common/styles';
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-function MarketScreen({navigation}) {
+function MarketScreen() {
   const tt1 = async () => {
     const res = await https.get('/test/a?value=2');
     Toast.show(res.data.message);
@@ -12,9 +15,11 @@ function MarketScreen({navigation}) {
     const res = await https.get('/test/a?value=3');
     Toast.show(res.data.message);
   };
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const tt3 = () => {
-    navigation.navigate('Test1');
-  }
+    console.log('9898跳转');
+    navigation.navigate('Test');
+  };
   return (
     <View style={styles.page}>
       <TouchableOpacity onPress={tt1}>
@@ -39,7 +44,7 @@ function MarketScreen({navigation}) {
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    backgroundColor: commonStyles.pageBgColor
+    backgroundColor: commonStyles.pageBgColor,
   },
 });
 

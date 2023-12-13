@@ -1,19 +1,17 @@
-/// <reference types="react-native" />
-
-interface Rout {
-  component: {
-    name: string;
-    options?: any;
-  };
-}
-
-interface StackRoot {
-  root: {
-    stack: {
-      children: Rout[];
-    };
-  };
-}
+type Route = {
+  path: string;
+  component: React.FC;
+  title: string;
+  presentation?:
+    | 'card'
+    | 'modal'
+    | 'transparentModal'
+    | 'containedModal'
+    | 'containedTransparentModal'
+    | 'fullScreenModal'
+    | 'formSheet'
+    | undefined;
+};
 
 // 信息 常见：首页一条发布信息
 type NewsItem = {

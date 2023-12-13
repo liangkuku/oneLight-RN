@@ -5,7 +5,10 @@ import { memo, useState } from 'react';
 import { Modal, Platform, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
-function PublishTool() {
+type PublishToolProps = {
+  navigation: any;
+};
+function PublishTool({ navigation }: PublishToolProps) {
   const isIos = Platform.OS === 'ios';
   const [modalVisible, setModalVisible] = useState(false);
   const openModal = () => {
@@ -13,8 +16,13 @@ function PublishTool() {
   };
   return (
     <>
-      <Modal animationType='fade' hardwareAccelerated visible={modalVisible} transparent statusBarTranslucent>
-        <AddNewsScreen></AddNewsScreen>
+      <Modal
+        animationType='fade'
+        hardwareAccelerated
+        visible={modalVisible}
+        transparent
+        statusBarTranslucent>
+        <AddNewsScreen setModalVisible={setModalVisible} navigation={navigation} />
       </Modal>
       <TouchableWithoutFeedback onPress={openModal}>
         <View style={styles.container}>

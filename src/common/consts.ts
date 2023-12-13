@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // APP版本号
 const appVersion = {
   major: 1,
@@ -12,4 +13,13 @@ const apiVersion = {
   patch: 0,
 };
 
-export { appVersion, apiVersion };
+enum PATH {
+  WELCOMESCREEN = 'WELCOMESCREEN',
+  LOGINSCREEN = 'LOGINSCREEN',
+  HOMESCREEN = 'HOMESCREEN',
+  MARKETSCREEN = 'MARKETSCREEN',
+  CIRCLESCREEN = 'CIRCLESCREEN',
+  MINESCREEN = 'MINESCREEN',
+}
+
+export { appVersion, apiVersion, PATH };

@@ -37,9 +37,15 @@ const Types = [
   },
 ];
 
+type AddNewsScreenProps = {
+  navigation: any;
+  // eslint-disable-next-line no-unused-vars
+  setModalVisible: (flag: boolean) => void;
+};
+
 const AnimatedFastImage = Animated.createAnimatedComponent<FastImageProps>(FastImage as any);
 
-function AddNewsScreen() {
+function AddNewsScreen({ setModalVisible, navigation }: AddNewsScreenProps) {
   // 关闭按钮旋转动画
   const rotation = useSharedValue(0);
   const animatedStyle = useAnimatedStyle(() => {
@@ -53,20 +59,28 @@ function AddNewsScreen() {
       stiffness: 100,
       mass: 1,
     });
-  };  
+  };
   useEffect(() => {
     startAnimation();
   }, []);
+  const closeModal = () => {
+    setModalVisible(false);
+  };
   return (
     <View style={styles.page}>
       <BlurView style={styles.blur} blurType='xlight' blurAmount={50} />
       <View style={styles.container}>
         <View style={styles.main}>
           {Types.map(item => (
-            <AddTypeItem key={item.id} typeInfo={item} />
+            <AddTypeItem
+              key={item.id}
+              typeInfo={item}
+              setModalVisible={setModalVisible}
+              navigation={navigation}
+            />
           ))}
         </View>
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={closeModal}>
           <AnimatedFastImage
             source={require('./static/publish.png')}
             style={[styles.close, animatedStyle]}

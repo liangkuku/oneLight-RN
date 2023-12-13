@@ -1,4 +1,4 @@
-import { memo, useContext, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import FastImage, { FastImageProps } from 'react-native-fast-image';
 import Animated, {
@@ -7,18 +7,17 @@ import Animated, {
   withSequence,
   withTiming,
 } from 'react-native-reanimated';
-import { AddNewsScreenContext } from '../utils/context';
 
 type BarItemProps = {
   currentIndex: number;
   selfIndex: number;
   route: any;
+  navigation: any;
 };
 
 const AnimatedFastImage = Animated.createAnimatedComponent<FastImageProps>(FastImage as any);
 
-function BarItem({ currentIndex, selfIndex, route }: BarItemProps) {
-  const { navigation } = useContext(AddNewsScreenContext);
+function BarItem({ currentIndex, selfIndex, route, navigation }: BarItemProps) {
   const isFocus = currentIndex === selfIndex;
   const scale = useSharedValue(1);
   const animatedStyle = useAnimatedStyle(() => {
@@ -33,7 +32,7 @@ function BarItem({ currentIndex, selfIndex, route }: BarItemProps) {
       withTiming(1.2, { duration: 100 }),
       withTiming(1, { duration: 100 }),
     );
-  }, [isFocus]);
+  }, [isFocus, scale]);
 
   const selectTab = () => {
     const event = navigation.emit({
