@@ -1,24 +1,36 @@
 import { commonStyles } from '@/common/styles';
+import AddNewsScreen from '@/pages/addNewsScreen';
 import { BlurView } from '@react-native-community/blur';
-import { memo } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { memo, useState } from 'react';
+import { Modal, Platform, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 function PublishTool() {
   const isIos = Platform.OS === 'ios';
+  const [modalVisible, setModalVisible] = useState(false);
+  const openModal = () => {
+    setModalVisible(true);
+  };
   return (
-    <View style={styles.container}>
-      <View style={styles.tool}>
-        <View style={styles.blurContainer}>
-          {isIos ? (
-            <BlurView style={styles.blur} blurType='xlight' blurAmount={50} />
-          ) : (
-            <View style={styles.spaceBoxForOthers} />
-          )}
+    <>
+      <Modal animationType='fade' hardwareAccelerated visible={modalVisible} transparent statusBarTranslucent>
+        <AddNewsScreen></AddNewsScreen>
+      </Modal>
+      <TouchableWithoutFeedback onPress={openModal}>
+        <View style={styles.container}>
+          <View style={styles.tool}>
+            <View style={styles.blurContainer}>
+              {isIos ? (
+                <BlurView style={styles.blur} blurType='xlight' blurAmount={50} />
+              ) : (
+                <View style={styles.spaceBoxForOthers} />
+              )}
+            </View>
+            <FastImage source={require('../static/publish.png')} style={styles.submitBtn} />
+          </View>
         </View>
-        <FastImage source={require('../static/publish.png')} style={styles.submitBtn} />
-      </View>
-    </View>
+      </TouchableWithoutFeedback>
+    </>
   );
 }
 

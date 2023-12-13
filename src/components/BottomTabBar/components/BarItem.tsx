@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { memo, useContext, useEffect } from 'react';
 import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import FastImage, { FastImageProps } from 'react-native-fast-image';
 import Animated, {
@@ -7,17 +7,18 @@ import Animated, {
   withSequence,
   withTiming,
 } from 'react-native-reanimated';
+import { AddNewsScreenContext } from '../utils/context';
 
 type BarItemProps = {
   currentIndex: number;
   selfIndex: number;
-  navigation: any;
   route: any;
 };
 
 const AnimatedFastImage = Animated.createAnimatedComponent<FastImageProps>(FastImage as any);
 
-function BarItem({ currentIndex, selfIndex, navigation, route }: BarItemProps) {
+function BarItem({ currentIndex, selfIndex, route }: BarItemProps) {
+  const { navigation } = useContext(AddNewsScreenContext);
   const isFocus = currentIndex === selfIndex;
   const scale = useSharedValue(1);
   const animatedStyle = useAnimatedStyle(() => {
