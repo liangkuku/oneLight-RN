@@ -1,9 +1,7 @@
 import { createContext, useContext } from 'react';
-import LoadingStore from './modules/loading';
-import ToastStore from './modules/toast';
-import TestStore from './modules/test';
+import RouterTypetore from './modules/routerType';
 
-export const stores = { LoadingStore, ToastStore, TestStore };
+export const stores = { RouterTypetore };
 
 export const StoreContext = createContext(stores);
 

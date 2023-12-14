@@ -1,8 +1,8 @@
-import {STORAGE_KEYS} from '@/interfaces/commonEnum';
-import {apiLogin} from '@/services/login';
+import { STORAGE_KEYS } from '@/interfaces/commonEnum';
+import { apiLogin } from '@/services/login';
 import Storage from '@/storage';
 import https from './https';
-// import {setAppRouter} from './setRouterTools';
+import { stores } from '@/store';
 
 /**
  * 登录方法
@@ -10,17 +10,21 @@ import https from './https';
 const login = async (mobile: string, msgCode: string) => {
   const res = await apiLogin(mobile, msgCode);
   if (!res.success) return;
-  const {Authorization, uid, isCodeRight, message} = res.data;
+  const { Authorization, uid, isCodeRight, message } = res.data;
   if (!isCodeRight) {
     Toast.show(message);
-    return;
+    return false;
   }
   Storage.set(STORAGE_KEYS.TOKEN, Authorization);
   Storage.set(STORAGE_KEYS.UID, uid);
   Storage.set(STORAGE_KEYS.LOGIN_STATUS, true);
-  Storage.set(STORAGE_KEYS.IS_LOADEDAPP, true);
-  https.defaults.headers.common = {Authorization, uid};
-  // setAppRouter();
+  https.defaults.headers.common = { Authorization, uid };
+  const isLoadedApp = Storage.getBoolean(STORAGE_KEYS.IS_LOADEDAPP) ?? false;
+  if (!isLoadedApp) {
+    Storage.set(STORAGE_KEYS.IS_LOADEDAPP, isLoadedApp);
+    stores.RouterTypetore.setLoadedApp();
+  }
+  return true;
 };
 
 /**
@@ -33,4 +37,4 @@ const logout = () => {
   https.defaults.headers.common = {};
 };
 
-export {login, logout};
+export { login, logout };

@@ -1,20 +1,15 @@
-import {memo, useEffect, useRef, useState} from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {
-  StyleSheet,
-  ActivityIndicator,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
-import {commonStyles} from '@/common/styles';
+import { StyleSheet, ActivityIndicator, TouchableWithoutFeedback, View } from 'react-native';
+import { commonStyles } from '@/common/styles';
 import OlText from '@/components/OneLightText';
-import {apiGetMsgCode} from '@/services/login';
+import { apiGetMsgCode } from '@/services/login';
 
 type CodeSenderProps = {
   mobile: string;
 };
 
-function CodeSender({mobile}: CodeSenderProps) {
+function CodeSender({ mobile }: CodeSenderProps) {
   const [status, setStatus] = useState(true);
   const [second, setSecond] = useState(5);
   const secondRef = useRef(5);
@@ -60,9 +55,7 @@ function CodeSender({mobile}: CodeSenderProps) {
   ) : (
     <TouchableWithoutFeedback onPress={reGetCode}>
       <View style={styles.container}>
-        <OlText style={[styles.strText, styles.disabledColor]}>
-          重新获取({second}秒)
-        </OlText>
+        <OlText style={[styles.strText, styles.disabledColor]}>重新获取({second}秒)</OlText>
         <ActivityIndicator />
       </View>
     </TouchableWithoutFeedback>

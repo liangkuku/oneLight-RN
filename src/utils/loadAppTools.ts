@@ -1,16 +1,20 @@
 import Storage from '@/storage';
 import { STORAGE_KEYS } from '@/interfaces/commonEnum';
 import https from './https';
+import RNRootToast from 'react-native-root-toast';
 
 //设置全局工具方法、变量
 export const setGlobalTools = () => {
   // 全局Toast工具
-  
+  Toast = {
+    show: message => {
+      RNRootToast.show(message, { position: RNRootToast.positions.CENTER });
+    },
+  };
 };
 
 //初始化storage数据
 export const initStorageData = () => {
-  console.log('9898初始化storage')
   // 初始化登录状态
   const loginStatus = Storage.getBoolean(STORAGE_KEYS.LOGIN_STATUS);
   if (loginStatus) {
@@ -21,7 +25,7 @@ export const initStorageData = () => {
   } else {
     Storage.set(STORAGE_KEYS.LOGIN_STATUS, false);
   }
-  // 是否是第一次加载APP
+  // 是否是第一次加载APP主路由
   const isLoadedApp = Storage.getBoolean(STORAGE_KEYS.IS_LOADEDAPP);
   if (!isLoadedApp) {
     Storage.set(STORAGE_KEYS.IS_LOADEDAPP, false);

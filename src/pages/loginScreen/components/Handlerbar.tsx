@@ -5,6 +5,7 @@ import { memo } from 'react';
 import { StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import Animated, { Layout } from 'react-native-reanimated';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 type HandlerbarProps = {
   isShowPassCode: boolean;
@@ -13,7 +14,7 @@ type HandlerbarProps = {
 };
 
 function Handlerbar({ isShowPassCode, mobile, msgCode }: HandlerbarProps) {
-  const loginHandle = async () => {
+  const loginHandle = () => {
     if (!isShowPassCode || !msgCode) {
       Toast.show(`请输入${!isShowPassCode ? '手机号码' : '验证码'}`);
       return;
@@ -21,20 +22,22 @@ function Handlerbar({ isShowPassCode, mobile, msgCode }: HandlerbarProps) {
     login(mobile, msgCode);
   };
   return (
-    <Animated.View layout={Layout.duration(300)} style={styles.btnContainer}>
-      <OlText style={[styles.or, styles.viewMargin]}>或</OlText>
-      <View style={[styles.loginMethods, styles.viewMargin]}>
-        <TouchableWithoutFeedback onPress={loginHandle}>
-          <FastImage style={styles.loginMethod} source={require('@/static/icons/wechat.png')} />
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={loginHandle}>
-          <FastImage style={styles.loginMethod} source={require('@/static/icons/alipay.png')} />
-        </TouchableWithoutFeedback>
-      </View>
-      <TouchableOpacity onPress={loginHandle} style={styles.loginBtn}>
-        <OlText style={styles.loginText}>登录</OlText>
-      </TouchableOpacity>
-    </Animated.View>
+    <RootSiblingParent>
+      <Animated.View layout={Layout.duration(300)} style={styles.btnContainer}>
+        <OlText style={[styles.or, styles.viewMargin]}>或</OlText>
+        <View style={[styles.loginMethods, styles.viewMargin]}>
+          <TouchableWithoutFeedback onPress={loginHandle}>
+            <FastImage style={styles.loginMethod} source={require('@/static/icons/wechat.png')} />
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={loginHandle}>
+            <FastImage style={styles.loginMethod} source={require('@/static/icons/alipay.png')} />
+          </TouchableWithoutFeedback>
+        </View>
+        <TouchableOpacity onPress={loginHandle} style={styles.loginBtn}>
+          <OlText style={styles.loginText}>登录</OlText>
+        </TouchableOpacity>
+      </Animated.View>
+    </RootSiblingParent>
   );
 }
 
