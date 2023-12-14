@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import OlText from '@/components/OneLightText';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -10,7 +10,7 @@ function TestScreen() {
     navigation.navigate('Test2');
   };
   return (
-    <View>
+    <View style={styles.page}>
       <OlText>我是路由测试页</OlText>
       <OlText>我是路由测试页</OlText>
       <OlText>我是路由测试页</OlText>
@@ -20,5 +20,12 @@ function TestScreen() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    backgroundColor: 'pink'
+  }
+})
 
 export default TestScreen;

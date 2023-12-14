@@ -2,6 +2,7 @@ type Route = {
   path: string;
   component: React.FC;
   title: string;
+  headerShown?: boolean;
   presentation?:
     | 'card'
     | 'modal'

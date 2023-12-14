@@ -31,7 +31,11 @@ function App() {
             <Stack.Screen
               name={route.path}
               component={route.component}
-              options={{ title: route.title, presentation: route.presentation ?? 'card' }}
+              options={{
+                title: route.title,
+                presentation: route.presentation ?? 'card',
+                headerShown: route.headerShown ?? true,
+              }}
               key={route.path}
             />
           ))}
