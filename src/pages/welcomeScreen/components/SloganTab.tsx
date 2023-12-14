@@ -1,6 +1,6 @@
-import {commonStyles, getCommonShadowStyle} from '@/common/styles';
-import {memo} from 'react';
-import {StyleSheet, View, TouchableOpacity} from 'react-native';
+import { commonStyles, getCommonShadowStyle } from '@/common/styles';
+import { memo } from 'react';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import OlText from '@/components/OneLightText';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -12,30 +12,20 @@ function SloganTab() {
     console.log('9898加入我们！！！');
   };
   const loginHandler = () => {
-    navigation.navigate(PATH.LOGINSCREEN)
+    navigation.navigate(PATH.WELCOME_LOGINSCREEN);
   };
   return (
     <View style={styles.container}>
       <View>
-        <OlText style={[styles.fontStyle, styles.title]}>
-          Welcome Use OneLight
-        </OlText>
-        <OlText style={[styles.fontStyle, styles.title]}>
-          这是一个专属年轻人的App
-        </OlText>
+        <OlText style={[styles.fontStyle, styles.title]}>Welcome Use OneLight</OlText>
+        <OlText style={[styles.fontStyle, styles.title]}>这是一个专属年轻人的App</OlText>
       </View>
       <View>
-        <OlText style={[styles.fontStyle, styles.content]}>
-          在这里，你可以
-        </OlText>
-        <OlText style={[styles.fontStyle, styles.content]}>
-          分享美食，社交，数码，时尚
-        </OlText>
+        <OlText style={[styles.fontStyle, styles.content]}>在这里，你可以</OlText>
+        <OlText style={[styles.fontStyle, styles.content]}>分享美食，社交，数码，时尚</OlText>
         <OlText style={[styles.fontStyle, styles.content]}>
           或者
-          <OlText
-            style={[styles.fontStyle, styles.content, styles.joinUs]}
-            onPress={joinUs}>
+          <OlText style={[styles.fontStyle, styles.content, styles.joinUs]} onPress={joinUs}>
             加入我们
           </OlText>
           的团队

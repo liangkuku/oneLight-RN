@@ -24,8 +24,8 @@ function TestScreen() {
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    backgroundColor: 'pink'
-  }
-})
+    backgroundColor: 'pink',
+  },
+});
 
 export default TestScreen;

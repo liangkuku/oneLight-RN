@@ -1,24 +1,21 @@
-import { StyleSheet} from 'react-native';
-import {View} from 'react-native';
+import { StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import BusinessInfoBar from './components/BusinessInfoBar';
 import OrdersBar from './components/OrdersBar';
 import ToolsBar from './components/ToolsBar';
 import LinearGradient from 'react-native-linear-gradient';
-import Animated, {
-  useAnimatedScrollHandler,
-  useSharedValue,
-} from 'react-native-reanimated';
+import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
 import AnimatedHeader from './components/AnimatedHeader';
-import {MineScreenContext} from './utils/context';
+import { MineScreenContext } from './utils/context';
 import UserInfoBar from './components/UserInfoBar';
 import OlText from '@/components/OneLightText';
-import {logout} from '@/utils/login';
+import { logout } from '@/utils/login';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { commonStyles } from '@/common/styles';
 
 function MineScreen() {
   const goPage = () => {
-    console.log('9898下一页')
+    console.log('9898下一页');
   };
   // 动画共享滑动距离
   const sharedScrollY = useSharedValue(0);
@@ -38,13 +35,9 @@ function MineScreen() {
       <View style={styles.page}>
         <LinearGradient
           style={styles.topbg}
-          colors={[
-            'rgba(160, 252, 192,0.2)',
-            'rgba(160, 252, 192,0.1)',
-            'rgba(160, 252, 192,0)',
-          ]}
-          start={{x: 1, y: 0}}
-          end={{x: 1, y: 1}}
+          colors={['rgba(160, 252, 192,0.2)', 'rgba(160, 252, 192,0.1)', 'rgba(160, 252, 192,0)']}
+          start={{ x: 1, y: 0 }}
+          end={{ x: 1, y: 1 }}
           locations={[0.1, 0.5, 1]}
         />
         <Animated.ScrollView
@@ -78,7 +71,7 @@ function MineScreen() {
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    backgroundColor: commonStyles.pageBgColor
+    backgroundColor: commonStyles.pageBgColor,
   },
   topbg: {
     position: 'absolute',

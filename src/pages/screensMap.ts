@@ -16,7 +16,7 @@ const WelcomePaths: Route[] = [
     headerShown: false,
   },
   {
-    path: PATH.LOGINSCREEN,
+    path: PATH.WELCOME_LOGINSCREEN,
     component: LoginScreen,
     title: '登录',
     presentation: 'modal',
@@ -39,6 +39,7 @@ const BusinessPaths: Route[] = [
     path: PATH.LOGINSCREEN,
     component: LoginScreen,
     title: '登录',
+    presentation: 'modal',
   },
 ];
 
