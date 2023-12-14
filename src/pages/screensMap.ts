@@ -1,5 +1,5 @@
 import { PATH } from '@/common/consts';
-// import WelcomeScreen from './welcomeScreen';
+import WelcomeScreen from './welcomeScreen';
 import LoginScreen from './loginScreen';
 import HomeScreen from './homeScreen';
 import MineScreen from './mineScreen';
@@ -8,18 +8,20 @@ import CircleScreen from './circleScreen';
 import TestScreen from './testScreen';
 import TestScreen1 from './testScreen1';
 
-// const WelcomePaths = [
-//   {
-//     path: PATH.WELCOMESCREEN,
-//     component: WelcomeScreen,
-//     title: '欢迎',
-//   },
-//   {
-//     path: PATH.LOGINSCREEN,
-//     component: LoginScreen,
-//     title: '登录',
-//   },
-// ];
+const WelcomePaths: Route[] = [
+  {
+    path: PATH.WELCOMESCREEN,
+    component: WelcomeScreen,
+    title: '欢迎',
+    headerShown: false,
+  },
+  {
+    path: PATH.LOGINSCREEN,
+    component: LoginScreen,
+    title: '登录',
+    presentation: 'modal',
+  },
+];
 
 const BusinessPaths: Route[] = [
   {
@@ -63,4 +65,4 @@ const RootMainPaths = [
   },
 ];
 
-export { RootMainPaths, BusinessPaths };
+export { RootMainPaths, BusinessPaths, WelcomePaths };

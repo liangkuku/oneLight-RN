@@ -1,16 +1,12 @@
 import OlText from '@/components/OneLightText';
-import {memo} from 'react';
-import {StyleSheet} from 'react-native';
+import { memo } from 'react';
+import { StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {Assets} from 'react-native-ui-lib';
 
 function Slogan() {
   return (
     <>
-      <FastImage
-        style={[styles.viewMargin, styles.logo]}
-        source={Assets.icons.logo}
-      />
+      <FastImage style={[styles.viewMargin, styles.logo]} source={require('@/static/icons/appLogo.png')} />
       <OlText style={[styles.title, styles.viewMargin]}>
         嗨<OlText style={styles.appName}>, oneLight</OlText>
       </OlText>

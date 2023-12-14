@@ -1,18 +1,16 @@
 import Storage from '@/storage';
 import { STORAGE_KEYS } from '@/interfaces/commonEnum';
 import https from './https';
-import { ToastStore } from '@/store';
 
 //设置全局工具方法、变量
 export const setGlobalTools = () => {
   // 全局Toast工具
-  Toast = {
-    show: (message: string, duration?: number) => ToastStore.show(message, duration),
-  };
+  
 };
 
 //初始化storage数据
 export const initStorageData = () => {
+  console.log('9898初始化storage')
   // 初始化登录状态
   const loginStatus = Storage.getBoolean(STORAGE_KEYS.LOGIN_STATUS);
   if (loginStatus) {

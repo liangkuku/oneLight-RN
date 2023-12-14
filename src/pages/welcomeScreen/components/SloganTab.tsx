@@ -1,33 +1,18 @@
 import {commonStyles, getCommonShadowStyle} from '@/common/styles';
 import {memo} from 'react';
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
-import {Navigation} from 'react-native-navigation';
 import OlText from '@/components/OneLightText';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { PATH } from '@/common/consts';
 
 function SloganTab() {
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const joinUs = () => {
     console.log('9898加入我们！！！');
   };
   const loginHandler = () => {
-    Navigation.showModal({
-      stack: {
-        children: [
-          {
-            component: {
-              name: 'LoginScreen',
-              options: {
-                topBar: {
-                  background: {
-                    translucent: false,
-                  },
-                  drawBehind: false,
-                },
-              },
-            },
-          },
-        ],
-      },
-    });
+    navigation.navigate(PATH.LOGINSCREEN)
   };
   return (
     <View style={styles.container}>
