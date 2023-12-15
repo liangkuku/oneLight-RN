@@ -5,6 +5,7 @@ import AddTypeItem from './components/AddTypeItem';
 import FastImage, { FastImageProps } from 'react-native-fast-image';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { useEffect } from 'react';
+import RootView from '@/components/RootView';
 
 const Types = [
   {
@@ -67,7 +68,7 @@ function AddNewsScreen({ setModalVisible, navigation }: AddNewsScreenProps) {
     setModalVisible(false);
   };
   return (
-    <View style={styles.page}>
+    <RootView style={styles.page}>
       <BlurView style={styles.blur} blurType='xlight' blurAmount={50} />
       <View style={styles.container}>
         <View style={styles.main}>
@@ -87,13 +88,12 @@ function AddNewsScreen({ setModalVisible, navigation }: AddNewsScreenProps) {
           />
         </TouchableWithoutFeedback>
       </View>
-    </View>
+    </RootView>
   );
 }
 
 const styles = StyleSheet.create({
   page: {
-    flex: 1,
     overflow: 'hidden',
   },
   blur: {

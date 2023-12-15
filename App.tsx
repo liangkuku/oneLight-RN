@@ -15,11 +15,13 @@ const BottomTabNavigator = createBottomTabNavigator();
 
 const App = observer(() => {
   const { RouterTypetore } = useStores();
-  SplashScreen.hide();
+  const hideSplashScreen = () => {
+    SplashScreen.hide();
+  }
   return (
     <RootSiblingParent>
       <StoreContext.Provider value={stores}>
-        <NavigationContainer>
+        <NavigationContainer onReady={hideSplashScreen}>
           <Stack.Navigator
             screenOptions={{
               statusBarTranslucent: true,

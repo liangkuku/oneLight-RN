@@ -12,6 +12,7 @@ import OlText from '@/components/OneLightText';
 import { logout } from '@/utils/login';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { commonStyles } from '@/common/styles';
+import RootView from '@/components/RootView';
 
 function MineScreen() {
   const goPage = () => {
@@ -32,7 +33,7 @@ function MineScreen() {
   const BottomTabBarHeight = useBottomTabBarHeight();
   return (
     <MineScreenContext.Provider value={providerValue}>
-      <View style={styles.page}>
+      <RootView>
         <LinearGradient
           style={styles.topbg}
           colors={['rgba(160, 252, 192,0.2)', 'rgba(160, 252, 192,0.1)', 'rgba(160, 252, 192,0)']}
@@ -63,16 +64,12 @@ function MineScreen() {
           <View style={styles.aa} />
           <View style={styles.bb} />
         </Animated.ScrollView>
-      </View>
+      </RootView>
     </MineScreenContext.Provider>
   );
 }
 
 const styles = StyleSheet.create({
-  page: {
-    flex: 1,
-    backgroundColor: commonStyles.pageBgColor,
-  },
   topbg: {
     position: 'absolute',
     top: 0,

@@ -1,20 +1,17 @@
-import {StyleSheet, View} from 'react-native';
+import { StyleSheet } from 'react-native';
 import OlText from '@/components/OneLightText';
-import { commonStyles } from '@/common/styles';
+import RootView from '@/components/RootView';
 
 function CircleScreen() {
   return (
-    <View style={styles.page}>
+    <RootView style={styles.page}>
       <OlText>圈子</OlText>
-    </View>
+    </RootView>
   );
 }
 
 const styles = StyleSheet.create({
-  page: {
-    flex: 1,
-    backgroundColor: commonStyles.pageBgColor
-  },
+  page: {},
 });
 
 export default CircleScreen;

@@ -4,7 +4,7 @@ import PageCounter from './components/PageCounter';
 import { useState, useEffect } from 'react';
 import OpacitySwiper from './components/OpacitySwiper';
 import SloganTab from './components/SloganTab';
-import SplashScreen from 'react-native-splash-screen';
+import RootView from '@/components/RootView';
 
 const imgUrls = [
   'https://tuchuangs.com/imgs/2023/04/23/945f7dee14fb39f4.jpeg',
@@ -13,11 +13,6 @@ const imgUrls = [
 ];
 function WelcomeScreen() {
   const [activeIndex, setActiveIndex] = useState(0);
-  useEffect(() => {
-    setTimeout(() => {
-      SplashScreen.hide();
-    }, 2500);
-  }, []);
   useEffect(() => {
     const timer = setTimeout(() => {
       if (activeIndex === imgUrls.length - 1) {
@@ -31,7 +26,7 @@ function WelcomeScreen() {
     };
   }, [activeIndex]);
   return (
-    <View style={styles.page}>
+    <RootView>
       <OpacitySwiper activeIndex={activeIndex} imgUrls={imgUrls} />
       <View style={styles.container}>
         <BlurView
@@ -43,14 +38,11 @@ function WelcomeScreen() {
         <PageCounter total={imgUrls.length} activeIndex={activeIndex} />
         <SloganTab />
       </View>
-    </View>
+    </RootView>
   );
 }
 
 const styles = StyleSheet.create({
-  page: {
-    flex: 1,
-  },
   swiperImg: {
     flex: 1,
   },

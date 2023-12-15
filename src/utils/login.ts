@@ -21,7 +21,6 @@ const login = async (mobile: string, msgCode: string) => {
   https.defaults.headers.common = { Authorization, uid };
   const isLoadedApp = Storage.getBoolean(STORAGE_KEYS.IS_LOADEDAPP) ?? false;
   if (!isLoadedApp) {
-    Storage.set(STORAGE_KEYS.IS_LOADEDAPP, isLoadedApp);
     stores.RouterTypetore.setLoadedApp();
   }
   return true;

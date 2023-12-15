@@ -1,10 +1,10 @@
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import OlText from '@/components/OneLightText';
 import https from '@/utils/https';
-import { commonStyles } from '@/common/styles';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import RootView from '@/components/RootView';
 
 function MarketScreen() {
   const tt1 = async () => {
@@ -21,7 +21,7 @@ function MarketScreen() {
     navigation.navigate('Test');
   };
   return (
-    <View style={styles.page}>
+    <RootView>
       <TouchableOpacity onPress={tt1}>
         <View style={{ width: 100, height: 100, backgroundColor: 'green' }}>
           <OlText>接口测试1</OlText>
@@ -37,15 +37,8 @@ function MarketScreen() {
           <OlText>跳转</OlText>
         </View>
       </TouchableOpacity>
-    </View>
+    </RootView>
   );
 }
-
-const styles = StyleSheet.create({
-  page: {
-    flex: 1,
-    backgroundColor: commonStyles.pageBgColor,
-  },
-});
 
 export default MarketScreen;

@@ -1,12 +1,10 @@
-import { useEffect, useRef } from 'react';
-import { StyleSheet, View } from 'react-native';
-import SplashScreen from 'react-native-splash-screen';
+import { useRef } from 'react';
 import AnimatedHeader from './components/AnimatedHeader';
 import { useSharedValue } from 'react-native-reanimated';
 import NewsListContainer from './components/NewsListContainer';
 import { HomeScreenContext } from './utils/context';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { commonStyles } from '@/common/styles';
+import RootView from '@/components/RootView';
 
 function HomeScreen() {
   const { top } = useSafeAreaInsets();
@@ -19,11 +17,6 @@ function HomeScreen() {
   const allTypeListRef = useRef(null);
   // 分类栏容器ref
   const categoryBarRef = useRef(null);
-  useEffect(() => {
-    setTimeout(() => {
-      SplashScreen.hide();
-    }, 3000);
-  }, []);
   const providerValue = {
     initTopbarHeight, // 顶部动画组件的高度
     newsListContainerRef, // 最外层所有list列表容器ref
@@ -33,20 +26,13 @@ function HomeScreen() {
   };
   return (
     <HomeScreenContext.Provider value={providerValue}>
-      <View style={styles.page}>
+      <RootView>
         <NewsListContainer ref={newsListContainerRef} />
         {/* 涉及blur组件需要放在下方 */}
         <AnimatedHeader />
-      </View>
+      </RootView>
     </HomeScreenContext.Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  page: {
-    flex: 1,
-    backgroundColor: commonStyles.pageBgColor
-  },
-});
 
 export default HomeScreen;
