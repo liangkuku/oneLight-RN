@@ -1,7 +1,7 @@
-import {commonStyles} from '@/common/styles';
-import {memo} from 'react';
-import {StyleSheet} from 'react-native';
-import {TextField} from 'react-native-ui-lib';
+import { commonStyles } from '@/common/styles';
+import { memo } from 'react';
+import { StyleSheet } from 'react-native';
+import { TextField } from 'react-native-ui-lib';
 
 type MobileInputProps = {
   mobile: string;

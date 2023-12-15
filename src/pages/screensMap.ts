@@ -8,7 +8,7 @@ import CircleScreen from './circleScreen';
 import TestScreen from './testScreen';
 import TestScreen1 from './testScreen1';
 
-const WelcomePaths: Route[] = [
+const AppPaths: Route[] = [
   {
     path: PATH.WELCOMESCREEN,
     component: WelcomeScreen,
@@ -16,14 +16,11 @@ const WelcomePaths: Route[] = [
     headerShown: false,
   },
   {
-    path: PATH.WELCOME_LOGINSCREEN,
+    path: PATH.LOGINSCREEN,
     component: LoginScreen,
     title: '登录',
     presentation: 'modal',
   },
-];
-
-const BusinessPaths: Route[] = [
   {
     path: 'Test',
     component: TestScreen,
@@ -33,12 +30,6 @@ const BusinessPaths: Route[] = [
     path: 'Test2',
     component: TestScreen1,
     title: '测试2',
-    presentation: 'modal',
-  },
-  {
-    path: PATH.LOGINSCREEN,
-    component: LoginScreen,
-    title: '登录',
     presentation: 'modal',
   },
 ];
@@ -66,4 +57,4 @@ const RootMainPaths = [
   },
 ];
 
-export { RootMainPaths, BusinessPaths, WelcomePaths };
+export { RootMainPaths, AppPaths };

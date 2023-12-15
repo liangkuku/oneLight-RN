@@ -14,8 +14,8 @@ const apiVersion = {
 };
 
 enum PATH {
+  MAINSCREEN = 'MAINSCREEN', // 主页底部导航栏路由BottomTabs
   WELCOMESCREEN = 'WELCOMESCREEN', //欢迎页
-  WELCOME_LOGINSCREEN = 'WELCOME_LOGINSCREEN', //欢迎页专用登录页
   LOGINSCREEN = 'LOGINSCREEN', // 登录页
   HOMESCREEN = 'HOMESCREEN', // 首页
   MARKETSCREEN = 'MARKETSCREEN', // 集市

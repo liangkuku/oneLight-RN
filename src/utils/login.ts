@@ -9,7 +9,7 @@ import { stores } from '@/store';
  */
 const login = async (mobile: string, msgCode: string) => {
   const res = await apiLogin(mobile, msgCode);
-  if (!res.success) return;
+  if (!res.success) return false;
   const { Authorization, uid, isCodeRight, message } = res.data;
   if (!isCodeRight) {
     Toast.show(message);
@@ -21,7 +21,7 @@ const login = async (mobile: string, msgCode: string) => {
   https.defaults.headers.common = { Authorization, uid };
   const isLoadedApp = Storage.getBoolean(STORAGE_KEYS.IS_LOADEDAPP) ?? false;
   if (!isLoadedApp) {
-    stores.RouterTypetore.setLoadedApp();
+    Storage.set(STORAGE_KEYS.IS_LOADEDAPP, !isLoadedApp);
   }
   return true;
 };
