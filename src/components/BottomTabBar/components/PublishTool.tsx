@@ -1,4 +1,4 @@
-import BlurBox from '@/components/BluerBox';
+import BlurBox from '@/components/BluerBox/index';
 import AddNewsScreen from '@/pages/addNewsScreen';
 import { memo, useState } from 'react';
 import { Modal, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';

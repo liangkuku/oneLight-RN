@@ -11,7 +11,6 @@ import { BlurView } from '@react-native-community/blur';
 import { useEffect, useState } from 'react';
 
 function BlurBox() {
-  console.log('9898webblur');
   const [isShow, setIsShow] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => {

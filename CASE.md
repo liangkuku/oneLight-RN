@@ -12,3 +12,10 @@ import { RootSiblingParent } from 'react-native-root-siblings';
 <RootSiblingParent>
     //...TODO SOMETHING
 </RootSiblingParent>
+
+# 关于@react-native-community/blur 在 android 平台的问题
+
+目前已发现问题有：
+1、需要父盒子包裹，并需要 overflow: hidden 属性
+2、不同路由栈切换在首次加载会出现白屏
+现行解决方案：针对 iOS、web、android 平台使用不同公共组件<BlurBox/>
