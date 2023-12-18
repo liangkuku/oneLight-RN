@@ -1,20 +1,17 @@
 import { Platform, StyleSheet, View } from 'react-native';
-import { BlurView } from '@react-native-community/blur';
 import BarItem from './components/BarItem';
 import PublishTool from './components/PublishTool';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { commonStyles } from '@/common/styles';
+import BlurBox from '@/components/BluerBox/index';
 
 function BottomTabBar(props: BottomTabBarProps) {
   const isIos = Platform.OS === 'ios';
   const { state, navigation } = props;
   return (
     <View style={[styles.container, isIos ? styles.containerForIos : styles.containerForOthers]}>
-      {isIos && (
-        <View style={styles.blurContainer}>
-          <BlurView style={styles.blur} blurType='xlight' blurAmount={50} />
-        </View>
-      )}
+      <View style={styles.blurContainer}>
+        <BlurBox />
+      </View>
       <BarItem
         currentIndex={state.index}
         route={state.routes[0]}
@@ -57,7 +54,6 @@ const styles = StyleSheet.create({
   },
   containerForOthers: {
     paddingBottom: 20,
-    backgroundColor: commonStyles.white,
   },
   blurContainer: {
     position: 'absolute',
@@ -66,9 +62,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     overflow: 'hidden',
-  },
-  blur: {
-    flex: 1,
   },
 });
 

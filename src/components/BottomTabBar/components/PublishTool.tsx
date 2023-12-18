@@ -1,15 +1,13 @@
-import { commonStyles } from '@/common/styles';
+import BlurBox from '@/components/BluerBox';
 import AddNewsScreen from '@/pages/addNewsScreen';
-import { BlurView } from '@react-native-community/blur';
 import { memo, useState } from 'react';
-import { Modal, Platform, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { Modal, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 type PublishToolProps = {
   navigation: any;
 };
 function PublishTool({ navigation }: PublishToolProps) {
-  const isIos = Platform.OS === 'ios';
   const [modalVisible, setModalVisible] = useState(false);
   const openModal = () => {
     setModalVisible(true);
@@ -28,11 +26,7 @@ function PublishTool({ navigation }: PublishToolProps) {
         <View style={styles.container}>
           <View style={styles.tool}>
             <View style={styles.blurContainer}>
-              {isIos ? (
-                <BlurView style={styles.blur} blurType='xlight' blurAmount={50} />
-              ) : (
-                <View style={styles.spaceBoxForOthers} />
-              )}
+              <BlurBox />
             </View>
             <FastImage source={require('../static/publish.png')} style={styles.submitBtn} />
           </View>
@@ -65,13 +59,6 @@ const styles = StyleSheet.create({
     right: 0,
     height: 15,
     overflow: 'hidden',
-  },
-  blur: {
-    flex: 1,
-  },
-  spaceBoxForOthers: {
-    flex: 1,
-    backgroundColor: commonStyles.white,
   },
   submitBtn: {
     width: 55,
