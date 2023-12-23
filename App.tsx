@@ -9,6 +9,7 @@ import { RootSiblingParent } from 'react-native-root-siblings';
 import { PATH } from '@/common/consts';
 import Storage from '@/storage';
 import { STORAGE_KEYS } from '@/interfaces/commonEnum';
+import React from 'react';
 
 // 顶级根路由栈
 const Stack = createNativeStackNavigator();

@@ -7,6 +7,7 @@ import Slogan from './components/Slogan';
 import Handlerbar from './components/Handlerbar';
 import RootView from '@/components/RootView';
 import { RootSiblingParent } from 'react-native-root-siblings';
+import React from 'react';
 
 function LoginScreen() {
   const [isShowPassCode, setIsShowPassCode] = useState(false);
